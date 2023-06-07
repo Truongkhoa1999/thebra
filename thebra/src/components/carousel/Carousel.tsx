@@ -11,6 +11,7 @@ const Carousel = () => {
           perspiciatis quia atque, provident natus soluta asperiores blanditiis.
           Eveniet voluptate maxime earum quis?
         </p>
+        <button>Buy item</button>
       </div>
       <div className="products_container">
         <img
