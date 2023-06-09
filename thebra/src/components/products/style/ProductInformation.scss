@@ -1,0 +1,38 @@
+.productInformation_container {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    border: 2px solid red;
+
+    .productInformation_image {
+        display: flex;
+        flex-direction: row-reverse;
+        margin-right: 3em;
+
+        .main {
+            max-width: 8em;
+            height: 100%;
+            border: 2px solid red($color: #000000);
+
+            // desktop
+            @media (min-width: 768px) {
+                max-width: 25em;
+            }
+        }
+
+        .minor {
+            display: flex;
+            flex-direction: column;
+
+            img {
+                width: 20px;
+
+            }
+        }
+        // desktop
+        @media (min-width: 768px) {
+            margin-right: 10em;
+
+        }
+    }
+}
