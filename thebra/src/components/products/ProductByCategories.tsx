@@ -1,27 +1,53 @@
-// lib and material
 import { Link } from "react-router-dom";
 import { ProductsData } from "../../data/ProductsData";
 import "./style/ProductByCategories.scss";
+// hooks
+import { useState } from "react";
+import { buttonCategoryHandle } from "../../util/buttonfunction";
 
 const ProductByCategories = () => {
+  const [activeButton, setActiveButton] = useState("");
+
+  const handleButtonClick = (buttonName:string) => {
+    const updatedButtonState = buttonCategoryHandle(activeButton, buttonName);
+    setActiveButton(updatedButtonState);
+  };
+
   return (
     <div className="post_container">
       <div className="button_container">
-        <button>Red</button>
-        <button>Grren</button>
-        <button>Blue</button>
+        <button
+          onClick={() => handleButtonClick("red")}
+          className={activeButton === "red" ? "button-red button-red--active" : "button-red"}
+        >
+          Red
+        </button>
+        <button
+          onClick={() => handleButtonClick("green")}
+          className={activeButton === "green" ? "button-green button-green--active" : "button-green"}
+        >
+          Green
+        </button>
+        <button
+          onClick={() => handleButtonClick("blue")}
+          className={activeButton === "blue" ? "button-blue button-blue--active" : "button-blue"}
+        >
+          Blue
+        </button>
       </div>
       <div className="item_container">
-            {ProductsData.map((p) => (
-                <Link to='/productdetail' className="item" key={p.id}>
-                    <img src={p.thumbnail} alt=" " />
-                    <div className="descrip">
-                        <h2>{p.title}</h2>
-                        <h3>{p.price} €</h3>
-                    </div>
-                </Link>
-            ))}
-        </div>    </div>
+        {ProductsData.map((p) => (
+          <Link to="/productdetail" className="item" key={p.id}>
+            <img src={p.thumbnail} alt=" " />
+            <div className="descrip">
+              <h2>{p.title}</h2>
+              <h3>{p.price} €</h3>
+            </div>
+          </Link>
+        ))}
+      </div>
+    </div>
   );
 };
+
 export default ProductByCategories;

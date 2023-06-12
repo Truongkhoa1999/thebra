@@ -1,38 +1,80 @@
 .productInformation_container {
     width: 100%;
+    height: auto;
     display: flex;
+    flex-direction: column;
+    align-items: center;
     justify-content: center;
-    border: 2px solid red;
+    padding-top: 4rem;
+
+    .productInformation_text {
+        flex-basis: 80%;
+        display: flex;
+        flex-direction: column;
+        .title {
+            font-size: 4rem;
+        }
+        .textSet,
+        .price {
+            font-size: 1.5rem;
+
+        }
+        button {
+            width: 10rem;
+            height: 2rem;
+        }
+    }
 
     .productInformation_image {
         display: flex;
-        flex-direction: row-reverse;
-        margin-right: 3em;
-
+        flex-direction: column;
         .main {
-            max-width: 8em;
-            height: 100%;
-            border: 2px solid red($color: #000000);
-
+            width: 15rem;
+            min-height: 18rem;
             // desktop
             @media (min-width: 768px) {
-                max-width: 25em;
+                width: 25em;
+                min-height: 20em;
             }
         }
 
         .minor {
             display: flex;
-            flex-direction: column;
-
-            img {
-                width: 20px;
+            flex-direction: row;
+            justify-content: center;
+            margin-top: 1rem;
+            margin-bottom: 1rem;
+            max-width: 15rem;
+            min-height: 2rem;
+            max-height: 4rem;
+            align-self: center;
+            @media (min-width:768px) {
+                flex-direction: column;
 
             }
+
+            img {
+                width: 20%;
+                margin-left: 1rem;
+                margin: 0.5em;
+
+                @media (min-width: 768px) {
+                    margin: 1rem;
+                }
+            }
         }
+
         // desktop
         @media (min-width: 768px) {
-            margin-right: 10em;
-
+            flex-direction: row-reverse;
         }
+    }
+
+    // desktop
+    @media (min-width: 768px) {
+        flex-direction: row;
+        align-items: center;
+        justify-content: center;
+        padding-left: 20rem;
     }
 }

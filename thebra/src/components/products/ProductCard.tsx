@@ -7,13 +7,31 @@ import CardOverflow from '@mui/joy/CardOverflow';
 import Typography from '@mui/joy/Typography';
 import { ProductProps } from '../../type/ProductProps';
 
-export default function ProductCard({products}: {products:ProductProps[]}) {
+export default function ProductCard() {
   return (
-    <Card sx={{ width: 220, maxWidth: '100%', boxShadow: 'lg' }}>
+    <Card sx={{ 
+    width: {
+      xs: 110, // Width for mobile devices
+      sm: 150, // Width for desktop devices
+      md: 160, // Width for large screens
+    },
+    maxWidth: '100%', 
+    boxShadow: 'lg',
+    // marginLeft: {
+    //   xs: '1em',
+    //   sm:'1.5em',
+    //   md:'2em'
+    // },
+    marginBottom:{
+      xs: '1em',
+      sm:'1.5em',
+      md:'2em'
+    }
+    }}>
       <CardOverflow>
-        <AspectRatio sx={{ minWidth: 200 }}>
+        <AspectRatio sx={{ minWidth: 90 }}>
           <img
-            src="https://images.unsplash.com/photo-1593121925328-369cc8459c08?auto=format&fit=crop&w=286"
+            src='https://images.unsplash.com/photo-1593121925328-369cc8459c08?auto=format&fit=crop&w=286&dpr=2 2x'
             srcSet="https://images.unsplash.com/photo-1593121925328-369cc8459c08?auto=format&fit=crop&w=286&dpr=2 2x"
             loading="lazy"
             alt=""
