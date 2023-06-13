@@ -6,6 +6,7 @@ import AppBar from "../../components/appbar/AppBar";
 import Carousel from "../../components/carousel/Carousel";
 import { Footer } from "../../components/footer/Footer";
 import ProductByCategories from "../../components/products/ProductByCategories";
+import { ProductByNumberOfClicks } from "../../components/products/ProductByNumberOfClicks";
 
 const Homepage = () => {
   return (
@@ -13,6 +14,7 @@ const Homepage = () => {
       <AppBar />
       <Carousel />
       <ProductByCategories />
+      <ProductByNumberOfClicks />
       <Footer />
     </div>
   );

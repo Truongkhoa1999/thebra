@@ -3,6 +3,12 @@ import './style/Carousel.scss'
 const Carousel = () => {
   return (
     <div className="carousel_container">
+            <div className="products_container">
+        <img
+          src="https://d3d4to3qraukqq.cloudfront.net/pub/Lajittelemattomat+tuotekuvat/SHOCK/ST_2021/SHOCK_ABSORBER_SA_SPORTS_PADDED_TOPATTU_LIIVI_56570491.png?c=is_webp_product_big&fb"
+          alt="1"
+        />
+      </div>
       <div className="information">
         <h1>TheBra</h1>
         <p>
@@ -13,12 +19,7 @@ const Carousel = () => {
         </p>
         <button>Buy item</button>
       </div>
-      <div className="products_container">
-        <img
-          src="https://d3d4to3qraukqq.cloudfront.net/pub/Lajittelemattomat+tuotekuvat/SHOCK/ST_2021/SHOCK_ABSORBER_SA_SPORTS_PADDED_TOPATTU_LIIVI_56570491.png?c=is_webp_product_big&fb"
-          alt="1"
-        />
-      </div>
+
     </div>
   );
 };

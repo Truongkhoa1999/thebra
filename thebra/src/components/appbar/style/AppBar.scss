@@ -1,22 +1,24 @@
 .app_container {
   width: 100vw;
-  height: 3rem;
+  height: 4rem;
   color: red;
   // border: 2px solid green;
-  background-color: rgb(230, 230, 230);
+  background-color: transparent;
   display: flex;
   flex-direction: row;
   justify-content: space-around;
   align-items: center;
+padding-top: 4rem;
+padding-bottom: 4rem;
 
   position: static;
   top: 0;
-  h1 {
+  img {
     color: red;
-    font-size: 1.5rem;
-         // desktop
-         @media (min-width: 768px) {
-          font-size: 2rem;
-        }
+    width: 15rem;
+    // desktop
+    @media (min-width: 768px) {
+      width: 20rem;
+    }
   }
 }

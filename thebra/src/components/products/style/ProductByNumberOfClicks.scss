@@ -1,0 +1,50 @@
+.productbynumberofclicks_container {
+  width: 65vw;
+  display: flex;
+  flex-direction: column;
+
+  margin-left: auto;
+  margin-right: auto;
+
+  h1 {
+    width: 65%;
+    align-self: center;
+    margin-bottom: 2rem;
+    @media (min-width: 768px) {
+        width: 100%; 
+    }
+  }
+  .bestseller_cards {
+    display: flex;
+    flex-direction: column;
+    width: 80%;
+    align-self: center;
+    .bestseller_card {
+      align-self: center;
+      width: 60%;
+      padding: 2rem;
+      background-color: #d8d3ce;
+      margin-left: 1em;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      margin-bottom: 1rem;
+      img {
+        width: 80%;
+        margin: auto;
+      }
+      h2 {
+        margin-top: 1em;
+        width: 70%;
+
+      }
+      @media (min-width: 768px) {
+        width: calc(33.33% - 10px);
+      }
+    }
+    @media (min-width: 768px) {
+      flex-direction: row;
+      width: 100%;
+    }
+  }
+}

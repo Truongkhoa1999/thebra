@@ -4,7 +4,9 @@
   flex-direction: column;
   align-items: center;
   justify-content: space-around;
-
+  .link {
+    text-decoration: none;
+  }
   .button_container {
     width: 80%;
     display: flex;
@@ -12,7 +14,6 @@
     margin-top: 4rem;
     margin-bottom: 4rem;
 
-  
     .button-red,
     .button-green,
     .button-blue {
@@ -32,7 +33,6 @@
     }
 
     .button-blue--active {
-
       border-bottom: 5px solid black;
     }
 
@@ -60,35 +60,57 @@
     .item {
       width: calc(50% - 10px);
       /* Adjust the width as needed */
-      height: 10rem;
+      height: 20rem;
       margin-bottom: 20px;
-      border: 1px solid black;
       display: flex;
       flex-direction: column;
       align-items: center;
-      justify-content: center;
-      background-color: rgb(230, 230, 230);
+      justify-content: space-evenly;
+      // background-color: rgb(230, 230, 230);
 
       .descrip {
-        display: flex;
-        align-items: center;
-        justify-content: space-around;
-        width: 100%;
+        width: 70%;
+        font-size: 0.75rem;
+        .upper {
+          display: flex;
+          flex-direction: row;
+          justify-content: space-between;
+          color: black;
+        }
+        .lower {
+          color: rgb(180, 167, 167);
+          font-size: 1rem;
+        }
+        @media (min-width: 768px) {
+          font-size: 1rem;
+          width: 60%;
+        }
       }
 
       img {
-        width: 50%;
+        width: 90px;
         /* Adjust the image width as needed */
       }
 
       //   Desktop
-      @media (min-width: 768px) {
-        max-width: calc(33.33% - 10px);
-        // width: calc(18% - 10px);
+      @media (min-width: 500px) {
+        width: calc(33.33% - 10px);
         height: 30rem;
-
         img {
-          max-width: 15em;
+          width: 7.5em;
+        }
+      }
+      @media (min-width: 768px) {
+        width: calc(33.33% - 10px);
+        height: 30rem;
+        img {
+          width: 10em;
+        }
+      }
+      @media (min-width: 1920px) {
+        height: 40rem;
+        img {
+          width: 20em;
         }
       }
     }
