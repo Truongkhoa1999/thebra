@@ -1,10 +1,11 @@
 // lib and material
 import "./style/Footer.scss";
+import { Facebook, Instagram } from '@mui/icons-material';
 
 export const Footer = () => {
   return (
     <div className="footer_container">
-      <h1>TheBra</h1>
+      <h1 className="upper">TheBra</h1>
       <div className="lower">
         <div className="customerservice_container">
           <h1>Customer service</h1>
@@ -27,7 +28,7 @@ export const Footer = () => {
         <div className="information_container">
           <h1>Customer service</h1>
           <p>
-            
+
             Club Lyko My Pages Club Lyko Privacy Policy FAQ - Frequently Asked
             Questions Privacy Notice Cookie Policy Order Terms About Lyko
             Recommend to a friend Are you interested in cooperation with Lyko?
@@ -35,10 +36,38 @@ export const Footer = () => {
           </p>
         </div>
         <div className="newsletter_container">
-          <p>Fb/</p>
-          <p> Ig</p>
+          <div className="upper_newsletter">
+            <h1>News and offer</h1>
+            <p>Subscribe to our newsletter and join our SMS list to get information about current offers and campaigns!</p>
+            <form className="newsletter_form">
+              <input
+                type="email"
+                id="gmail"
+                name="gmail"
+                required
+                placeholder="Email address"
+              /><br /><br />
+
+              <input
+                type="tel"
+                id="telephone"
+                name="telephone"
+                required
+                placeholder="Telephone"
+              /><br /><br />
+
+              <input type="submit" value="Submit" />
+            </form>
+          </div>
+          <div className="lower_newsletter">
+            <h1>Follow us</h1>
+            <div className="social_ic"></div>
+            <Facebook />
+            <Instagram />
+          </div>
         </div>
       </div>
+      <h4 className="bottom">Copyright 2023</h4>
     </div>
   );
 };

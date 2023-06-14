@@ -1,7 +1,7 @@
 import { ProductsData } from "../../data/ProductsData";
 import './style/ProductByNumberOfClicks.scss'
 export const ProductByNumberOfClicks = () => {
-  const firstthreeproducts = ProductsData.slice(0, 3);
+  const firstthreeproducts = ProductsData.slice(0, 6);
   return (
     <div className="productbynumberofclicks_container">
       <h1>Best seller</h1>
