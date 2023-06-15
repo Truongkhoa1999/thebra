@@ -1,5 +1,5 @@
 .productbynumberofclicks_container {
-  width: 65vw;
+  width:90vw;
   display: flex;
   flex-direction: column;
 
@@ -17,20 +17,18 @@
   }
 
   .bestseller_cards {
+    width: 100%;
     display: flex;
-    flex-direction: column;
-    width: 80%;
-    align-self: center;
-
-
+    flex-wrap: wrap;
+    justify-content: space-between;
 
     .bestseller_card {
-      align-self: center;
-      width: 100%;
+      width: calc(50% - 10px);
       padding: 1rem 0 1rem 0;
       background-color: #d8d3ce;
       display: flex;
       flex-direction: column;
+
       align-items: center;
       margin-bottom: 1rem;
 
@@ -42,24 +40,20 @@
       h2 {
         margin-top: 1em;
         width: 70%;
-
       }
 
       @media (min-width: 768px) {
         width: calc(33.33% - 10px);
         justify-content: space-around;
+        // padding: 1rem 0 1rem 0;
       }
     }
-
     @media (min-width: 768px) {
-
       flex-direction: row;
       flex-wrap: wrap;
       justify-content: space-around;
-
-      width: 100%;
+      align-self: center;
+      width: 70%;
     }
   }
-
-
 }

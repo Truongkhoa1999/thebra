@@ -1,6 +1,6 @@
 // lib and material
 import "./style/Footer.scss";
-import { Facebook, Instagram } from '@mui/icons-material';
+import { Facebook, Instagram } from "@mui/icons-material";
 
 export const Footer = () => {
   return (
@@ -8,7 +8,7 @@ export const Footer = () => {
       <h1 className="upper">TheBra</h1>
       <div className="lower">
         <div className="customerservice_container">
-          <h1>Customer service</h1>
+          <button className="button_footer">Customer service</button>
           <p>
             HAIR & BEAUTY CARE are our passions at Lyko, as is providing
             absolutely first-class CUSTOMER SERVICE. We'll help you figure out
@@ -26,9 +26,8 @@ export const Footer = () => {
           </p>
         </div>
         <div className="information_container">
-          <h1>Customer service</h1>
+          <button className="button_footer">Information</button>
           <p>
-
             Club Lyko My Pages Club Lyko Privacy Policy FAQ - Frequently Asked
             Questions Privacy Notice Cookie Policy Order Terms About Lyko
             Recommend to a friend Are you interested in cooperation with Lyko?
@@ -37,30 +36,41 @@ export const Footer = () => {
         </div>
         <div className="newsletter_container">
           <div className="upper_newsletter">
-            <h1>News and offer</h1>
-            <p>Subscribe to our newsletter and join our SMS list to get information about current offers and campaigns!</p>
-            <form className="newsletter_form">
-              <input
-                type="email"
-                id="gmail"
-                name="gmail"
-                required
-                placeholder="Email address"
-              /><br /><br />
+            <button className="button_footer">News and offer</button>
+            <div className="letter_form">
+              <p>
+                Subscribe to our newsletter and join our SMS list to get
+                information about current offers and campaigns!
+              </p>
+              <form className="newsletter_form">
+                <input
+                  type="email"
+                  id="gmail"
+                  name="gmail"
+                  required
+                  placeholder="Email address"
+                  className="input_text"
+                />
+                <br />
+                <br />
 
-              <input
-                type="tel"
-                id="telephone"
-                name="telephone"
-                required
-                placeholder="Telephone"
-              /><br /><br />
+                <input
+                  type="tel"
+                  id="telephone"
+                  name="telephone"
+                  required
+                  placeholder="Telephone"
+                  className="input_text"
+                />
+                <br />
+                <br />
 
-              <input type="submit" value="Submit" />
-            </form>
+                <input type="submit" value="Submit" />
+              </form>
+            </div>
           </div>
           <div className="lower_newsletter">
-            <h1>Follow us</h1>
+            <button className="button_footer">Follow us</button>
             <div className="social_ic"></div>
             <Facebook />
             <Instagram />
