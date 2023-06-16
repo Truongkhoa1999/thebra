@@ -2,9 +2,11 @@
   width: 100vw;
   background-color: transparent;
   align-items: center;
+  display: flex;
+  flex-direction: column;
+
   // desktop
   @media (min-width: 768px) {
-    
     width: 75%;
     margin: auto;
   }
@@ -12,7 +14,7 @@
     width: 100%;
     display: flex;
     justify-content: space-around;
-  
+
     // border: 2px solid red;
     img {
       width: 95%;
@@ -21,20 +23,33 @@
       }
     }
   }
-  .arrow_button{
-    height: 40px;
-    width: 40px;
-    align-self: center;
-    cursor: pointer;
-    border: none;
-    background-color: brown;
-    color: white;
-    &:hover{
-      background-color: red;
-      border: 2px solid black;
-      transition: 0.5s;
-      color: black;
+  .arrow_button {
+    display: none;
+    overflow: hidden;
+    @media (min-width: 768px) {
+      display: block;
+      height: 40px;
+      width: 40px;
+      align-self: center;
+      cursor: pointer;
+      border: none;
+      background-color: brown;
+      color: white;
+      &:hover {
+        background-color: red;
+        border: 2px solid black;
+        transition: 0.5s;
+        color: black;
+      }
     }
   }
 
+  .count_groups {
+    width: 200px;
+    display: flex;
+    justify-content: center;
+  }
+  .count_active {
+    color: red;
+  }
 }

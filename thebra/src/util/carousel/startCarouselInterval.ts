@@ -1,5 +1,7 @@
 import { useEffect, Dispatch, SetStateAction } from "react";
-import { CarouselData } from "../data/CarouselData";
+
+import { CarouselData } from "../../data/CarouselData";
+import { useSwipeable } from "react-swipeable";
 
 export const startCarouselInterval = (
   setArrayIndex: Dispatch<SetStateAction<number>>,
@@ -38,3 +40,32 @@ export const updateArrayIndex = (
     setIsDelayed(false); // Reset delay flag after 3 seconds
   }, 4000);
 };
+
+export const handleSwipeLeft = (
+  arrayIndex: number,
+  setArrayIndex: Dispatch<SetStateAction<number>>,
+  setIsDelayed: Dispatch<SetStateAction<boolean>>
+) => {
+  updateArrayIndex(1, arrayIndex, setArrayIndex, setIsDelayed);
+};
+
+export const handleSwipeRight = (
+  arrayIndex: number,
+  setArrayIndex: Dispatch<SetStateAction<number>>,
+  setIsDelayed: Dispatch<SetStateAction<boolean>>
+) => {
+  updateArrayIndex(-1, arrayIndex, setArrayIndex, setIsDelayed);
+};
+
+export const swipeHandlers = (
+  arrayIndex: number,
+  setArrayIndex: Dispatch<SetStateAction<number>>,
+  setIsDelayed: Dispatch<SetStateAction<boolean>>
+) =>
+  useSwipeable({
+    onSwipedLeft: () =>
+      handleSwipeLeft(arrayIndex, setArrayIndex, setIsDelayed),
+    onSwipedRight: () =>
+      handleSwipeRight(arrayIndex, setArrayIndex, setIsDelayed),
+    trackMouse: true,
+  });
