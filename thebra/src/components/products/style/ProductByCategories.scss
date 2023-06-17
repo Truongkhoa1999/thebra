@@ -4,8 +4,18 @@
   flex-direction: column;
   align-items: center;
   justify-content: space-around;
+  margin-bottom: 5rem;
+  margin-top: 5rem;
+  background-color: antiquewhite;
+
   .link {
     text-decoration: none;
+  }
+  .collection_title{
+    width: 100%;
+    text-align: center;
+    margin-top: 1rem;
+    color: brown;
   }
   .button_container {
     width: 80%;
@@ -18,7 +28,7 @@
     .button-green,
     .button-blue {
       background-color: transparent;
-      cursor: default;
+      cursor: pointer;
       width: 4rem;
       padding: 0.25rem;
       border: none;
@@ -30,14 +40,20 @@
 
     .button-red--active {
       border-bottom: 5px solid black;
+      cursor: default;
+
     }
 
     .button-blue--active {
       border-bottom: 5px solid black;
+      cursor: default;
+
     }
 
     .button-green--active {
       border-bottom: 5px solid black;
+      cursor: default;
+
     }
 
     // desktop
@@ -55,7 +71,12 @@
     display: flex;
     flex-wrap: wrap;
     justify-content: space-between;
-
+    .viewmore {
+      width: 100%;
+      text-align: end;
+      margin-bottom: 1rem;
+  
+    }
     // Mobile
     .item {
       width: calc(50% - 10px);
@@ -67,6 +88,7 @@
       align-items: center;
       justify-content: space-evenly;
       // background-color: rgb(230, 230, 230);
+      border: 1px solid rgb(165, 165, 165);
 
       .descrip {
         width: 70%;
@@ -101,16 +123,16 @@
         }
       }
       @media (min-width: 768px) {
-        width: calc(33.33% - 10px);
+        width: calc(25% - 10px);
         height: 30rem;
         img {
-          width: 10em;
+          width: 8em;
         }
       }
       @media (min-width: 1920px) {
         height: 40rem;
         img {
-          width: 20em;
+          width: 9em;
         }
       }
     }

@@ -3,21 +3,19 @@ import { ProductsData } from "../../data/ProductsData";
 import "./style/ProductByCategories.scss";
 // hooks
 import { useState } from "react";
-import { buttonCategoryHandle } from "../../util/buttonfunction";
+import { handleButtonClick } from "../../util/categorybuttons/buttonfunction";
 
 const ProductByCategories = () => {
   const [activeButton, setActiveButton] = useState("");
-
-  const handleButtonClick = (buttonName: string) => {
-    const updatedButtonState = buttonCategoryHandle(activeButton, buttonName);
-    setActiveButton(updatedButtonState);
-  };
-
+  const first3Products = ProductsData.slice(0, 4);
   return (
     <div className="post_container">
+      <h1 className="collection_title">Our collection</h1>
       <div className="button_container">
         <button
-          onClick={() => handleButtonClick("red")}
+          onClick={() =>
+            handleButtonClick("red", activeButton, setActiveButton)
+          }
           className={
             activeButton === "red"
               ? "button-red button-red--active"
@@ -27,7 +25,9 @@ const ProductByCategories = () => {
           Red
         </button>
         <button
-          onClick={() => handleButtonClick("green")}
+          onClick={() =>
+            handleButtonClick("green", activeButton, setActiveButton)
+          }
           className={
             activeButton === "green"
               ? "button-green button-green--active"
@@ -37,7 +37,9 @@ const ProductByCategories = () => {
           Green
         </button>
         <button
-          onClick={() => handleButtonClick("blue")}
+          onClick={() =>
+            handleButtonClick("blue", activeButton, setActiveButton)
+          }
           className={
             activeButton === "blue"
               ? "button-blue button-blue--active"
@@ -48,7 +50,7 @@ const ProductByCategories = () => {
         </button>
       </div>
       <div className="item_container">
-        {ProductsData.map((p) => (
+        {first3Products.map((p) => (
           <Link to="/productdetail" className="item link" key={p.id}>
             <img src={p.thumbnail} alt=" " />
             <div className="descrip">
@@ -57,11 +59,14 @@ const ProductByCategories = () => {
                 <h3>{p.price} €</h3>
               </div>
               <div className="lower">
-              <p>{p.category}</p>
+                <p>{p.category}</p>
               </div>
             </div>
           </Link>
         ))}
+        <div className="viewmore">
+          <h4>view more-</h4>
+        </div>
       </div>
     </div>
   );
