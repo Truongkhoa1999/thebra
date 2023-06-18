@@ -10,7 +10,7 @@ const ProductByCategories = () => {
   const first3Products = ProductsData.slice(0, 4);
   return (
     <div className="post_container">
-      <h1 className="collection_title">Our collection</h1>
+      <h1 className="collection_title">Explore our collection</h1>
       <div className="button_container">
         <button
           onClick={() =>

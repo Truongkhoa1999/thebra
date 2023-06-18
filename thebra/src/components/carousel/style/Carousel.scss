@@ -4,7 +4,7 @@
   align-items: center;
   display: flex;
   flex-direction: column;
-
+z-index: 0;
   // desktop
   @media (min-width: 768px) {
     width: 75%;

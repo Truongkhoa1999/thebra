@@ -1,5 +1,5 @@
 import { ProductsData } from "../../data/ProductsData";
-import './style/ProductByNumberOfClicks.scss'
+import "./style/ProductByNumberOfClicks.scss";
 export const ProductByNumberOfClicks = () => {
   const firstthreeproducts = ProductsData.slice(0, 6);
   return (

@@ -13,25 +13,41 @@ export default function ProductCard({ className }: { className?: string }) {
       sx={{
         width: {
           xs: 100, // Width for mobile devices
-          sm: 150, // Width for desktop devices
-          md: 160, // Width for large screens
+          sm: 350, // Width for desktop devices
+          md: 360, // Width for large screens
         },
         height: {
           xs: 250, // Width for mobile devices
-          sm: 150, // Width for desktop devices
-          md: 160, // Width for large screens
+          sm: 350, // Width for desktop devices
+          md: 350, // Width for large screens
         },
-        maxWidth: "60%",
+        //  maxWidth: {
+        //     xs: "30%",
+        //     sm: "25%",
+        //     md: "20%"
+
+        //   },
+        maxWidth: {
+          xs: 150,
+          sm: "25%",
+          md: 250,
+        },
         boxShadow: "lg",
         marginBottom: {
-          xs: "1em",
+          xs: "4em",
           sm: "1.5em",
           md: "2em",
         },
+
+        // marignLeft:{
+        //   xs: "4em",
+        //   sm: "1.5em",
+        //   md: "2em",
+        // }
       }}
     >
       <CardOverflow>
-        <AspectRatio sx={{ maxWidth: 80 }}>
+        <AspectRatio sx={{ maxWidth: 400 }}>
           <img
             src="https://images.unsplash.com/photo-1593121925328-369cc8459c08?auto=format&fit=crop&w=286&dpr=2 2x"
             srcSet="https://images.unsplash.com/photo-1593121925328-369cc8459c08?auto=format&fit=crop&w=286&dpr=2 2x"
@@ -52,7 +68,7 @@ export default function ProductCard({ className }: { className?: string }) {
         </Typography>
       </CardContent>
       <CardOverflow>
-        <Button variant="solid" sx={{backgroundColor: "brown"}} size="lg">
+        <Button variant="solid" sx={{ backgroundColor: "brown" }} size="lg">
           Add to cart
         </Button>
       </CardOverflow>
