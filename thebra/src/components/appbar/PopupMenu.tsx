@@ -7,6 +7,15 @@ export const PopupMenu = ({ className }: { className: string }) => {
         <Link to="/signin" className="menuLink ">
           Sign-in
         </Link>
+        <Link to="/signin" className="menuLink ">
+          My orders
+        </Link>
+        <Link to="/signin" className="menuLink ">
+          Ale
+        </Link>
+        <Link to="/signin" className="menuLink ">
+          All products
+        </Link>
       </div>
     </div>
   );

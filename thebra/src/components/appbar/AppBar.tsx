@@ -5,26 +5,26 @@ import MenuIcon from "@mui/icons-material/Menu";
 import logo from "../../assets/logo.png";
 import { PopupMenu } from "./PopupMenu";
 import { useState } from "react";
+import Marquee from "./Marquee";
 const AppBar = () => {
-  const [showMenu, setShowMenu] = useState(false);
 
-  const handleClick = () => {
-    setShowMenu(!showMenu);
-  };
   return (
     <div className="app_container">
-      <div className="upper">
-        <button onClick={handleClick} className="menu_button">
-          <MenuIcon />
-        </button>
+        <div className="upper">
+      <Marquee />
+        < PopupMenu className="popupmenu" />
+      </div>
+      <div className="lower">
+        <div className="userAvatar" title="You are signed in">
+          <img className="avatar" src="https://img.freepik.com/free-icon/user_318-563642.jpg" alt=" " />
+          <div className="status"></div>
+        </div>
         <Link to="/homepage">
           <img src={logo} alt="" />
         </Link>
         <p>cart (2)</p>
       </div>
-      <div className="lower">
-        {showMenu && <PopupMenu className="popupmenu" />}
-      </div>
+    
     </div>
   );
 };

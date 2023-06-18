@@ -7,7 +7,7 @@ import { handleButtonClick } from "../../util/categorybuttons/buttonfunction";
 
 const ProductByCategories = () => {
   const [activeButton, setActiveButton] = useState("");
-  const first3Products = ProductsData.slice(0, 4);
+  const first3Products = ProductsData.slice(0, 3);
   return (
     <div className="post_container">
       <h1 className="collection_title">Explore our collection</h1>

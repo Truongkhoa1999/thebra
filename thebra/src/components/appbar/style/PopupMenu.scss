@@ -1,15 +1,23 @@
 .menu_container {
   display: flex;
-  flex-direction: column;
+  justify-content: space-evenly;
   align-items: center;
   height: auto;
+
   .menuLink {
     display: flex;
     align-items: center;
+    justify-content: center;
     text-decoration: none;
-    width: 100%;
+    width: 15%;
     height: 2rem;
-    font-size: 1rem;
+    font-size: 0.55rem;
     color: white;
+
+    @media (min-width: 768px) {
+      width: 25%;
+      font-size: 1rem;
+
+    }
   }
 }
