@@ -1,6 +1,7 @@
 import { Link } from "react-router-dom";
 import { ProductsData } from "../../data/ProductsData";
 import "./style/ProductByCategories.scss";
+
 // hooks
 import { useState } from "react";
 import { handleButtonClick } from "../../util/categorybuttons/buttonfunction";
@@ -10,7 +11,15 @@ const ProductByCategories = () => {
   const first3Products = ProductsData.slice(0, 3);
   return (
     <div className="post_container">
-      <h1 className="collection_title">Explore our collection</h1>
+      <div className="heading_container">
+        <div className="logo" />
+        <h1 className="collection_title">Explore our collection</h1>
+        <p>
+          Lorem ipsum, dolor sit amet consectetur adipisicing elit. Aut esse
+          eveniet quas odio corrupti at saepe ea repellat veritatis voluptate
+       
+        </p>
+      </div>
       <div className="button_container">
         <button
           onClick={() =>

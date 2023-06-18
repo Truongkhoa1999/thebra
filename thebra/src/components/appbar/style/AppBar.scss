@@ -5,7 +5,7 @@
   width: 100vw;
   margin-bottom: 1rem;
 
-  .lower {
+  .upper {
     width: 80%;
     height: 4rem;
     color: black;
@@ -22,24 +22,25 @@
 
     .userAvatar {
       display: flex;
-      justify-content:center ;
+      justify-content: center;
       .avatar {
         width: 2em;
       }
-      .status{
+      .status {
         width: 0.75em;
         height: 0.75em;
         background-color: green;
         border-radius: 50%;
-        
       }
     }
 
-
-    img {
+    .logo_container {
       color: red;
-      width: 15rem;
+      width: 10rem;
+      height: 4rem;
 
+      background-image: url("https://firebasestorage.googleapis.com/v0/b/thebra-f81ef.appspot.com/o/logotext.png?alt=media&token=38df1f6c-45d2-46cb-9aeb-287b0a27d68e");
+      background-position: center;
       // desktop
       @media (min-width: 768px) {
         width: 20rem;
@@ -47,9 +48,8 @@
     }
   }
 
-  .upper {
+  .lower {
     width: 100%;
-    position: fixed;
 
 
     @media (min-width: 768px) {
