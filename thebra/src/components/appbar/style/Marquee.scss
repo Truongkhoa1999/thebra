@@ -9,6 +9,7 @@
     white-space: nowrap;
     animation: marqueeAnimation 30s linear infinite;
     transform: translateX(100%);
+    color: red  ;
   }
   
   @keyframes marqueeAnimation {

@@ -8,7 +8,7 @@ export const ProductByNumberOfClicks = () => {
       <div className="bestseller_cards">
         {firstthreeproducts.map((p) => (
           <div className="bestseller_card">
-            <img src="https://image.clovia.com/media/clovia-images/images/720x1080/clovia-picture-cotton-rich-padded-non-wired-spacer-cup-t-shirt-bra-1-413186.jpg" />
+            <img src="https://assets.ellosgroup.com/i/ellos/b?$eg$&$em$&$ep$&$ed$&n=ell_7008974-04_Ff_M0085725&mw=1500&fmt=webp" />
             <h2>{p.title}</h2>
           </div>
         ))}
