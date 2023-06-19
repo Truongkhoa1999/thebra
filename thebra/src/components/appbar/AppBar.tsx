@@ -2,8 +2,10 @@
 import { Link } from "react-router-dom";
 import "./style/AppBar.scss";
 import MenuIcon from "@mui/icons-material/Menu";
-import logo from "../../assets/logo.png";
 import { PopupMenu } from "./PopupMenu";
+import ShoppingCartIcon from '@mui/icons-material/ShoppingCart';
+import AccountCircleIcon from '@mui/icons-material/AccountCircle';
+import FavoriteIcon from '@mui/icons-material/Favorite';
 
 import Marquee from "./Marquee";
 import { useState } from "react";
@@ -14,15 +16,9 @@ const AppBar = () => {
   };
   return (
     <div className="app_container">
+      <Marquee />
       <div className="upper">
-        {/* <div className="userAvatar" title="You are signed in">
-          <img
-            className="avatar"
-            src="https://img.freepik.com/free-icon/user_318-563642.jpg"
-            alt=" "
-          />
-          <div className="status"></div>
-        </div> */}
+
         <button onClick={openMenu}>
           <MenuIcon />
         </button>
@@ -30,10 +26,20 @@ const AppBar = () => {
         <Link to="/homepage">
           <div className="logo_container"></div>
         </Link>
-        <p>cart (2)</p>
+        <div className="appbar_button">
+          <button>
+            <ShoppingCartIcon />
+          </button>
+          <button>
+            <AccountCircleIcon />
+          </button>
+          <button>
+            <FavoriteIcon />
+          </button>
+        </div>
+
       </div>
       <div className="lower">
-        <Marquee />
         {isOpened && <PopupMenu className="popupmenu" />}
       </div>
     </div>
