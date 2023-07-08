@@ -8,12 +8,19 @@ import AccountCircleIcon from "@mui/icons-material/AccountCircle";
 import FavoriteIcon from "@mui/icons-material/Favorite";
 
 import Marquee from "./Marquee";
-import { useState } from "react";
+import { useEffect, useState } from "react";
+import { handleAuthenticationStatus } from "../../util/checkingSigninStatus/handleAuthenticationStatus";
+import { isUserSignedIn } from "../../util/checkingSigninStatus/isUserSignedIn";
 const AppBar = () => {
   const [isOpened, setIsOpened] = useState(false);
   const openMenu = () => {
     setIsOpened(!isOpened);
   };
+  const [isSignedIn, setIsSignedIn] = useState(isUserSignedIn());
+  useEffect(() => {
+    setIsSignedIn(isUserSignedIn());
+  }, []);
+
   return (
     <div className="app_container">
       <Marquee />
@@ -25,14 +32,16 @@ const AppBar = () => {
           <div className="logo_container"></div>
         </Link>
         <div className="appbar_button">
-          <button>
-            <ShoppingCartIcon />
+          <button className="shoppingcarticon">
+            <ShoppingCartIcon style={{ fontSize: "1.25rem" }} />
           </button>
           <button>
-            <AccountCircleIcon />
+            <AccountCircleIcon onClick={handleAuthenticationStatus} className={`accountButton ${isSignedIn ? "accountButton--active" : ""}`} style={{ fontSize: "1.25rem" }} />
           </button>
           <button>
-            <FavoriteIcon />
+            <FavoriteIcon style={{
+              fontSize: "1.25rem",
+            }} />
           </button>
         </div>
       </div>

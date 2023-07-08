@@ -5,7 +5,6 @@ const Marquee: React.FC = () => {
 
     useEffect(() => {
         const marqueeElement = marqueeRef.current;
-
         const handleAnimationEnd = () => {
             // Reset the marquee to its initial position
             if (marqueeElement) {

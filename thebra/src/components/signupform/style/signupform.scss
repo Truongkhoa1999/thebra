@@ -42,30 +42,27 @@
             display: flex;
             justify-content: space-around;
 
-            .button1 {
-                width: 150px;
+            .button2 {
+                width: 10em;
                 height: 2em;
-                display: flex;
-                justify-content: center;
-                align-items: center;
+                padding: 0.5em;
                 text-align: center;
                 @media (min-width:768px) {
                 width: 30%;
                 }
                 cursor: pointer;
-
              
             }
-            .login_button{
-                background-color: transparent;
-                color: BLACK;
+            .signup_button{
+                border-radius: 8%;
+                background-color: blue;
+                color: white;
                 box-sizing: border-box;
                 text-align: center;
                 font-size: 0.95rem;
                 padding: 1rem 0 1rem 0;
                  vertical-align: middle;
                 text-align: center;
-            
             }
             .newaccount_button{
                 border: none;

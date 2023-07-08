@@ -12,6 +12,7 @@
     flex-direction: column;
     margin-top: 1rem;
     .title {
+      width: 300px;
       font-size: 1.25rem;
       color: brown;
       font-weight: bold;
@@ -177,7 +178,6 @@
         flex-wrap: wrap;
         .left {
           width: 40%;
-
           .size_group {
             display: flex;
             justify-content: space-around;

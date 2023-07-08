@@ -7,6 +7,7 @@
   margin-bottom: 5rem;
   margin-top: 5rem;
   background-color: antiquewhite;
+  // background-color: rgb(221, 219, 219);
 
   .link {
     text-decoration: none;
@@ -18,11 +19,13 @@
     flex-direction: column;
     align-items: center;
     margin-top: 2rem;
+
     h1 {
       margin: 0;
       width: 80%;
       font-size: 1.5em;
     }
+
     p {
       width: 100%;
       font-size: 1em;
@@ -31,6 +34,7 @@
       margin: 0;
       text-align: center;
     }
+
     .logo {
       width: 12rem;
       height: 12rem;
@@ -41,6 +45,7 @@
       background-repeat: no-repeat;
     }
   }
+
   .collection_title {
     width: 100%;
     text-align: center;
@@ -49,7 +54,7 @@
   }
 
   .button_container {
-    width: 80%;
+    width: 87%;
     display: flex;
     justify-content: space-around;
     margin-top: 4rem;
@@ -60,13 +65,15 @@
     .button-blue {
       background-color: transparent;
       cursor: pointer;
-      width: 4rem;
+      width: 6rem;
       padding: 0.25rem;
-      border: none;
-      font-size: 20px;
+      border: 1px solid black;
+      font-size: 15px;
+      box-shadow: 1px 4px 4px black;
 
       @media (min-width: 768px) {
         width: 15%;
+        
       }
     }
 
@@ -100,23 +107,34 @@
     display: flex;
     flex-direction: column;
     justify-content: space-between;
+
     .viewmore {
-      width: 100%;
-      text-align: end;
+      width: 50%;
+      padding-top: 15px;
+      padding-bottom: 15px;
+      text-align: center;
       margin-bottom: 1rem;
+      margin-right: auto;
+      margin-left: auto;
+      border: 2px solid black;
+      box-shadow: 1px 4px 4px black;
+
     }
 
     // Mobile
     .item {
-      width: 100%;
+      width: 90%;
       /* Adjust the width as needed */
       height: 10rem;
-      margin-bottom: 20px;
+      margin-bottom: 30px;
+      margin-left: auto ;
+      margin-right: auto;
       display: flex;
       align-items: center;
       justify-content: space-evenly;
       // background-color: rgb(230, 230, 230);
-      border: 1px solid rgb(165, 165, 165);
+      border: 1px solid black;
+      box-shadow: 1px 4px 4px black;
 
       .descrip {
         width: 50%;
@@ -136,7 +154,6 @@
           display: flex;
           justify-content: flex-start;
         }
-
         @media (min-width: 768px) {
           font-size: 1rem;
           width: 60%;

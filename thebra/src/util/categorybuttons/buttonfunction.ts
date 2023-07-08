@@ -9,13 +9,13 @@ export const buttonCategoryHandle = (
     return "";
   } else {
     return buttonName;
-  }
+  }  
 };
 
 export const handleButtonClick = (
   buttonName: string,
   activeButton: string,
-  setActiveButton: Dispatch<SetStateAction<string>>
+  setActiveButton: Dispatch<SetStateAction<string>>,
 ) => {
   const updatedButtonState = buttonCategoryHandle(activeButton, buttonName);
   setActiveButton(updatedButtonState);

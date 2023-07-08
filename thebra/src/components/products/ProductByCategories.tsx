@@ -1,14 +1,21 @@
 import { Link } from "react-router-dom";
-import { ProductsData } from "../../data/ProductsData";
 import "./style/ProductByCategories.scss";
 
 // hooks
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { handleButtonClick } from "../../util/categorybuttons/buttonfunction";
+import { filterProductByCategory } from "../../util/productByCategory/filterProductByCategory";
+import { ProductProps } from "../../type/ProductProps";
 
-const ProductByCategories = () => {
+interface ProductByCategoriesProps {
+  products: ProductProps[];
+}
+const ProductByCategories: React.FC<ProductByCategoriesProps> = ({ products }) => {
   const [activeButton, setActiveButton] = useState("");
-  const first3Products = ProductsData.slice(0, 3);
+  const [filteredProducts, setFilteredProducts] = useState<ProductProps[]>(products)
+  useEffect(() => {
+    setFilteredProducts(products);
+  }, []);
   return (
     <div className="post_container">
       <div className="heading_container">
@@ -17,13 +24,15 @@ const ProductByCategories = () => {
         <p>
           Lorem ipsum, dolor sit amet consectetur adipisicing elit. Aut esse
           eveniet quas odio corrupti at saepe ea repellat veritatis voluptate
-       
+
         </p>
       </div>
       <div className="button_container">
         <button
-          onClick={() =>
+          onClick={() => {
             handleButtonClick("red", activeButton, setActiveButton)
+            setFilteredProducts(filterProductByCategory(products, "BRALETTE"))
+          }
           }
           className={
             activeButton === "red"
@@ -31,11 +40,13 @@ const ProductByCategories = () => {
               : "button-red"
           }
         >
-          Red
+          Bralette
         </button>
         <button
-          onClick={() =>
+          onClick={() => {
             handleButtonClick("green", activeButton, setActiveButton)
+            setFilteredProducts(filterProductByCategory(products, "COTTON-LINEN"))
+          }
           }
           className={
             activeButton === "green"
@@ -43,11 +54,15 @@ const ProductByCategories = () => {
               : "button-green"
           }
         >
-          Green
+          Cotton-linen
         </button>
         <button
-          onClick={() =>
+          onClick={() => {
             handleButtonClick("blue", activeButton, setActiveButton)
+            setFilteredProducts(filterProductByCategory(products, "PUSH-UP")
+            )
+
+          }
           }
           className={
             activeButton === "blue"
@@ -55,13 +70,13 @@ const ProductByCategories = () => {
               : "button-blue"
           }
         >
-          Blue
+          Push-up
         </button>
       </div>
       <div className="item_container">
-        {first3Products.map((p) => (
-          <Link to="/productdetail" className="item link" key={p.id}>
-            <img src={p.thumbnail} alt=" " />
+        {filteredProducts.map((p) => (
+          <Link to={`/product/${p.id}`} className="item link" key={p.id}>
+            <img src={p.images[2]} alt="thumbnail images" />
             <div className="descrip">
               <div className="upper">
                 <h2>{p.title}</h2>

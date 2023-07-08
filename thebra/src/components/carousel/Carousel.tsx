@@ -12,7 +12,6 @@ import { renderCountGroups } from "./RenderCountGroup";
 const Carousel = () => {
   const [arrayIndex, setArrayIndex] = useState(0);
   const [isDelayed, setIsDelayed] = useState(false);
-
   startCarouselInterval(setArrayIndex, isDelayed);
 
   return (

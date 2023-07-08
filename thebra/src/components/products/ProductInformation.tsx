@@ -1,26 +1,45 @@
 // materials
-import { ProductsData } from "../../data/ProductsData";
 import "./style/ProductInformation.scss";
 import FavoriteIcon from "@mui/icons-material/Favorite";
+import { useEffect } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { useParams } from "react-router-dom";
+import { v4 as uuidv4 } from 'uuid'
+import { AppDispatch, RootState } from "../../redux/store";
+import { getProductById } from "../../redux/actions/getProductById";
+
 
 export const ProductInformation = () => {
+  const { id } = useParams<{ id: ReturnType<typeof uuidv4>}>()
+  const dispatch = useDispatch<AppDispatch>()
+  const { productById } = useSelector((state: RootState) => state.productById)
+
+useEffect(
+  () => {
+    if(id) {
+      dispatch(getProductById(id))
+      console.log(productById)
+    }
+  },[dispatch]
+)
+
   return (
     <div className="productInformation_container">
       <div className="productInformation_image">
         <div className="main">
           <img
-            src="https://assets.ellosgroup.com/i/ellos/b?$eg$&$em$&$ep$&$ed$&n=ell_7000481-01_Fm_M0027260&mw=468&fmt=webp"
+            src={productById?.images[0]}
             alt=" "
           />
         </div>
 
         <div className="minor">
           <img
-            src="https://assets.ellosgroup.com/i/ellos/b?$eg$&$em$&$ep$&$ed$&n=ell_7000481-01_Bm_M0027260&mw=1500&fmt=webp"
+            src={productById?.images[1]}
             alt=" "
           />
           <img
-            src="https://assets.ellosgroup.com/i/ellos/b?$eg$&$em$&$ep$&$ed$&n=ell_7000481-01_Fs&mw=1500&fmt=webp"
+            src={productById?.images[2]}
             alt=" "
           />
         </div>
@@ -28,8 +47,7 @@ export const ProductInformation = () => {
       <div className="productInformation_text">
         <div className="buttonSet">
           <div className="left">
-            <div className="title">{ProductsData[0].title}</div>
-
+            <div className="title">{productById?.title}</div>
             <div className="size_group">
               <h4>Size</h4>
               <button className="sizeSelection">34</button>
@@ -37,7 +55,7 @@ export const ProductInformation = () => {
             </div>
           </div>
           <div className="right">
-            <div className="price">{ProductsData[0].price} €</div>
+            <div className="price">{productById?.price} €</div>
           </div>
           <div className="buttons">
             <button className="addcart">Buy it</button>
@@ -47,13 +65,7 @@ export const ProductInformation = () => {
           </div>
         </div>
         <div className="textSet">
-          Going the extra mile to look good, will make you feel good too and
-          this three-pack plunge bra is a sleek addition to your intimates
-          collection. Ideal for low necklines as well as everyday tanks and
-          T-Shirts, the supportive cups and plunge neck will give you a
-          comfortable lift whilst the smooth fabric will help clothes glide over
-          with ease. Machine washable. 3 x Bra 90% Cotton, 10% Elastane.
-          **Please click here to use the NEW bra size calculator**
+        {productById?.description}
         </div>
       </div>
       <div className="sizeguide">
