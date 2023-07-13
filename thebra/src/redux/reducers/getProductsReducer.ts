@@ -27,14 +27,12 @@ import {
   export function getProductsReducer(state = initialState, action: ProductActionTypes): ProductState {
     switch (action.type) {
       case FETCH_PRODUCTS_REQUEST: {
-        console.log('Is requesting database')
         return {
           ...state,
           loading: true,
         }
       }
       case FETCH_PRODUCTS_SUCCESS: {
-        console.log('Data has been fetched perfectly')
         return {
           ...state,
           loading: false,
@@ -42,7 +40,6 @@ import {
         }
       }
       case FETCH_PRODUCTS_FAILURE: {
-        console.log('API errored')
         return {
           ...state,
           loading: false,

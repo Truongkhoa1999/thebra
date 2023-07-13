@@ -2,13 +2,14 @@ import { configureStore } from '@reduxjs/toolkit'
 import { getTokenReducer } from './reducers/getTokenReducer'
 import { getProductsReducer } from './reducers/getProductsReducer'
 import getProductByIdReducer from './reducers/getProductByIdReducer'
+import { cartReducer } from './reducers/cartReducer'
 
 export const store = configureStore({
   reducer: {
     token: getTokenReducer,
-    products:getProductsReducer,
+    products: getProductsReducer,
     productById: getProductByIdReducer,
-
+    cart: cartReducer
   },
 })
 

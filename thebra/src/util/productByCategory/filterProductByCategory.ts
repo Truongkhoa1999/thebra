@@ -2,10 +2,10 @@ import { ProductProps } from "../../type/ProductProps";
 
 export const filterProductByCategory = (products: ProductProps[], category: string) => {
     if (!category) {
-        return products
+        return products.slice(0,3)
     } else {
         const filteredProducts = products.filter(p => p.category === category)
-        return filteredProducts
+        return filteredProducts.slice(0,3)
     }
 }
 export const detectRelevantItems = (productById: ProductProps | null, products: ProductProps[]) => {

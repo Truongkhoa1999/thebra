@@ -1,0 +1,15 @@
+.cartreport_container{
+    border: 2px solid red;
+    width: 100%;
+    .heading{
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        h1{
+            margin-left: 10px;
+        }
+        h5{
+            margin-right: 10px;
+        }
+    }
+}

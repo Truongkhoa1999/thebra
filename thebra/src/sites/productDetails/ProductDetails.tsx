@@ -12,7 +12,6 @@ interface ProductDetailProps  {
   products: ProductProps[];
 }
 export const ProductDetails:React.FC<ProductDetailProps> = ({products}) => {
-console.log(products)
 
   return (
     <div className="productDetails_container">

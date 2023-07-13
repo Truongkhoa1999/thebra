@@ -1,27 +1,32 @@
 // materials
 import "./style/ProductInformation.scss";
 import FavoriteIcon from "@mui/icons-material/Favorite";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useParams } from "react-router-dom";
 import { v4 as uuidv4 } from 'uuid'
 import { AppDispatch, RootState } from "../../redux/store";
 import { getProductById } from "../../redux/actions/getProductById";
+import { handleSaveCart } from "../../util/cart/handleSaveCart";
+import { handleSize34Confirm, handleSize36Confirm } from "../../util/sizeSelection/sizeSelection";
 
 
 export const ProductInformation = () => {
-  const { id } = useParams<{ id: ReturnType<typeof uuidv4>}>()
+  const { id } = useParams<{ id: ReturnType<typeof uuidv4> }>()
   const dispatch = useDispatch<AppDispatch>()
   const { productById } = useSelector((state: RootState) => state.productById)
+  const { cart } = useSelector((state: RootState) => state.cart)
+  const [is34, setIs34] = useState(false)
+  const [is36, setIs36] = useState(false)
 
-useEffect(
-  () => {
-    if(id) {
-      dispatch(getProductById(id))
-      console.log(productById)
-    }
-  },[dispatch]
-)
+  useEffect(
+    () => {
+      if (id) {
+        dispatch(getProductById(id))
+      }
+
+    }, [dispatch]
+  )
 
   return (
     <div className="productInformation_container">
@@ -50,22 +55,22 @@ useEffect(
             <div className="title">{productById?.title}</div>
             <div className="size_group">
               <h4>Size</h4>
-              <button className="sizeSelection">34</button>
-              <button className="sizeSelection">36</button>
+              <button className={`sizeSelection ${is34 ? "activated" : ""}`} onClick={() => handleSize34Confirm(is34, setIs34)}>34</button>
+              <button className={`sizeSelection ${is36 ? "activated" : ""}`} onClick={() => handleSize36Confirm(is36, setIs36)}>36</button>
             </div>
           </div>
           <div className="right">
             <div className="price">{productById?.price} €</div>
           </div>
           <div className="buttons">
-            <button className="addcart">Buy it</button>
+            <button onClick={() => { if (productById && (is34 || is36)) { handleSaveCart(dispatch, productById, cart, is34, is36) } }} className="addcart">Buy it</button>
             <button className="favorite">
               <FavoriteIcon />
             </button>
           </div>
         </div>
         <div className="textSet">
-        {productById?.description}
+          {productById?.description}
         </div>
       </div>
       <div className="sizeguide">

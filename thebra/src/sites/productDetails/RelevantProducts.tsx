@@ -12,7 +12,6 @@ export const RelevantProducts = ({products}:{products:ProductProps[]}) => {
     useEffect(() => {
       if(products) {       const relevantItems = detectRelevantItems(productById, products);
         setRelevantProducts(relevantItems);
-      console.log(products)
       } else{
       setRelevantProducts(products)
       }

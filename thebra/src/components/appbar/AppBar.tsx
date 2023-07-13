@@ -11,8 +11,18 @@ import Marquee from "./Marquee";
 import { useEffect, useState } from "react";
 import { handleAuthenticationStatus } from "../../util/checkingSigninStatus/handleAuthenticationStatus";
 import { isUserSignedIn } from "../../util/checkingSigninStatus/isUserSignedIn";
+import { Badge } from "@mui/material";
+import { useSelector } from "react-redux";
+import { RootState } from "../../redux/store";
+import { LOCAL_CART_KEY } from "../../redux/actions/cart";
 const AppBar = () => {
   const [isOpened, setIsOpened] = useState(false);
+  const { cart } = useSelector((state: RootState) => state.cart)
+
+
+
+
+
   const openMenu = () => {
     setIsOpened(!isOpened);
   };
@@ -33,7 +43,13 @@ const AppBar = () => {
         </Link>
         <div className="appbar_button">
           <button className="shoppingcarticon">
+          <Link to={`/cart`}>
+
+          <Badge badgeContent = {cart.length} color="primary">
             <ShoppingCartIcon style={{ fontSize: "1.25rem" }} />
+            </Badge>
+            </Link>
+    
           </button>
           <button>
             <AccountCircleIcon onClick={handleAuthenticationStatus} className={`accountButton ${isSignedIn ? "accountButton--active" : ""}`} style={{ fontSize: "1.25rem" }} />

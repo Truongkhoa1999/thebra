@@ -23,14 +23,12 @@ import { ProductProps } from '../../type/ProductProps'
   ): ProductByIdState {
     switch (action.type) {
       case FETCH_PRODUCTBYID_REQUEST:
-        console.log('is fetching')
         return {
           ...state,
           loading: true,
           // productById: null,
         }
       case FETCH_PRODUCTBYID_SUCCESS:
-        console.log('fetched done')
   
         return {
           ...state,
@@ -38,7 +36,6 @@ import { ProductProps } from '../../type/ProductProps'
           productById: action.payload,
         }
       case FETCH_PRODUCTBYID_FAILURE:
-        console.log('fetch failed')
   
         return {
           ...state,
