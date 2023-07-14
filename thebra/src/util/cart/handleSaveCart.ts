@@ -2,7 +2,7 @@ import { addItemToCart, increaseQuantity, saveCart } from "../../redux/actions/c
 import { CartProps } from "../../type/CartProps"
 import { ProductProps } from "../../type/ProductProps"
 
-export const handleSaveCart = async (dispatch: any, productById: ProductProps, cart: CartProps[],is34:boolean, is36:boolean) => {
+export const handleSaveCart = async (dispatch: any, productById: ProductProps, cart: CartProps[], is34: boolean, is36: boolean) => {
   const newItem: CartProps = {
     cartId: productById?.id ?? '',
     title: productById?.title ?? '',
@@ -15,16 +15,28 @@ export const handleSaveCart = async (dispatch: any, productById: ProductProps, c
     map: undefined,
   }
 
-  const existingItem = cart.find((item: CartProps) => item.cartId === newItem.cartId)
+  const existingItemIndex = cart.findIndex((item: CartProps) =>
+    item.cartId === newItem.cartId &&
+    ((is34 && item.productSize['34'] > 0) || (is36 && item.productSize['36'] > 0))
+  )
 
-  if (existingItem) {
-    dispatch(increaseQuantity(existingItem.productId))
+  if (existingItemIndex !== -1) {
+    const existingItem = cart[existingItemIndex];
+    const updatedItem = {
+      ...existingItem,
+      productSize: {
+        ...existingItem.productSize,
+        "34": is34 ? existingItem.productSize['34'] + 1 : existingItem.productSize['34'],
+        "36": is36 ? existingItem.productSize['36'] + 1 : existingItem.productSize['36'],
+      }
+    };
+
+    const updatedCart = [...cart];
+    updatedCart[existingItemIndex] = updatedItem;
+
+    dispatch(saveCart(updatedCart));
   } else {
-    newItem.productId = productById?.id ?? ''
-    dispatch(addItemToCart(newItem))
-
+    dispatch(addItemToCart(newItem));
+    dispatch(saveCart([...cart, newItem]));
   }
-  const updatedCart = [...cart, newItem]
-  dispatch(saveCart(updatedCart))
-
 }

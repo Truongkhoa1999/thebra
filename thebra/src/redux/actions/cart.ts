@@ -26,10 +26,10 @@ export const addItemToCart = (cartItem: CartProps) => {
   }
 }
 // update quantity
-export function increaseQuantity(productId: ReturnType<typeof uuidv4>) {
+export function increaseQuantity(productId: ReturnType<typeof uuidv4>, is34:boolean, is36:boolean) {
   return {
     type: INCREASE_QUANTITY,
-    payload: productId,
+    payload: { productId, is34, is36 }
   }
 }
 
@@ -53,7 +53,7 @@ export function saveCart(cart: CartProps[]) {
 export function saveCartFailures(error: Error) {
   const errorMessage = error instanceof Error ? error.message : "failed to saved cart, pls try again"
   return {
-    type:SAVE_CART_FAILURES,
+    type: SAVE_CART_FAILURES,
     payload: errorMessage,
   }
 }

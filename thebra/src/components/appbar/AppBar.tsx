@@ -14,10 +14,11 @@ import { isUserSignedIn } from "../../util/checkingSigninStatus/isUserSignedIn";
 import { Badge } from "@mui/material";
 import { useSelector } from "react-redux";
 import { RootState } from "../../redux/store";
-import { LOCAL_CART_KEY } from "../../redux/actions/cart";
+import { CartProps } from "../../type/CartProps";
 const AppBar = () => {
   const [isOpened, setIsOpened] = useState(false);
   const { cart } = useSelector((state: RootState) => state.cart)
+  const totalQuantity = cart.reduce((total:number, item:CartProps) => total + item.productSize['34'] + item.productSize['36'], 0);
 
 
 
@@ -45,7 +46,7 @@ const AppBar = () => {
           <button className="shoppingcarticon">
           <Link to={`/cart`}>
 
-          <Badge badgeContent = {cart.length} color="primary">
+          <Badge badgeContent = {totalQuantity} color="primary">
             <ShoppingCartIcon style={{ fontSize: "1.25rem" }} />
             </Badge>
             </Link>
