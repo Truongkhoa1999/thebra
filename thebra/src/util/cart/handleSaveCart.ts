@@ -1,7 +1,6 @@
-import { addItemToCart, increaseQuantity, saveCart } from "../../redux/actions/cart"
+import { addItemToCart, saveCart } from "../../redux/actions/cart"
 import { CartProps } from "../../type/CartProps"
 import { ProductProps } from "../../type/ProductProps"
-
 export const handleSaveCart = async (dispatch: any, productById: ProductProps, cart: CartProps[], is34: boolean, is36: boolean) => {
   const newItem: CartProps = {
     cartId: productById?.id ?? '',
@@ -14,12 +13,10 @@ export const handleSaveCart = async (dispatch: any, productById: ProductProps, c
     productId: productById?.id ?? '',
     map: undefined,
   }
-
   const existingItemIndex = cart.findIndex((item: CartProps) =>
     item.cartId === newItem.cartId &&
     ((is34 && item.productSize['34'] > 0) || (is36 && item.productSize['36'] > 0))
   )
-
   if (existingItemIndex !== -1) {
     const existingItem = cart[existingItemIndex];
     const updatedItem = {
@@ -30,10 +27,8 @@ export const handleSaveCart = async (dispatch: any, productById: ProductProps, c
         "36": is36 ? existingItem.productSize['36'] + 1 : existingItem.productSize['36'],
       }
     };
-
     const updatedCart = [...cart];
     updatedCart[existingItemIndex] = updatedItem;
-
     dispatch(saveCart(updatedCart));
   } else {
     dispatch(addItemToCart(newItem));

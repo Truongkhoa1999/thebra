@@ -33,10 +33,10 @@ export function increaseQuantity(productId: ReturnType<typeof uuidv4>, is34:bool
   }
 }
 
-export function decreaseQuantity(productId: string) {
+export function decreaseQuantity(productId: ReturnType<typeof uuidv4>, is34:boolean, is36:boolean) {
   return {
     type: DECREASE_QUANTITY,
-    payload: productId,
+    payload: { productId, is34, is36 },
   }
 }
 // save cart for users
