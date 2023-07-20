@@ -8,5 +8,6 @@ export type CartProps = {
   },
   title: string
   price: number
-  productId: ReturnType<typeof uuidv4>
+  productId: ReturnType<typeof uuidv4>,
+  images:string
 }

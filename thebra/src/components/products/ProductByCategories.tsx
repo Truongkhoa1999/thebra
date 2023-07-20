@@ -12,7 +12,7 @@ interface ProductByCategoriesProps {
 }
 const ProductByCategories: React.FC<ProductByCategoriesProps> = ({ products }) => {
   const [activeButton, setActiveButton] = useState("");
-  const [filteredProducts, setFilteredProducts] = useState<ProductProps[]>(products.slice(0,3))
+  const [filteredProducts, setFilteredProducts] = useState<ProductProps[]>(products.slice(0, 3))
   useEffect(() => {
     setFilteredProducts(products);
   }, []);
@@ -24,7 +24,6 @@ const ProductByCategories: React.FC<ProductByCategoriesProps> = ({ products }) =
         <p>
           Lorem ipsum, dolor sit amet consectetur adipisicing elit. Aut esse
           eveniet quas odio corrupti at saepe ea repellat veritatis voluptate
-
         </p>
       </div>
       <div className="button_container">

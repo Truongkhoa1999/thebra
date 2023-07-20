@@ -5,12 +5,10 @@
   justify-content: center;
   width: 100vw;
   margin-bottom: 1rem;
-
   button {
     background-color: transparent;
     border: none;
     cursor: pointer;
-
     &:hover {
       border: 1px solid brown;
     }

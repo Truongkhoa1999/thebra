@@ -3,12 +3,12 @@ import { CartProps } from "../../type/CartProps"
 import { ProductProps } from "../../type/ProductProps"
 
 
-export const cartTotal = (cart: CartProps[]): number => {
+export const cartTotal = (cart: CartProps[],deliveryFee:number): number => {
     const listOfSize34 = cart.filter((item: CartProps) => item.productSize[34] > 0)
     const listOfSize36 = cart.filter((item: CartProps) => item.productSize[36] > 0)
     const total34 = listOfSize34.reduce((total: number, item: CartProps) => total + item.price * item.productSize['34'], 0)
     const total36 = listOfSize36.reduce((total: number, item: CartProps) => total + item.price * item.productSize['36'], 0)
-    return total34 + total36
+    return total34 + total36 + deliveryFee
 }
 export const findListOfSize34 = (cart: CartProps[]): CartProps[] => { return cart.filter((item: CartProps) => item.productSize[34] > 0) }
 export const findListOfSize36 = (cart: CartProps[]): CartProps[] => { return cart.filter((item: CartProps) => item.productSize[36] > 0) }

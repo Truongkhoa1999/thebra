@@ -1,15 +1,113 @@
-.cartreport_container{
-    border: 2px solid red;
+.cartreport_container {
     width: 100%;
-    .heading{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    .heading {
         display: flex;
+        width: 100%;
         justify-content: space-between;
         align-items: center;
-        h1{
-            margin-left: 10px;
+        border-bottom: 0.5px solid rgba(128, 128, 128, 0.2);
+        padding-bottom: 1rem;
+        padding-top: 1rem;
+
+
+    }
+
+    .table_container {
+        width: 100%;
+
+        table {
+            width: 100%;
+            padding: 1rem 0.5rem 1rem 0.5rem;
+            border: 1px solid rgba(128, 128, 128, 0.2);
+
+            .quantity_box {
+                display: flex;
+                justify-content: space-between;
+                border: 1px solid black;
+                background-color: transparent;
+
+                button {
+                    border: none;
+                    background-color: transparent;
+                }
+            }
+
+            thead {
+                tr {
+                    color: brown;
+                }
+            }
+
+            tbody {
+
+                tr {
+                    td {
+                        margin-bottom: 10px;
+                    }
+                }
+            }
+
+            tfoot {
+                color: brown;
+            }
         }
-        h5{
-            margin-right: 10px;
+    }
+
+    .checkout_container {
+        width: 90%;
+        padding: 1rem 0.5rem 1rem 0.5rem;
+
+        form {
+            display: flex;
+            flex-direction: column;
+
+            input,
+            button,
+            .delivery_method,
+            h2 {
+                margin-bottom: 1rem;
+            }
+
+            input {
+                width: 100%;
+                height: 3rem;
+                align-self: center;
+            }
+
+            h2 {
+                align-self: center;
+                color: brown;
+            }
+
+            button {
+                width: 70%;
+                padding: 1rem;
+                align-self: center;
+                background-color: brown;
+                color: white;
+                border: none;
+            }
         }
+
+        .delivery_method {
+            div {
+                display: flex;
+                padding: 1rem;
+                margin-top: 1rem;
+            }
+
+            fieldset input[type="radio"] {
+                height: 30px;
+                width: 30px;
+                margin-right: 10px;
+            }
+
+
+        }
+
     }
 }
