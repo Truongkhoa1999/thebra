@@ -28,7 +28,7 @@ const Carousel = () => {
         >
           {"<"}
         </button>
-        <img src={CarouselData[arrayIndex]} alt="1" />
+        <img src={CarouselData[arrayIndex]} alt="1" key={arrayIndex} />
         <button
           className="arrow_button"
           onClick={() =>

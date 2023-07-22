@@ -4,12 +4,14 @@
   align-items: center;
   display: flex;
   flex-direction: column;
-z-index: 0;
+  z-index: 0;
+
   // desktop
   @media (min-width: 768px) {
     width: 75%;
     margin: auto;
   }
+
   .products_container {
     width: 100%;
     display: flex;
@@ -17,15 +19,23 @@ z-index: 0;
 
     // border: 2px solid red;
     img {
+      border: 1px solid black;
+      border-radius: 5%;
       width: 95%;
+      height: 12rem;
+
       @media (min-width: 768px) {
         width: 85%;
+      height: 25rem;
+
       }
     }
   }
+
   .arrow_button {
     display: none;
     overflow: hidden;
+
     @media (min-width: 768px) {
       display: block;
       height: 40px;
@@ -35,6 +45,7 @@ z-index: 0;
       border: none;
       background-color: brown;
       color: white;
+
       &:hover {
         background-color: red;
         border: 2px solid black;
@@ -48,7 +59,9 @@ z-index: 0;
     width: 200px;
     display: flex;
     justify-content: center;
+
   }
+
   .count_active {
     color: red;
   }

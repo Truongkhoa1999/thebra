@@ -2,7 +2,8 @@
 .button_footer {
   width: 100%;
   background-color: black;
-  border: none;
+  border: 1px solid black;
+  border-radius: 4%;
   font-size: 2rem;
   text-align: left;
   color: white;
@@ -14,8 +15,9 @@
 input {
   width: 80%;
   height: 2em;
-  margin-top: 0.5em ;
+  margin-top: 0.5em;
 }
+
 // Desktop view
 @media (min-width: 768px) {
   .footer_container {
@@ -27,7 +29,8 @@ input {
     margin-right: auto;
     color: black;
     background-color: white;
-    padding-top: 1em;
+    padding-top: 2em;
+
 
     .upper {
       width: 100%;
@@ -84,6 +87,7 @@ input {
         }
       }
     }
+
     .bottom {
       width: 100%;
       display: flex;
@@ -94,51 +98,59 @@ input {
     }
   }
 }
+
 // Mobile view
 @media (max-width: 767px) {
-.footer_container {
-  display: flex;
-  flex-direction: column;
-  width: 90vw;
-
-  margin-left: auto;
-  margin-right: auto;
-
-  .upper {
-    width: 100%;
+  .footer_container {
     display: flex;
-    justify-content: flex-start;
-    border-bottom: 1px solid black;
-  }
-  .lower {
-    .customerservice_container,
-    .information_container {
-      p {
-        visibility: hidden;
-        max-height: 0;
-        overflow: hidden;
-        transition: max-height 0.5s ease;
+    flex-direction: column;
+    width: 90vw;
+    margin-left: auto;
+    margin-right: auto;
+    padding-bottom: 1rem;
+padding-top: 5rem;
+    .upper {
+      width: 100%;
+      display: flex;
+      justify-content: flex-start;
+      border-bottom: 1px solid black;
+    }
+
+    .lower {
+
+      .customerservice_container,
+      .information_container {
+        p {
+          visibility: hidden;
+          max-height: 0;
+          overflow: hidden;
+          transition: max-height 0.5s ease;
+        }
+
+        button:focus+p {
+          visibility: visible;
+          max-height: 1000px;
+          /* Adjust the value to match the maximum height of your content */
+          transition: max-height 2s ease;
+        }
       }
-      button:focus + p {
-        visibility: visible;
-        max-height: 1000px; /* Adjust the value to match the maximum height of your content */
-        transition: max-height 2s ease;
+
+      .newsletter_container {
+        .letter_form {
+          visibility: hidden;
+          max-height: 0;
+          overflow: hidden;
+          transition: max-height 0.5s ease;
+        }
+
+        button:focus+.letter_form {
+          visibility: visible;
+          max-height: 1000px;
+          /* Adjust the value to match the maximum height of your content */
+          transition: max-height 2s ease;
+        }
       }
     }
-    .newsletter_container {
-      .letter_form {
-        visibility: hidden;
-        max-height: 0;
-        overflow: hidden;
-        transition: max-height 0.5s ease;
-      }
-      button:focus + .letter_form {
-        visibility: visible;
-        max-height: 1000px; /* Adjust the value to match the maximum height of your content */
-        transition: max-height 2s ease;
-      }
-    }
-  }
   }
 
 }

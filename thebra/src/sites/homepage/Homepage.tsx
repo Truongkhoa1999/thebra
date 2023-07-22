@@ -23,8 +23,8 @@ const Homepage = () => {
   return (
     <div className="home_container">
       <AppBar />
-      <Carousel />
-      <ProductByCategories products={products}  />
+      <Carousel key="carousel1" />
+      <ProductByCategories   />
       <ProductByNumberOfClicks products={products} />
       <Footer />
     </div>

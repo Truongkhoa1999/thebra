@@ -6,16 +6,29 @@ import { useEffect, useState } from "react";
 import { handleButtonClick } from "../../util/categorybuttons/buttonfunction";
 import { filterProductByCategory } from "../../util/productByCategory/filterProductByCategory";
 import { ProductProps } from "../../type/ProductProps";
+import { useDispatch, useSelector } from "react-redux";
+import { AppDispatch, RootState } from "../../redux/store";
+import { fetchProducts } from "../../redux/actions/getProducts";
 
-interface ProductByCategoriesProps {
-  products: ProductProps[];
-}
-const ProductByCategories: React.FC<ProductByCategoriesProps> = ({ products }) => {
+// interface ProductByCategoriesProps {
+//   products: ProductProps[];
+// }
+const ProductByCategories = () => {
   const [activeButton, setActiveButton] = useState("");
+  const dispatch = useDispatch<AppDispatch>()
+  const { products } = useSelector((state: RootState) => state.products)
   const [filteredProducts, setFilteredProducts] = useState<ProductProps[]>(products.slice(0, 3))
+
   useEffect(() => {
-    setFilteredProducts(products);
-  }, []);
+    // Fetch products if the products state is empty (on first load or refresh)
+    if (products.length === 0) {
+      dispatch(fetchProducts());
+    } else {
+      // Set the initial filtered products to the first 3 items
+      setFilteredProducts(products.slice(0, 3));
+    }
+  }, [dispatch, products]);
+
   return (
     <div className="post_container">
       <div className="heading_container">

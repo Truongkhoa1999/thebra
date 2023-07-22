@@ -10,6 +10,7 @@ import { handleCartCheckout } from '../../util/cart/handleCartCheckout'
 import { ChangeEvent, useState } from 'react'
 import { deliveryFee } from '../../data/deliveryCost'
 import { handleSwitchDeliveryType } from '../../util/cart/hanldeSwitchDeliveryType'
+import { Footer } from '../footer/Footer'
 
 export const CartReport = () => {
   const { cart } = useSelector((state: RootState) => state.cart)
@@ -37,9 +38,6 @@ export const CartReport = () => {
     <div className="cartreport_container">
       <div className='heading'>
         <h1>Your Cart</h1>
-        <Link to={`/allproducts`} >
-          <h5>Continue shopping</h5>
-        </Link>
       </div>
       {/* main table */}
       <div className="table_container">
@@ -97,12 +95,9 @@ export const CartReport = () => {
       <div className='checkout_container'>
         <form onSubmit={(e) => {
           e.preventDefault()
-          handleCartCheckout(navigate, cart, deliveryPrice, shippingInfoForExistUsers)
+          handleCartCheckout( cart, deliveryPrice, shippingInfoForExistUsers)
         }}>
-          <label>
-            Name:
-          </label>
-          <br />
+
           <label>
             Address:
             <input
@@ -173,7 +168,7 @@ export const CartReport = () => {
           <button type="submit">Check out</button>
         </form>
       </div>
-
+      <Footer />
     </div>
   )
 }
