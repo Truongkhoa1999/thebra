@@ -14,6 +14,7 @@ import { Footer } from '../footer/Footer'
 
 export const CartReport = () => {
   const { cart } = useSelector((state: RootState) => state.cart)
+  console.log(cart)
   const { products }: { products: ProductProps[] } = useSelector((state: RootState) => state.products)
   const dispatch = useDispatch<AppDispatch>()
   const [selectedDeliveryType, setSelectedDeliveryType] = useState(0)

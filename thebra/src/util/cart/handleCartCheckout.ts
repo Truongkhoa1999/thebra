@@ -16,7 +16,10 @@ export const handleCartCheckout = async (cart: CartProps[], deliveryPrice: numbe
                 if (response.status === 200) {
                     const order = await response.json(); 
                     console.log(order)
-                    await handleSavedOrderItems(cart, order.id)
+                    for (const item of cart){
+                        await handleSavedOrderItems([item], order.id)
+
+                    }
                     console.log("ur cart has been saved in our BE")
                 }
             } else {
