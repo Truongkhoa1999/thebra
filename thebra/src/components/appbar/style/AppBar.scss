@@ -3,8 +3,10 @@
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  width: 100vw;
+  width: 90vw;
   margin-bottom: 1rem;
+  margin-left: auto;
+  margin-right: auto;
   button {
     background-color: transparent;
     border: none;
@@ -15,6 +17,8 @@
   }
 
   .upper {
+    border-bottom: 1px solid black;
+    border-top: 1px solid black;
     width: 100%;
     height: 0.5rem;
     color: black;
@@ -27,7 +31,6 @@
     margin-left: auto;
     margin-right: auto;
     padding-bottom: 2rem;
-
     @media (min-width: 768px) {
       justify-content: center;
 

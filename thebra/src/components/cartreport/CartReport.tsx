@@ -96,7 +96,7 @@ export const CartReport = () => {
       <div className='checkout_container'>
         <form onSubmit={(e) => {
           e.preventDefault()
-          handleCartCheckout( cart, deliveryPrice, shippingInfoForExistUsers)
+          handleCartCheckout( navigate,cart, deliveryPrice, shippingInfoForExistUsers)
         }}>
 
           <label>

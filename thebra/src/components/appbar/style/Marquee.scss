@@ -1,6 +1,6 @@
 .marquee-container {
     overflow: hidden;
-    background-color: white;
+    background-color: black;
     width: 100%;
     @media (min-width:768px){
       width: 70%;
@@ -13,7 +13,7 @@
     white-space: nowrap;
     animation: marqueeAnimation 30s linear infinite;
     transform: translateX(100%);
-    color: red  ;
+    color: white  ;
   }
   
   @keyframes marqueeAnimation {
