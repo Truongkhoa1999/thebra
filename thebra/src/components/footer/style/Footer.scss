@@ -1,15 +1,25 @@
 // Genereal
 .button_footer {
-  width: 100%;
+  width: 90%;
   background-color: black;
   border: 1px solid black;
   border-radius: 4%;
   font-size: 2rem;
   text-align: left;
   color: white;
-  padding-left: 0.25em;
   margin-bottom: 0.5em;
   margin-top: 0.5em;
+  margin-left: 0.25em;
+  font-size: 1.75em;
+
+  @media (min-width:768px) {
+    width: 100%;
+    padding-left: 0.25em;
+    margin-bottom: 0.5em;
+    margin-top: 0.5em;
+    margin-left: 0;
+    font-size: 2em;
+  }
 }
 
 input {
@@ -30,10 +40,10 @@ input {
     color: black;
     background-color: white;
     padding-top: 2em;
-
+    border: 1px solid black;
 
     .upper {
-      width: 100%;
+      width: 95%;
       display: flex;
       justify-content: flex-start;
       border-bottom: 1px solid black;
@@ -89,7 +99,7 @@ input {
     }
 
     .bottom {
-      width: 100%;
+      width: 95%;
       display: flex;
       justify-content: flex-start;
       border-top: 1px solid black;
@@ -108,12 +118,15 @@ input {
     margin-left: auto;
     margin-right: auto;
     padding-bottom: 1rem;
-padding-top: 5rem;
+    padding-top: 5rem;
+    background-color: white;
+
     .upper {
-      width: 100%;
+      width: 90%;
       display: flex;
       justify-content: flex-start;
       border-bottom: 1px solid black;
+      margin-left: 0.25em;
     }
 
     .lower {
@@ -125,6 +138,9 @@ padding-top: 5rem;
           max-height: 0;
           overflow: hidden;
           transition: max-height 0.5s ease;
+          font-size: 14px;
+          margin-left: 0.75em;
+          width: 90%;
         }
 
         button:focus+p {
@@ -136,6 +152,14 @@ padding-top: 5rem;
       }
 
       .newsletter_container {
+
+        p,
+        .letter_form {
+          font-size: 14px;
+          margin-left: 0.75em;
+          width: 90%;
+        }
+
         .letter_form {
           visibility: hidden;
           max-height: 0;
@@ -146,11 +170,19 @@ padding-top: 5rem;
         button:focus+.letter_form {
           visibility: visible;
           max-height: 1000px;
-          /* Adjust the value to match the maximum height of your content */
           transition: max-height 2s ease;
+        }
+
+        .lower_newsletter {
+          .social_ic {
+            margin-left: 0.25em;
+          }
         }
       }
     }
-  }
+    .bottom {
+      margin-left: 0.25em;
 
+    }
+  }
 }

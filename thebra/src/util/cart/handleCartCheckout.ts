@@ -20,7 +20,7 @@ export const handleCartCheckout = async (navigate:Function,cart: CartProps[], de
                         await handleSavedOrderItems([item], order.id)
 
                     }
-                    navigate("/payment")
+                    navigate(`/payment?orderId=${order.id}`)
                     console.log("ur cart has been saved in our BE")
                 }
             } else {

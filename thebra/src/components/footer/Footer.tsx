@@ -71,9 +71,10 @@ export const Footer = () => {
           </div>
           <div className="lower_newsletter">
             <button className="button_footer">Follow us</button>
-            <div className="social_ic"></div>
+            <div className="social_ic">
             <Facebook />
             <Instagram />
+            </div>
           </div>
         </div>
       </div>

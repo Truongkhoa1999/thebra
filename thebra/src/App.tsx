@@ -1,6 +1,7 @@
 // Lib and material
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import './index.scss'
+import'./style.scss'
 // Components
 import Homepage from "./sites/homepage/Homepage";
 import { ProductDetails } from "./sites/productDetails/ProductDetails";

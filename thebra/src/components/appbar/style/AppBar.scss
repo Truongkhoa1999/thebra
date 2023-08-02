@@ -3,7 +3,7 @@
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  width: 90vw;
+  width: 100vw;
   margin-bottom: 1rem;
   margin-left: auto;
   margin-right: auto;
@@ -11,6 +11,7 @@
     background-color: transparent;
     border: none;
     cursor: pointer;
+
     &:hover {
       border: 1px solid brown;
     }
@@ -25,15 +26,15 @@
     background-color: white;
     display: flex;
     flex-direction: row;
-    justify-content: space-between;
+    justify-content: space-evenly;
     align-items: center;
     padding-top: 2rem;
     margin-left: auto;
     margin-right: auto;
     padding-bottom: 2rem;
-    @media (min-width: 768px) {
-      justify-content: center;
 
+    @media (min-width: 768px) {
+      justify-content: space-between;
     }
 
     .appbar_button {
@@ -53,15 +54,16 @@
     .logo_container {
       color: red;
       width: 12rem;
-      height: 4rem;
-      background-image: url("https://firebasestorage.googleapis.com/v0/b/thebra-f81ef.appspot.com/o/logotext.png?alt=media&token=38df1f6c-45d2-46cb-9aeb-287b0a27d68e");
+      // height: 4rem;
+      // background-image: url("https://firebasestorage.googleapis.com/v0/b/thebra-f81ef.appspot.com/o/logotext.png?alt=media&token=38df1f6c-45d2-46cb-9aeb-287b0a27d68e");
       background-position: center;
       background-size: cover;
       background-repeat: no-repeat;
+      text-align: center;
 
       // desktop
       @media (min-width: 768px) {
-        width: 30rem;
+        width: 100rem;
       }
     }
 

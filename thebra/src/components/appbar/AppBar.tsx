@@ -39,8 +39,10 @@ const AppBar = () => {
         <button onClick={openMenu}>
           <MenuIcon />
         </button>
-        <Link to="/homepage">
+        <Link style={{textDecoration:"none"}} to="/homepage">
           <div className="logo_container"></div>
+          <h3 className="logo_container">Thebra,</h3>
+
         </Link>
         <div className="appbar_button">
           <button className="shoppingcarticon">

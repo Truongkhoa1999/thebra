@@ -7,7 +7,7 @@ import { cartTotal, findListOfSize34, findListOfSize36, handleDecreaseQuantityFo
 import { CartProps } from '../../type/CartProps'
 import { truncateCartTitleLength } from '../../util/cart/cartTitle'
 import { handleCartCheckout } from '../../util/cart/handleCartCheckout'
-import { ChangeEvent, useState } from 'react'
+import { ChangeEvent, useMemo, useState } from 'react'
 import { deliveryFee } from '../../data/deliveryCost'
 import { handleSwitchDeliveryType } from '../../util/cart/hanldeSwitchDeliveryType'
 import { Footer } from '../footer/Footer'
@@ -22,6 +22,7 @@ export const CartReport = () => {
   const deliveryPrice = deliveryFee[selectedDeliveryType];
   const listOfSize34 = findListOfSize34(cart)
   const listOfSize36 = findListOfSize36(cart)
+  const totalPrice = useMemo(() => cartTotal(cart, deliveryPrice), [deliveryPrice])
 
   const [shippingInfoForExistUsers, setShippingInfoForExistUsers] = useState({
     address: '',
@@ -96,7 +97,7 @@ export const CartReport = () => {
       <div className='checkout_container'>
         <form onSubmit={(e) => {
           e.preventDefault()
-          handleCartCheckout( navigate,cart, deliveryPrice, shippingInfoForExistUsers)
+          handleCartCheckout(navigate, cart, deliveryPrice, shippingInfoForExistUsers)
         }}>
 
           <label>
@@ -164,7 +165,7 @@ export const CartReport = () => {
 
           </div>
           <br />
-          <h2>Subtotal: {cartTotal(cart, deliveryPrice)} €</h2>
+          <h2>Subtotal: {totalPrice} €</h2>
 
           <button type="submit">Check out</button>
         </form>

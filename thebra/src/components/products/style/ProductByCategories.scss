@@ -13,6 +13,7 @@
   border-radius: 2%;
   margin-left: auto;
   margin-right: auto;
+  
   @media (min-width:768px) {
     width: 65%;
 
@@ -119,7 +120,7 @@
     justify-content: space-between;
 
     .viewmore {
-      width: 50%;
+      width: 40%;
       padding-top: 15px;
       padding-bottom: 15px;
       text-align: center;
@@ -156,6 +157,12 @@
           flex-direction: row;
           justify-content: space-between;
           color: black;
+          h3{
+            color:brown;
+          }
+          h2{
+            font-size: 1.25em;
+          }
         }
 
         .lower {
