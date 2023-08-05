@@ -32,7 +32,7 @@ export const getProductById =
   (id: ReturnType<typeof uuidv4>) => async (dispatch: Dispatch<ProductByIdActionTypes>) => {
     dispatch({ type: FETCH_PRODUCTBYID_REQUEST })
     try {
-      const response = await fetch(`http://localhost:8080/api/v1/products/${id}`)
+      const response = await fetch(`https://thebrabe.onrender.com/api/v1/products/${id}`)
       const data = await response.json()
       dispatch({
         type: FETCH_PRODUCTBYID_SUCCESS,

@@ -5,10 +5,18 @@
   display: flex;
   flex-direction: column;
   z-index: 0;
-
-  // desktop
+  background-color: white;
+  border: 4px solid black;
+  padding-top: 2rem;
+  padding-bottom: 2rem;
+  // desktop with medium screen
   @media (min-width: 768px) {
     width: 75%;
+    margin: auto;
+  }
+  // desktop with bigger screen
+  @media (min-width: 2560px) {
+    width: 70%;
     margin: auto;
   }
 
@@ -19,15 +27,15 @@
 
     // border: 2px solid red;
     img {
-      border: 1px solid black;
-      border-radius: 5%;
       width: 95%;
       height: 12rem;
 
       @media (min-width: 768px) {
         width: 85%;
-      height: 25rem;
-
+        height: 35rem;
+      }
+      @media (min-width: 2560px) {
+        width: 80%;
       }
     }
   }
@@ -59,7 +67,6 @@
     width: 200px;
     display: flex;
     justify-content: center;
-
   }
 
   .count_active {
