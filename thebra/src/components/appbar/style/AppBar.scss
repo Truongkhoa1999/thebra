@@ -8,10 +8,16 @@
   margin-left: auto;
   margin-right: auto;
   padding-bottom: 1rem;
-  border: 4px solid BLACK;
+  border: 2px solid black;
+
+  @media(min-width:768px) {
+    width: 80vw;
+    border: 4px solid black;
+  }
 
   @media(min-width:2560) {
     width: 75vw;
+    border: 4px solid black;
   }
 
   button {
@@ -30,13 +36,12 @@
     color: black;
     display: flex;
     flex-direction: row;
-    justify-content: space-evenly;
-    align-items: center;
+    justify-content: space-between;
+    // align-items: center;
     padding-top: 2rem;
     margin-left: auto;
     margin-right: auto;
     padding-bottom: 2rem;
-    border: 2px solid black;
 
     .appbar_button {
       button {
@@ -55,8 +60,6 @@
     .logo_container {
       color: red;
       width: 12rem;
-      // height: 4rem;
-      // background-image: url("https://firebasestorage.googleapis.com/v0/b/thebra-f81ef.appspot.com/o/logotext.png?alt=media&token=38df1f6c-45d2-46cb-9aeb-287b0a27d68e");
       background-position: center;
       background-size: cover;
       background-repeat: no-repeat;
@@ -64,13 +67,13 @@
 
       // desktop
       @media (min-width: 768px) {
-        width: 100rem;
+        width: 20rem;
       }
     }
 
     @media (min-width: 768px) {
-      width: 80%;
-      justify-content: center;
+      width: 95%;
+      justify-content: space-between;
       align-items: center;
       align-self: center;
     }
