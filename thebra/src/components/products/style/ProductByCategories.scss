@@ -78,14 +78,15 @@
       cursor: pointer;
       width: 6rem;
       padding: 0.25rem;
-      border: 1px solid black;
       font-size: 15px;
-      box-shadow: 1px 4px 4px black;
-      border-radius: 10%;
+      border: none;
+      // box-shadow: 1px 4px 4px black;
       color: rgb(180, 167, 167);
       font-family: 'Quicksand-Regular';
+      transition: 0.5s;
       @media (min-width: 768px) {
         width: 15%;
+        padding:1rem;
 
       }
     }
@@ -103,6 +104,7 @@
       cursor: default;
       font-family: 'Quicksand-Bold';
       color: rgb(0, 0, 0);
+
     }
 
     .button-green--active {
@@ -110,6 +112,7 @@
       cursor: default;
       font-family: 'Quicksand-Bold';
       color: rgb(0, 0, 0);
+
     }
 
     // desktop

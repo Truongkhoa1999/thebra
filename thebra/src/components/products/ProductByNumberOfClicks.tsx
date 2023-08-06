@@ -1,5 +1,5 @@
 import { ProductProps } from "../../type/ProductProps";
-import { truncateTitle } from "../../util/truncate/truncateTitle";
+// import { truncateTitle } from "../../util/truncate/truncateTitle";
 import "./style/ProductByNumberOfClicks.scss";
 interface ProductByNumberOfClicksProps{
   products:ProductProps[];
@@ -13,7 +13,11 @@ export const ProductByNumberOfClicks:React.FC<ProductByNumberOfClicksProps> = ({
         {firstthreeproducts.map((p) => (
           <div className="bestseller_card" key={p.id}>
             <img src={p.images[0]} alt="thumbnail images" />
-            <h2>{truncateTitle(p.title)}</h2>
+            <div className="information">
+            <h5>{p.title}</h5>
+            <h3>{p.price}</h3>
+            </div>
+       
           </div>
         ))}
       </div>
