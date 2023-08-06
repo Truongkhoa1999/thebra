@@ -10,9 +10,11 @@
   // border: 2px solid black;
   margin-left: auto;
   margin-right: auto;
-  @media (min-width:2560){
+
+  @media (min-width:2560) {
     width: 65%;
   }
+
   @media (min-width:768px) {
     width: 75%;
     // border: 4px solid black;
@@ -80,7 +82,8 @@
       font-size: 15px;
       box-shadow: 1px 4px 4px black;
       border-radius: 10%;
-
+      color: rgb(180, 167, 167);
+      font-family: 'Quicksand-Regular';
       @media (min-width: 768px) {
         width: 15%;
 
@@ -90,16 +93,23 @@
     .button-red--active {
       border-bottom: 5px solid black;
       cursor: default;
+      font-family: 'Quicksand-Bold';
+      color: rgb(0, 0, 0);
+
     }
 
     .button-blue--active {
       border-bottom: 5px solid black;
       cursor: default;
+      font-family: 'Quicksand-Bold';
+      color: rgb(0, 0, 0);
     }
 
     .button-green--active {
       border-bottom: 5px solid black;
       cursor: default;
+      font-family: 'Quicksand-Bold';
+      color: rgb(0, 0, 0);
     }
 
     // desktop
@@ -156,14 +166,16 @@
           flex-direction: row;
           justify-content: space-between;
           color: black;
-          h3{
-            color:black;
+
+          h3 {
+            color: black;
             font-family: 'Quicksand-Bold';
           }
-          h2{
+
+          h2 {
             font-size: 1.25em;
             font-family: 'Quicksand-Regular';
-          color: rgb(180, 167, 167);
+            color: rgb(180, 167, 167);
 
 
           }
