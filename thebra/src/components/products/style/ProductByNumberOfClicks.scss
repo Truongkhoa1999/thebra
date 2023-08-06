@@ -49,11 +49,9 @@
 
       img {
         width: 90%;
-        /* Update to 100% */
         MAX-height: 80%;
         min-height: 70%;
         object-fit: cover;
-        /* Ensure the images fill the container while maintaining aspect ratio */
         margin-left: auto;
         margin-right: auto;
       }
