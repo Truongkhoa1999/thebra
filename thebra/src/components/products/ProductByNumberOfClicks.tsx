@@ -5,7 +5,7 @@ interface ProductByNumberOfClicksProps{
   products:ProductProps[];
 }
 export const ProductByNumberOfClicks:React.FC<ProductByNumberOfClicksProps> = ({products}) => {
-  const firstthreeproducts = products.slice(0, 6);
+  const firstthreeproducts = products.slice(0, 3);
   return (
     <div className="productbynumberofclicks_container">
       <h1>Best seller</h1>
@@ -15,7 +15,7 @@ export const ProductByNumberOfClicks:React.FC<ProductByNumberOfClicksProps> = ({
             <img src={p.images[0]} alt="thumbnail images" />
             <div className="information">
             <h5>{p.title}</h5>
-            <h3>{p.price}</h3>
+            <h4>{p.price}</h4>
             </div>
        
           </div>

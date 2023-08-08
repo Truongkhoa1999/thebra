@@ -51,17 +51,17 @@ export const ProductInformation = () => {
       </div>
       <div className="productInformation_text">
         <div className="buttonSet">
-          <div className="left">
+            <h5>The Bra</h5>
             <div className="title">{productById?.title}</div>
+            <div className="price">{productById?.price} €</div>
+            <h5>Included Tax</h5>
             <div className="size_group">
               <h4>Size</h4>
+              <div>
               <button className={`sizeSelection ${is34 ? "activated" : ""}`} onClick={() => handleSize34Confirm(is34, setIs34)}>34</button>
               <button className={`sizeSelection ${is36 ? "activated" : ""}`} onClick={() => handleSize36Confirm(is36, setIs36)}>36</button>
+              </div>
             </div>
-          </div>
-          <div className="right">
-            <div className="price">{productById?.price} €</div>
-          </div>
           <div className="buttons">
             <button onClick={() => { if (productById && (is34 || is36)) { handleSaveCart(dispatch, productById, cart, is34, is36) } }} className="addcart">Buy it</button>
             <button className="favorite">
@@ -75,7 +75,7 @@ export const ProductInformation = () => {
       </div>
       <div className="sizeguide">
         <img
-          src="https://firebasestorage.googleapis.com/v0/b/thebra-f81ef.appspot.com/o/sizeguide.jpg?alt=media&token=16fdbc58-e153-4bc8-8041-503901c4743b"
+          src="https://firebasestorage.googleapis.com/v0/b/thebra-f81ef.appspot.com/o/sizechart.avif?alt=media&token=d917a8d2-db04-4297-b416-51544a4268d4"
           alt=" "
         />
       </div>

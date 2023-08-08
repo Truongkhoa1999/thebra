@@ -5,12 +5,12 @@ import { AppDispatch, RootState } from '../../redux/store'
 import { ProductProps } from '../../type/ProductProps'
 import { cartTotal, findListOfSize34, findListOfSize36, handleDecreaseQuantityFor34, handleDecreaseQuantityFor36, handleIncreaseQuantityFor34, handleIncreaseQuantityFor36 } from '../../util/cart/computeCart'
 import { CartProps } from '../../type/CartProps'
-import { truncateCartTitleLength } from '../../util/cart/cartTitle'
+// import { truncateCartTitleLength } from '../../util/cart/cartTitle'
 import { handleCartCheckout } from '../../util/cart/handleCartCheckout'
-import { ChangeEvent, useMemo, useState } from 'react'
+import { ChangeEvent, useEffect, useMemo, useState } from 'react'
 import { deliveryFee } from '../../data/deliveryCost'
 import { handleSwitchDeliveryType } from '../../util/cart/hanldeSwitchDeliveryType'
-import { Footer } from '../footer/Footer'
+import { fetchItemImagesFor34, fetchItemImagesFor36 } from '../../util/getImageByProductId/getImageByProductId'
 
 export const CartReport = () => {
   const { cart } = useSelector((state: RootState) => state.cart)
@@ -23,6 +23,13 @@ export const CartReport = () => {
   const listOfSize34 = findListOfSize34(cart)
   const listOfSize36 = findListOfSize36(cart)
   const totalPrice = useMemo(() => cartTotal(cart, deliveryPrice), [deliveryPrice])
+  const [itemImagesFor34, setItemImagesFor34] = useState<Record<string, string>>({})
+  const [itemImagesFor36, setItemImagesFor36] = useState<Record<string, string>>({})
+
+  useEffect(() => {
+    fetchItemImagesFor34(listOfSize34, setItemImagesFor34)
+    fetchItemImagesFor36(listOfSize36, setItemImagesFor36)
+  }, []);
 
   const [shippingInfoForExistUsers, setShippingInfoForExistUsers] = useState({
     address: '',
@@ -40,40 +47,62 @@ export const CartReport = () => {
     <div className="cartreport_container">
       <div className='heading'>
         <h1>Your Cart</h1>
+        <h3>The price tag included TAX</h3>
       </div>
       {/* main table */}
       <div className="table_container">
         <table>
-          <thead>
+          {/* <thead>
             <tr>
               <th>Item</th>
-              <th>Size</th>
               <th>Quantity</th>
               <th>price</th>
-              {/* <th>Total</th> */}
             </tr>
-          </thead>
+          </thead> */}
           <tbody>
             {listOfSize34.map((item: CartProps, index: number) => (
               <tr className='body_tr' key={index}>
-                <td>{truncateCartTitleLength(item.title)}</td>
-                <td>
-                  {item.productSize[34] > 0 && <span>34</span>}
+                <td className='cart_itemInformation'>
+                  <div className='item_title'>
+                    {itemImagesFor34[item.productId] && <img src={itemImagesFor34[item.productId]} alt="" />}
+                    <div className='cart_itemInformation_text'>
+                      <h5>
+                        {item.title}
+                      </h5>
+                      <h6>
+                        Size
+                        {item.productSize[34] > 0 && <span>34</span>}
+                      </h6>
+                    </div>
+                  </div>
                 </td>
-                <td className='quantity_box'>
-                  <button onClick={() => handleDecreaseQuantityFor34(item, dispatch)}>-</button>
-                  <span>{item.productSize['34']}</span>
-                  <button onClick={() => handleIncreaseQuantityFor34(products, item, dispatch)}>+</button>
-                </td>
-                <td>{item.price * item.productSize['34']} €</td>
+                <div className='stock_container'>
+                  <td className='quantity_box'>
+                    <button onClick={() => handleDecreaseQuantityFor34(item, dispatch)}>-</button>
+                    <span>{item.productSize['34']}</span>
+                    <button onClick={() => handleIncreaseQuantityFor34(products, item, dispatch)}>+</button>
+                  </td>
+                </div>
+                <div className='price_container'>
+                  <td>{item.price * item.productSize['34']} €</td>
+                </div>
               </tr>
             ))}
-            {/* 36 */}
-            {listOfSize36.map((item: CartProps, index: number) => (
-              <tr key={index}>
-                <td>{truncateCartTitleLength(item.title)}</td>
-                <td>
-                  {item.productSize[36] > 0 && <span>36</span>}
+            {/* {listOfSize36.map((item: CartProps, index: number) => (
+              <tr className='body_tr' key={index}>
+                <td className='cart_itemInformation'>
+                  <div >
+                    {itemImagesFor36[item.productId] && <img src={itemImagesFor36[item.productId]} alt="" />}
+                    <div className='cart_itemInformation_text'>
+                      <h5>
+                        {item.title}
+                      </h5>
+                      <h6>
+                        Size
+                        {item.productSize[36] > 0 && <span>36</span>}
+                      </h6>
+                    </div>
+                  </div>
                 </td>
                 <td className='quantity_box'>
                   <button onClick={() => handleDecreaseQuantityFor36(item, dispatch)}>-</button>
@@ -82,7 +111,7 @@ export const CartReport = () => {
                 </td>
                 <td>{item.price * item.productSize['36']} €</td>
               </tr>
-            ))}
+            ))} */}
           </tbody>
           <tfoot>
             <tr>
@@ -91,8 +120,6 @@ export const CartReport = () => {
             </tr>
           </tfoot>
         </table>
-        <h3>Price tag has included tax fee.</h3>
-
       </div>
       <div className='checkout_container'>
         <form onSubmit={(e) => {
@@ -170,7 +197,6 @@ export const CartReport = () => {
           <button type="submit">Check out</button>
         </form>
       </div>
-      <Footer />
     </div>
   )
 }

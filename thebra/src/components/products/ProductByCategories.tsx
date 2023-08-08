@@ -31,14 +31,14 @@ const ProductByCategories = () => {
 
   return (
     <div className="post_container">
-      <div className="heading_container">
+      {/* <div className="heading_container">
         <div className="logo" />
         <h1 className="collection_title">Explore our collection</h1>
         <p>
           Lorem ipsum, dolor sit amet consectetur adipisicing elit. Aut esse
           eveniet quas odio corrupti at saepe ea repellat veritatis voluptate
         </p>
-      </div>
+      </div> */}
       <div className="button_container">
         <button
           onClick={() => {
@@ -101,7 +101,7 @@ const ProductByCategories = () => {
           </Link>
         ))}
         <div className="viewmore">
-          <h4>view more-</h4>
+          <button>VIEW MORE</button>
         </div>
       </div>
     </div>

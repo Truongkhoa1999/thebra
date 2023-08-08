@@ -23,10 +23,10 @@ const Homepage = () => {
   return (
     <div className="home_container">
       <AppBar />
-      <Carousel key="carousel1" />
+       <Carousel key="carousel1" />
       <ProductByCategories   />
       <ProductByNumberOfClicks products={products} />
-      <Footer />
+      <Footer /> 
     </div>
   );
 };

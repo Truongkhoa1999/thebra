@@ -14,7 +14,7 @@ export const ProductDetails:React.FC<ProductDetailProps> = ({products}) => {
     <div className="productDetails_container">
       <AppBar />
       <ProductInformation />
-      <RelevantProductsById products={products} />
+      {/* <RelevantProductsById products={products} /> */}
       <Footer />
     </div>
   );

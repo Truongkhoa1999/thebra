@@ -2,8 +2,6 @@
 .button_footer {
   width: 90%;
   background-color: black;
-  border: 1px solid black;
-  border-radius: 4%;
   font-size: 2rem;
   text-align: left;
   color: white;
@@ -18,7 +16,7 @@
     margin-bottom: 0.5em;
     margin-top: 0.5em;
     margin-left: 0;
-    font-size: 2em;
+    font-size: 0.5em;
   }
 }
 
@@ -34,13 +32,12 @@ input {
     display: flex;
     flex-direction: column;
     justify-content: space-around;
-    width: 70vw;
+    width: 99%;
     margin-left: auto;
     margin-right: auto;
     color: black;
     background-color: white;
     padding-top: 2em;
-    // border: 1px solid black;
 
     .upper {
       width: 95%;
@@ -53,11 +50,15 @@ input {
     .lower {
       margin-bottom: 1em;
 
+      p {
+        font-size: 0.9em;
+      }
+
       button {
         width: 100%;
         background-color: black;
         border: none;
-        font-size: 2rem;
+        font-size: 1.75em;
         text-align: left;
         color: white;
         padding-left: 0.25em;
@@ -82,7 +83,6 @@ input {
 
       .newsletter_container {
         width: 30%;
-
         display: flex;
         flex-direction: column;
 
@@ -180,6 +180,7 @@ input {
         }
       }
     }
+
     .bottom {
       margin-left: 0.25em;
 
