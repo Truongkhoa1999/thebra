@@ -36,9 +36,6 @@ const AppBar = () => {
     <div className="app_container">
       <Marquee />
       <div className="upper">
-        {/* <button onClick={openMenu}>
-          <MenuIcon  className="menuIcon"/>
-        </button> */}
         <div className="hamburger" onClick={openMenu}>
           <MenuIcon className="menuIcon" />
         </div>
@@ -50,9 +47,12 @@ const AppBar = () => {
           </ul>
         </div>
         <div className="logo_container">
+          <div>
           <Link style={{ textDecoration: "none" }} to="/homepage">
             <img className="myLogo" src="https://firebasestorage.googleapis.com/v0/b/thebra-f81ef.appspot.com/o/LOGO%2FDC05151B-1FCB-4FDE-96C8-301D13A2B0EB_4_5005_c.jpeg?alt=media&token=3e210d80-7f3b-4d32-9ee1-7bf851d38733" alt="logo" />
           </Link>
+          </div>
+         
         </div>
         <div className="appbar_button">
           <button className="shoppingcarticon">

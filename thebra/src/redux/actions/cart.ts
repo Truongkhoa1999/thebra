@@ -5,6 +5,7 @@ import { CartProps } from "../../type/CartProps"
 export const ADD_CART = 'ADD_CART'
 export const INCREASE_QUANTITY = 'INCREASE_QUANTITY'
 export const DECREASE_QUANTITY = 'DECREASE_QUANTITY'
+export const DELETE_ITEM = 'DELETE_ITEM'
 export const SAVE_CART = 'SAVE_CART'
 export const SAVE_CART_FAILURES = 'SAVE_CART_FAILURES'
 // Local storage key
@@ -26,17 +27,23 @@ export const addItemToCart = (cartItem: CartProps) => {
   }
 }
 // update quantity
-export function increaseQuantity(productId: ReturnType<typeof uuidv4>, is34:boolean, is36:boolean) {
+export function increaseQuantity(productId: ReturnType<typeof uuidv4>, is34: boolean, is36: boolean) {
   return {
     type: INCREASE_QUANTITY,
     payload: { productId, is34, is36 }
   }
 }
 
-export function decreaseQuantity(productId: ReturnType<typeof uuidv4>, is34:boolean, is36:boolean) {
+export function decreaseQuantity(productId: ReturnType<typeof uuidv4>, is34: boolean, is36: boolean) {
   return {
     type: DECREASE_QUANTITY,
     payload: { productId, is34, is36 },
+  }
+}
+export function deleteCartItem(productId: ReturnType<typeof uuidv4>, is34: boolean, is36: boolean) {
+  return {
+    type: DELETE_ITEM,
+    payload: { productId, is34, is36 }
   }
 }
 // save cart for users
@@ -57,3 +64,4 @@ export function saveCartFailures(error: Error) {
     payload: errorMessage,
   }
 }
+

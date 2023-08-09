@@ -11,10 +11,11 @@ import { ChangeEvent, useEffect, useMemo, useState } from 'react'
 import { deliveryFee } from '../../data/deliveryCost'
 import { handleSwitchDeliveryType } from '../../util/cart/hanldeSwitchDeliveryType'
 import { fetchItemImagesFor34, fetchItemImagesFor36 } from '../../util/getImageByProductId/getImageByProductId'
+import { removeItem } from '../../util/cart/removeItem'
+import { deleteCartItem } from '../../redux/actions/cart'
 
 export const CartReport = () => {
   const { cart } = useSelector((state: RootState) => state.cart)
-  console.log(cart)
   const { products }: { products: ProductProps[] } = useSelector((state: RootState) => state.products)
   const dispatch = useDispatch<AppDispatch>()
   const [selectedDeliveryType, setSelectedDeliveryType] = useState(0)
@@ -46,19 +47,12 @@ export const CartReport = () => {
   return (
     <div className="cartreport_container">
       <div className='heading'>
-        <h1>Your Cart</h1>
-        <h3>The price tag included TAX</h3>
+        <h3>Your Cart</h3>
+        <h4>The price tag included TAX</h4>
       </div>
       {/* main table */}
       <div className="table_container">
         <table>
-          {/* <thead>
-            <tr>
-              <th>Item</th>
-              <th>Quantity</th>
-              <th>price</th>
-            </tr>
-          </thead> */}
           <tbody>
             {listOfSize34.map((item: CartProps, index: number) => (
               <tr className='body_tr' key={index}>
@@ -82,16 +76,18 @@ export const CartReport = () => {
                     <span>{item.productSize['34']}</span>
                     <button onClick={() => handleIncreaseQuantityFor34(products, item, dispatch)}>+</button>
                   </td>
+                  <button className='closeButton' onClick={() => dispatch(deleteCartItem(item.productId,true, false))}>Remove</button>
+
                 </div>
                 <div className='price_container'>
                   <td>{item.price * item.productSize['34']} €</td>
                 </div>
               </tr>
             ))}
-            {/* {listOfSize36.map((item: CartProps, index: number) => (
+            {listOfSize36.map((item: CartProps, index: number) => (
               <tr className='body_tr' key={index}>
                 <td className='cart_itemInformation'>
-                  <div >
+                  <div className='item_title'>
                     {itemImagesFor36[item.productId] && <img src={itemImagesFor36[item.productId]} alt="" />}
                     <div className='cart_itemInformation_text'>
                       <h5>
@@ -104,14 +100,19 @@ export const CartReport = () => {
                     </div>
                   </div>
                 </td>
-                <td className='quantity_box'>
-                  <button onClick={() => handleDecreaseQuantityFor36(item, dispatch)}>-</button>
-                  <span>{item.productSize['36']}</span>
-                  <button onClick={() => handleIncreaseQuantityFor36(products, item, dispatch)}>+</button>
-                </td>
-                <td>{item.price * item.productSize['36']} €</td>
+                <div className='stock_container'>
+                  <td className='quantity_box'>
+                    <button onClick={() => handleDecreaseQuantityFor36(item, dispatch)}>-</button>
+                    <span>{item.productSize['36']}</span>
+                    <button onClick={() => handleIncreaseQuantityFor36(products, item, dispatch)}>+</button>
+                  </td>
+                  <button className='closeButton' onClick={() => dispatch(deleteCartItem(item.productId, false, true))}>Remove</button>
+                </div>
+                <div className='price_container'>
+                  <td>{item.price * item.productSize['36']} €</td>
+                </div>
               </tr>
-            ))} */}
+            ))}
           </tbody>
           <tfoot>
             <tr>
@@ -193,8 +194,7 @@ export const CartReport = () => {
           </div>
           <br />
           <h2>Subtotal: {totalPrice} €</h2>
-
-          <button type="submit">Check out</button>
+          <button className='checkout-button' type="submit">Check out</button>
         </form>
       </div>
     </div>

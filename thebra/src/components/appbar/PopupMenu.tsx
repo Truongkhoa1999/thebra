@@ -12,20 +12,20 @@ export const PopupMenu = ({ className }: { className: string }) => {
   return (
     <div className={className}>
       <div className="menu_container">
-        <Link to="/signin" className="menuLink " onClick={handleAuthenticationStatus}>
+        {/* <Link to="/signin" className="menuLink " onClick={handleAuthenticationStatus}>
           {
             isSignedIn ? "Sign-out" : "Sign-in"
           }
-        </Link>
+        </Link> */}
 
-        <Link to="/signin" className="menuLink ">
-          New arrivals
+        <Link to="/homepage" className="menuLink ">
+          Home
         </Link>
         <Link to="/signin" className="menuLink ">
-          Coming soon
+          Products
         </Link>
         <Link to="/signin" className="menuLink ">
-          Sale
+          Contact
         </Link>
       </div>
     </div>

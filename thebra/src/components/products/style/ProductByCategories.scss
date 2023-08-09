@@ -171,10 +171,10 @@
       display: flex;
       align-items: center;
       justify-content: space-evenly;
-      // background-color: rgb(230, 230, 230);
-      // border: 1px solid black;
-      border-radius: 5%;
-      // box-shadow: 1px 4px 4px black;
+
+      &:hover {
+        border: 1px solid black;
+      }
 
       .descrip {
         width: 50%;

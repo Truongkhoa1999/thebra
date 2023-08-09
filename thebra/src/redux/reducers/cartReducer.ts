@@ -6,6 +6,7 @@ import {
   SAVE_CART,
   LOCAL_CART_KEY,
   SAVE_CART_FAILURES,
+  DELETE_ITEM,
 } from '../actions/cart'
 import { AnyAction } from 'redux'
 
@@ -83,6 +84,28 @@ export const cartReducer = (state = initialState, action: AnyAction) => {
         };
       }
 
+      return state;
+    }
+    case DELETE_ITEM: {
+      const { productId, is34, is36 } = action.payload;
+      const existingItemIndex = state.cart.findIndex(item => item.cartId === productId)
+      if (existingItemIndex !== -1) {
+        const existingItem = state.cart[existingItemIndex]
+        const updatedItem = {
+          ...existingItem,
+          productSize: {
+            ...existingItem.productSize,
+            "34": is34 ? 0 : existingItem.productSize['34'],
+            "36": is36 ? 0 : existingItem.productSize['36']
+
+          }
+        }
+        const updatedCart = [...state.cart];
+        updatedCart[existingItemIndex] = updatedItem;
+        localStorage.setItem(LOCAL_CART_KEY, JSON.stringify(updatedCart))
+
+
+      }
       return state;
     }
 
