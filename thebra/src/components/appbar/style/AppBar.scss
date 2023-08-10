@@ -29,11 +29,13 @@
     flex-direction: row;
     align-items: center;
     padding: 0;
-@media(min-width:500px){
-  width: 90%;
-  justify-content: space-around;
 
-}
+    @media(min-width:500px) {
+      width: 90%;
+      justify-content: space-around;
+
+    }
+
     @media (min-width: 768px) {
       width: 90%;
     }
@@ -58,24 +60,33 @@
 
       .siteLinks {
         display: none;
-        list-style: none;
-        margin-left: 0;
 
         @media(min-width: 768px) {
           display: flex;
           flex-direction: row;
+          align-items: center;
+          padding: 0;
+        }
+
+        .link {
+          list-style: none;
+          text-decoration: none;
+
+          li {
+            color: black;
+            padding: 6px;
+
+            &:hover {
+              border-bottom: 1px solid rgb(180, 167, 167);
+              ;
+            }
+          }
         }
       }
 
-      li {
-        // padding: 1rem;
-        list-style: none;
-      }
 
-      li+li {
-        margin-left: 15px;
-      }
     }
+
 
     .appbar_button {
       @media (min-width:768px) {
@@ -86,6 +97,18 @@
       button {
         width: 1.75rem;
         outline: none;
+
+        &:hover {
+          border-bottom: 1px solid rgb(180, 167, 167);
+        }
+
+      }
+
+      .icon-ban {
+        &:hover {
+          border: none;
+
+        }
       }
 
       .accountButton--active {
@@ -104,6 +127,7 @@
 
       .myLogo {
         width: 8rem;
+
         @media (min-width:768px) {
           width: 9rem;
         }
@@ -123,11 +147,5 @@
     @media (min-width: 768px) {
       width: 70%;
     }
-
-    // .popupmenu {
-    //   width: 100%;
-    //   background-color: brown;
-    //   color: black;
-    // }
   }
 }

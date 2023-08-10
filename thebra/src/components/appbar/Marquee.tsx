@@ -23,7 +23,7 @@ const Marquee: React.FC = () => {
     return (
         <div className='marquee-container'>
             <div className="marquee" ref={marqueeRef}>
-                <span>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Praesentium, vel? Voluptatem error voluptas libero fuga dolorum dolor eos voluptatibus enim rem, molestias unde eveniet impedit molestiae suscipit nesciunt architecto odio?</span>
+                <span>✈️ Enjoy Free Standard Shipping for Orders Over 49€ within EU Countries! &nbsp; &nbsp; <span style={{color:"red"}}>Get 10% Off Your Next Order!</span></span>
             </div>
         </div>
 

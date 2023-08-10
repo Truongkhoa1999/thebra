@@ -116,8 +116,6 @@ export const CartReport = () => {
           </tbody>
           <tfoot>
             <tr>
-              {/* <td className='subtotal' colSpan={3}>Subtotal Price:</td>
-              <td>{cartTotal(cart)} €</td> */}
             </tr>
           </tfoot>
         </table>

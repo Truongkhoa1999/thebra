@@ -50,6 +50,7 @@ export const Footer = () => {
                   required
                   placeholder="Email address"
                   className="input_text"
+                  disabled={true}
                 />
                 <br />
                 <br />
@@ -61,19 +62,21 @@ export const Footer = () => {
                   required
                   placeholder="Telephone"
                   className="input_text"
+                  disabled={true}
+
                 />
                 <br />
                 <br />
 
-                <input type="submit" value="Submit" />
+                <input className="submit-button" type="submit" value="Submit" disabled={true} />
               </form>
             </div>
           </div>
           <div className="lower_newsletter">
             <button className="button_footer">Follow us</button>
             <div className="social_ic">
-            <Facebook />
-            <Instagram />
+              <Facebook />
+              <Instagram />
             </div>
           </div>
         </div>

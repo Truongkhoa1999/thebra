@@ -87,6 +87,7 @@
         &:hover {
           border-bottom: 2px solid black;
           transition: 0;
+          color: black;
 
         }
       }
@@ -147,12 +148,12 @@
         margin-right: auto;
         margin-left: auto;
         border: none;
+        background-color: transparent;
 
         &:hover {
-          border: 2px solid black;
+          // border-bottom: 1px solid rgb(180, 167, 167);
           cursor: pointer;
-          background-color: black;
-          color: white;
+          text-decoration: underline;
         }
       }
 
@@ -173,7 +174,11 @@
       justify-content: space-evenly;
 
       &:hover {
-        border: 1px solid black;
+        border-bottom: 1px solid rgb(180, 167, 167);
+
+        h2 {
+          color: black !important;
+        }
       }
 
       .descrip {

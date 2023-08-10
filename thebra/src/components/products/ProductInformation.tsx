@@ -30,27 +30,28 @@ export const ProductInformation = () => {
 
   return (
     <div className="productInformation_container">
-      <div className="productInformation_image">
-        <div className="main">
-          <img
-            src={productById?.images[0]}
-            alt=" "
-          />
-        </div>
+      <div className="upper">
+        <div className="productInformation_image">
+          <div className="main">
+            <img
+              src={productById?.images[0]}
+              alt=" "
+            />
+          </div>
 
-        <div className="minor">
-          <img
-            src={productById?.images[1]}
-            alt=" "
-          />
-          <img
-            src={productById?.images[2]}
-            alt=" "
-          />
+          <div className="minor">
+            <img
+              src={productById?.images[1]}
+              alt=" "
+            />
+            <img
+              src={productById?.images[2]}
+              alt=" "
+            />
+          </div>
         </div>
-      </div>
-      <div className="productInformation_text">
-        <div className="buttonSet">
+        <div className="productInformation_text">
+          <div className="buttonSet">
             <h5>The Bra</h5>
             <div className="title">{productById?.title}</div>
             <div className="price">{productById?.price} €</div>
@@ -58,21 +59,23 @@ export const ProductInformation = () => {
             <div className="size_group">
               <h4>Size</h4>
               <div>
-              <button className={`sizeSelection ${is34 ? "activated" : ""}`} onClick={() => handleSize34Confirm(is34, setIs34)}>34</button>
-              <button className={`sizeSelection ${is36 ? "activated" : ""}`} onClick={() => handleSize36Confirm(is36, setIs36)}>36</button>
+                <button className={`sizeSelection ${is34 ? "activated" : ""}`} onClick={() => handleSize34Confirm(is34, setIs34)}>34</button>
+                <button className={`sizeSelection ${is36 ? "activated" : ""}`} onClick={() => handleSize36Confirm(is36, setIs36)}>36</button>
               </div>
             </div>
-          <div className="buttons">
-            <button onClick={() => { if (productById && (is34 || is36)) { handleSaveCart(dispatch, productById, cart, is34, is36) } }} className="addcart">Buy it</button>
-            <button className="favorite">
-              <FavoriteIcon />
-            </button>
+            <div className="buttons">
+              <button onClick={() => { if (productById && (is34 || is36)) { handleSaveCart(dispatch, productById, cart, is34, is36) } }} className="addcart">Buy it</button>
+              <button className="favorite" disabled={true}>
+                <FavoriteIcon />
+              </button>
+            </div>
+          </div>
+          <div className="textSet">
+            {productById?.description}
           </div>
         </div>
-        <div className="textSet">
-          {productById?.description}
-        </div>
       </div>
+
       <div className="sizeguide">
         <img
           src="https://firebasestorage.googleapis.com/v0/b/thebra-f81ef.appspot.com/o/sizechart.avif?alt=media&token=d917a8d2-db04-4297-b416-51544a4268d4"
