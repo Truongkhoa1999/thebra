@@ -18,7 +18,7 @@ const ProductByCategories = () => {
   const dispatch = useDispatch<AppDispatch>()
   const { products } = useSelector((state: RootState) => state.products)
   const [filteredProducts, setFilteredProducts] = useState<ProductProps[]>(products.slice(0, 3))
-  const [category, setCategory] = useState("")
+  const [category, setCategory] = useState("Bralette")
   const navigate = useNavigate()
 
   useEffect(() => {
@@ -88,7 +88,7 @@ const ProductByCategories = () => {
           Push-up
         </button>
       </div>
-      <div className="item_container">
+      <div className="item_container" id='posts'>
         {filteredProducts.map((p) => (
           <Link to={`/product/${p.id}`} className="item link" key={p.id}>
             <img src={p.images[2]} alt="thumbnail images" />

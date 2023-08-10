@@ -10,10 +10,12 @@ export const filterProductByCategory = (products: ProductProps[], category: stri
 }
 export const detectRelevantItemsByCategory = (category: string, products: ProductProps[]) => {
     if (category) {
-        const relevantProducts = products.filter(p => p.category === category)
+
+        const relevantProducts = products.filter(p => p.category.toLocaleLowerCase() === category.toLocaleLowerCase())
+        console.log(relevantProducts)
         return relevantProducts;
     } else {
-        return products; // Return an empty array as the default case
+        return products;
 
     }
 };

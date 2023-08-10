@@ -19,7 +19,6 @@ export const RelevantProductsByCategory = ({ category }: { category: string }) =
     if (products.length > 0) {
       const relevantProducts = detectRelevantItemsByCategory(category, products)
       setRelevantProductsByCategory(relevantProducts)
-      console.log(relevantProducts)
     }
   }, [category, products]);
   return (

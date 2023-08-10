@@ -5,7 +5,6 @@ import './style/Products.scss'
 import { useParams } from "react-router-dom"
 const Products = () => {
     const { category } = useParams()
-    console.log(category)
     return (
         <div className="products_container">
             <AppBar />
