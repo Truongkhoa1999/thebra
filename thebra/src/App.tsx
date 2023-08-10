@@ -15,7 +15,7 @@ import { Cart } from "./sites/cart/Cart";
 import { Elements } from "@stripe/react-stripe-js";
 import { loadStripe } from "@stripe/stripe-js";
 import { Payment } from "./sites/payment/Payment";
-// import Products from "./sites/products/Products";
+import Products from "./sites/products/Products";
 
 function App() {
   const dispatch = useDispatch<AppDispatch>()
@@ -33,7 +33,7 @@ function App() {
         <Route path="/signin" element={<SignIn />} />
         <Route path="/signup" element={<Signup />} />
         <Route path="/cart" element={<Cart />} />
-        {/* <Route path='/products/:category' element={<Products />} /> */}
+        <Route path='/products/:category' element={<Products />} />
         <Route
           path="/payment"
           element={

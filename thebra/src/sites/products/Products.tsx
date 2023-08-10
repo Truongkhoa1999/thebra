@@ -1,15 +1,16 @@
-import { useSelector } from "react-redux"
 import AppBar from "../../components/appbar/AppBar"
 import { Footer } from "../../components/footer/Footer"
-import { } from "../../components/products/RelevantProductsById"
+import { RelevantProductsByCategory } from "../../components/products/RelevantProductsByCategory"
 import './style/Products.scss'
-import { RootState } from "../../redux/store"
-import ProductByCategories from "../../components/products/ProductByCategories"
+import { useParams } from "react-router-dom"
 const Products = () => {
+    const { category } = useParams()
+    console.log(category)
     return (
         <div className="products_container">
             <AppBar />
-            <ProductByCategories />
+            {category && <RelevantProductsByCategory category={category} />
+            }
             <Footer />
         </div>
     )

@@ -1,4 +1,4 @@
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import "./style/ProductByCategories.scss";
 
 // hooks
@@ -18,13 +18,13 @@ const ProductByCategories = () => {
   const dispatch = useDispatch<AppDispatch>()
   const { products } = useSelector((state: RootState) => state.products)
   const [filteredProducts, setFilteredProducts] = useState<ProductProps[]>(products.slice(0, 3))
+  const [category, setCategory] = useState("")
+  const navigate = useNavigate()
 
   useEffect(() => {
-    // Fetch products if the products state is empty (on first load or refresh)
     if (products.length === 0) {
       dispatch(fetchProducts());
     } else {
-      // Set the initial filtered products to the first 3 items
       setFilteredProducts(products.slice(0, 3));
     }
   }, [dispatch, products]);
@@ -44,6 +44,7 @@ const ProductByCategories = () => {
           onClick={() => {
             handleButtonClick("red", activeButton, setActiveButton)
             setFilteredProducts(filterProductByCategory(products, "BRALETTE"))
+            setCategory("Bralette")
           }
           }
           className={
@@ -58,6 +59,8 @@ const ProductByCategories = () => {
           onClick={() => {
             handleButtonClick("green", activeButton, setActiveButton)
             setFilteredProducts(filterProductByCategory(products, "COTTON-LINEN"))
+            setCategory("Cotton-linen")
+
           }
           }
           className={
@@ -71,8 +74,8 @@ const ProductByCategories = () => {
         <button
           onClick={() => {
             handleButtonClick("blue", activeButton, setActiveButton)
-            setFilteredProducts(filterProductByCategory(products, "PUSH-UP")
-            )
+            setFilteredProducts(filterProductByCategory(products, "PUSH-UP"))
+            setCategory("Push-up")
 
           }
           }
@@ -101,7 +104,7 @@ const ProductByCategories = () => {
           </Link>
         ))}
         <div className="viewmore">
-          <button>VIEW MORE</button>
+          <button onClick={() => { navigate(`/products/${category}`) }}>VIEW MORE</button>
         </div>
       </div>
     </div>

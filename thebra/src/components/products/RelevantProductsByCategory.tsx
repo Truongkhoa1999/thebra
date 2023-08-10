@@ -5,21 +5,26 @@ import { detectRelevantItemsByCategory } from "../../util/productByCategory/filt
 import { AppDispatch, RootState } from "../../redux/store";
 import './style/RelevantProductById.scss'
 import { fetchProducts } from "../../redux/actions/getProducts";
-import { useParams } from "react-router-dom";
 
-export const relevantProductsByCategory = () => {
+export const RelevantProductsByCategory = ({ category }: { category: string }) => {
   const { products } = useSelector((state: RootState) => state.products)
   const [relevantProductsByCategory, setRelevantProductsByCategory] = useState<ProductProps[]>(products)
   const dispatch = useDispatch<AppDispatch>()
 
   useEffect(() => {
     dispatch(fetchProducts())
-    const relevantProducts = detectRelevantItemsByCategory(category, products)
-    setRelevantProductsByCategory(relevantProducts)
   }, [dispatch]);
+
+  useEffect(() => {
+    if (products.length > 0) {
+      const relevantProducts = detectRelevantItemsByCategory(category, products)
+      setRelevantProductsByCategory(relevantProducts)
+      console.log(relevantProducts)
+    }
+  }, [category, products]);
   return (
     <div className="relevant_container">
-      <h2 className="heading">You may like</h2>
+      <h2 className="heading">{category}</h2>
       <div className="relevant-items">
         {
           relevantProductsByCategory?.map(p => (
