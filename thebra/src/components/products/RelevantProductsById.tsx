@@ -1,30 +1,33 @@
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { ProductProps } from "../../type/ProductProps";
 import { useEffect, useState } from "react";
-import { detectRelevantItemsById } from "../../util/productByCategory/filterProductByCategory";
-import { RootState } from "../../redux/store";
+import { detectRelevantItemsByCategory } from "../../util/productByCategory/filterProductByCategory";
+import { AppDispatch, RootState } from "../../redux/store";
+import './style/RelevantProductById.scss'
+import { fetchProducts } from "../../redux/actions/getProducts";
+import { useParams } from "react-router-dom";
 
+export const relevantProductsByCategory = () => {
+  const { products } = useSelector((state: RootState) => state.products)
+  const [relevantProductsByCategory, setRelevantProductsByCategory] = useState<ProductProps[]>(products)
+  const dispatch = useDispatch<AppDispatch>()
 
-export const RelevantProductsById = ({ products }: { products: ProductProps[] }) => {
-  const { productById } = useSelector((state: RootState) => state.productById)
-  const [relevantProductsById, setRelevantProductsById] = useState<ProductProps[]>(products)
   useEffect(() => {
-    if (products) {
-      const relevantItems = detectRelevantItemsById(productById, products);
-      setRelevantProductsById(relevantItems);
-    } else {
-      setRelevantProductsById(products)
-    }
-  }, []);
+    dispatch(fetchProducts())
+    const relevantProducts = detectRelevantItemsByCategory(category, products)
+    setRelevantProductsByCategory(relevantProducts)
+  }, [dispatch]);
   return (
     <div className="relevant_container">
-      <h3>You may like</h3>
-      <div className="items">
+      <h2 className="heading">You may like</h2>
+      <div className="relevant-items">
         {
-          relevantProductsById?.map(p => (
+          relevantProductsByCategory?.map(p => (
             <div className="item">
-              <img src={p.images[2]}></img>
-              <h2>{p.title}</h2>
+              <img className="item-img" src={p.images[2]} />
+              <div className="item-text">
+                <h2>{p.title}</h2>
+                <h2>{p.price}</h2></div>
             </div>
           ))
         }

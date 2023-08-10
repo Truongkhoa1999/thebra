@@ -30,7 +30,15 @@ const ProductByCategories = () => {
   }, [dispatch, products]);
 
   return (
-    <div id="posts" className="post_container">
+    <div className="post_container">
+      <div className="heading_container">
+        <div className="logo" />
+        <h1 className="collection_title">Explore our collection</h1>
+        <p>
+          Lorem ipsum, dolor sit amet consectetur adipisicing elit. Aut esse
+          eveniet quas odio corrupti at saepe ea repellat veritatis voluptate
+        </p>
+      </div>
       <div className="button_container">
         <button
           onClick={() => {

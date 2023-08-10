@@ -8,8 +8,7 @@ export const filterProductByCategory = (products: ProductProps[], category: stri
         return filteredProducts.slice(0,3)
     }
 }
-export const detectRelevantItemsById = (productById: ProductProps | null, products: ProductProps[]) => {
-    const category = productById?.category;
+export const detectRelevantItemsByCategory = (category: string , products: ProductProps[]) => {
     if (category) {
       const relevantProducts = filterProductByCategory(products, category);
       return relevantProducts;
