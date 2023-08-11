@@ -3,76 +3,84 @@
     display: flex;
     flex-direction: column;
     align-items: center;
+    margin-left: auto;
+    margin-right: auto;
+    padding: 0;
+
+    @media(min-width:768px) {
+        width: 70%;
+
+    }
 
     .heading {
         font-family: 'Quicksand-regular';
         margin: 2rem 0 2rem 0;
     }
 
-    // desktop
-    @media (min-width:768px) {
-        .relevant-items {
-            display: flex;
-            flex-direction: row;
-            flex-wrap: wrap;
-            justify-content: space-around;
-            padding: 0;
-
-            .item {
-                display: flex;
-                flex-direction: column;
-                justify-content: center;
-                align-items: center;
-                width: calc(33% - 10px);
-                margin-bottom: 4rem;
-
-                .item-img {
-                    width: 45%;
-                    height: 15rem;
-
-                }
-
-                .item-text {
-                    width: 45%;
-                    margin-top: 12px;
-                    padding-bottom: 10PX;
-
-                    h2 {
-                        font-size: 14px;
-                        font-family: 'Quicksand-regular';
-                    }
-                }
-
-                &:hover {
-                    cursor: pointer;
-
-                    .item-text {
-                        border-bottom: 1px solid black;
-
-                    }
-                }
-
-            }
-        }
-    }
-
     // Moblie
-    .items {
+    .relevant-items {
         display: flex;
+        flex-direction: row;
         flex-wrap: wrap;
-        justify-content: center;
-        align-items: center;
+        padding: 0;
+
+        @media(min-width:768px) {
+            width: 90%;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
 
         .item {
-            width: calc(33.33% - 10px);
-
-            h2 {
-                font-size: 10px;
+            display: flex;
+            flex-direction: column;
+            width: calc(50% - 10px);
+            margin-bottom: 4rem;
+            // border: 1px solid red;
+margin-right: 10px;
+            @media (min-width:768px) {
+                width: calc(33.33% - 10px);
             }
 
-            img {
-                width: 80%;
+
+            .item-img {
+                width: 100%;
+                height: 14rem;
+
+                @media (min-width:768px) {
+                    width: 60%;
+                    align-self: center;
+                }
             }
+
+            .item-text {
+                width: 100%;
+                margin-top: 12px;
+                padding-bottom: 10PX;
+
+                h2 {
+                    font-size: 14px;
+                    font-family: 'Quicksand-regular';
+                }
+
+                @media (min-width:768px) {
+                    width: 60%;
+                    align-self: center;
+                }
+            }
+
+            &:hover {
+                cursor: pointer;
+
+                .item-text {
+                    border-bottom: 1px solid black;
+
+                }
+            }
+
         }
     }
+
 }
+
+// desktop

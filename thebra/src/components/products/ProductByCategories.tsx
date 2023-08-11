@@ -30,15 +30,15 @@ const ProductByCategories = () => {
   }, [dispatch, products]);
 
   return (
-    <div className="post_container">
-      <div className="heading_container">
+    <div className="post_container" id='posts'>
+      {/* <div className="heading_container">
         <div className="logo" />
         <h1 className="collection_title">Explore our collection</h1>
         <p>
           Lorem ipsum, dolor sit amet consectetur adipisicing elit. Aut esse
           eveniet quas odio corrupti at saepe ea repellat veritatis voluptate
         </p>
-      </div>
+      </div> */}
       <div className="button_container">
         <button
           onClick={() => {
@@ -88,7 +88,7 @@ const ProductByCategories = () => {
           Push-up
         </button>
       </div>
-      <div className="item_container" id='posts'>
+      <div className="item_container" >
         {filteredProducts.map((p) => (
           <Link to={`/product/${p.id}`} className="item link" key={p.id}>
             <img src={p.images[2]} alt="thumbnail images" />

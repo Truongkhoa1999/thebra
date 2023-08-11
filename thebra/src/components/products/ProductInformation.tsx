@@ -64,7 +64,7 @@ export const ProductInformation = () => {
               </div>
             </div>
             <div className="buttons">
-              <button onClick={() => { if (productById && (is34 || is36)) { handleSaveCart(dispatch, productById, cart, is34, is36) } }} className="addcart">Buy it</button>
+              <button onClick={() => { if (productById && (is34 || is36)) { handleSaveCart(dispatch, productById, cart, is34, is36) } }} className="addcart">Buy now</button>
               <button className="favorite" disabled={true}>
                 <FavoriteIcon />
               </button>

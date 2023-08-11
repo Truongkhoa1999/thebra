@@ -59,20 +59,20 @@ const AppBar = () => {
           </div>
 
         </div>
-        <div className="appbar_button">
-          <button className="icon">
-            <Link to={`/cart`}>
-              <Badge badgeContent={totalQuantity} color="primary">
-                <ShoppingCartIcon style={{ fontSize: "1.25rem", color: "black" }} />
+        <div className="appbar_button"  style={{overflow:"visible"}}>
+          <button className="icon" style={{overflow:"visible"}}>
+            <Link to={`/cart`} style={{overflow:"visible"}}>
+              <Badge badgeContent={totalQuantity} color="primary" style={{overflow:"visible"}}>
+                <ShoppingCartIcon style={{ fontSize: "1.15rem", color: "black"}} />
               </Badge>
             </Link>
           </button>
           <button className="icon">
-            <AccountCircleIcon onClick={handleAuthenticationStatus} className={`accountButton ${isSignedIn ? "accountButton--active" : ""}`} style={{ fontSize: "1.25rem", color: "black" }} />
+            <AccountCircleIcon onClick={handleAuthenticationStatus} className={`accountButton ${isSignedIn ? "accountButton--active" : ""}`} style={{ fontSize: "1.15rem", color: "black" }} />
           </button>
           <button className="icon-ban" disabled={true} >
             <FavoriteIcon style={{
-              fontSize: "1.25rem",
+              fontSize: "1.15rem",
               cursor: 'default',
               color: 'gray',
             }} />
