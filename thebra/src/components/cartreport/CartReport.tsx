@@ -12,189 +12,45 @@ import { deliveryFee } from '../../data/deliveryCost'
 import { handleSwitchDeliveryType } from '../../util/cart/hanldeSwitchDeliveryType'
 import { fetchItemImagesFor34, fetchItemImagesFor36 } from '../../util/getImageByProductId/getImageByProductId'
 import { removeItem } from '../../util/cart/removeItem'
-import { deleteCartItem } from '../../redux/actions/cart'
+import { deleteCartItem, saveCart } from '../../redux/actions/cart'
+import { CartTable } from './CartTable'
+import { CartDeliveryMethod } from './CartDeliveryMethod'
+import { CartHeadingForTable } from './CartHeadingForTable'
+import { CartHeadingForDeliveryMethod } from './CartHeadingForDeliveryMethod'
+// import { CartHeadingForDeliveryForm } from './CartHeadingForDeliveryForm'
+import { detectIfOrderedItemIsZero } from '../../util/cart/detectIfOrderedItemIsZero'
 
 export const CartReport = () => {
   const { cart } = useSelector((state: RootState) => state.cart)
-  const { products }: { products: ProductProps[] } = useSelector((state: RootState) => state.products)
   const dispatch = useDispatch<AppDispatch>()
-  const [selectedDeliveryType, setSelectedDeliveryType] = useState(0)
-  const navigate = useNavigate()
-  const deliveryPrice = deliveryFee[selectedDeliveryType];
+
   const listOfSize34 = findListOfSize34(cart)
   const listOfSize36 = findListOfSize36(cart)
-  const totalPrice = useMemo(() => cartTotal(cart, deliveryPrice), [deliveryPrice])
+
   const [itemImagesFor34, setItemImagesFor34] = useState<Record<string, string>>({})
   const [itemImagesFor36, setItemImagesFor36] = useState<Record<string, string>>({})
 
   useEffect(() => {
     fetchItemImagesFor34(listOfSize34, setItemImagesFor34)
     fetchItemImagesFor36(listOfSize36, setItemImagesFor36)
+    detectIfOrderedItemIsZero(cart, dispatch);
+    const updatedCart = detectIfOrderedItemIsZero(cart, dispatch); // Update local state with filtered cart
+    dispatch(saveCart(updatedCart));
+
   }, []);
 
-  const [shippingInfoForExistUsers, setShippingInfoForExistUsers] = useState({
-    address: '',
-    city: '',
-    postalCode: '',
-    country: '',
-  });
 
-  const handleChange = (e: ChangeEvent<HTMLInputElement>) => {
-    const { name, value } = e.target;
-    setShippingInfoForExistUsers((prevInfo) => ({ ...prevInfo, [name]: value }));
-  };
 
   return (
     <div className="cartreport_container">
-      <div className='heading'>
-        <h3>Your Cart</h3>
-        <h4>The price tag included TAX</h4>
-      </div>
-      {/* main table */}
-      <div className="table_container">
-        <table>
-          <tbody>
-            {listOfSize34.map((item: CartProps, index: number) => (
-              <tr className='body_tr' key={index}>
-                <td className='cart_itemInformation'>
-                  <div className='item_title'>
-                    {itemImagesFor34[item.productId] && <img src={itemImagesFor34[item.productId]} alt="" />}
-                    <div className='cart_itemInformation_text'>
-                      <h5>
-                        {item.title}
-                      </h5>
-                      <h6>
-                        Size
-                        {item.productSize[34] > 0 && <span>34</span>}
-                      </h6>
-                    </div>
-                  </div>
-                </td>
-                <div className='stock_container'>
-                  <td className='quantity_box'>
-                    <button onClick={() => handleDecreaseQuantityFor34(item, dispatch)}>-</button>
-                    <span>{item.productSize['34']}</span>
-                    <button onClick={() => handleIncreaseQuantityFor34(products, item, dispatch)}>+</button>
-                  </td>
-                  <button className='closeButton' onClick={() => dispatch(deleteCartItem(item.productId,true, false))}>Remove</button>
-
-                </div>
-                <div className='price_container'>
-                  <td>{item.price * item.productSize['34']} €</td>
-                </div>
-              </tr>
-            ))}
-            {listOfSize36.map((item: CartProps, index: number) => (
-              <tr className='body_tr' key={index}>
-                <td className='cart_itemInformation'>
-                  <div className='item_title'>
-                    {itemImagesFor36[item.productId] && <img src={itemImagesFor36[item.productId]} alt="" />}
-                    <div className='cart_itemInformation_text'>
-                      <h5>
-                        {item.title}
-                      </h5>
-                      <h6>
-                        Size
-                        {item.productSize[36] > 0 && <span>36</span>}
-                      </h6>
-                    </div>
-                  </div>
-                </td>
-                <div className='stock_container'>
-                  <td className='quantity_box'>
-                    <button onClick={() => handleDecreaseQuantityFor36(item, dispatch)}>-</button>
-                    <span>{item.productSize['36']}</span>
-                    <button onClick={() => handleIncreaseQuantityFor36(products, item, dispatch)}>+</button>
-                  </td>
-                  <button className='closeButton' onClick={() => dispatch(deleteCartItem(item.productId, false, true))}>Remove</button>
-                </div>
-                <div className='price_container'>
-                  <td>{item.price * item.productSize['36']} €</td>
-                </div>
-              </tr>
-            ))}
-          </tbody>
-          <tfoot>
-            <tr>
-            </tr>
-          </tfoot>
-        </table>
-      </div>
-      <div className='checkout_container'>
-        <form onSubmit={(e) => {
-          e.preventDefault()
-          handleCartCheckout(navigate, cart, deliveryPrice, shippingInfoForExistUsers)
-        }}>
-
-          <label>
-            Address:
-            <input
-              type="text"
-              name="address"
-              value={shippingInfoForExistUsers.address}
-              onChange={handleChange}
-              required
-            />
-          </label>
-          <br />
-          <label>
-            City:
-            <input
-              type="text"
-              name="city"
-              value={shippingInfoForExistUsers.city}
-              onChange={handleChange}
-              required
-            />
-          </label>
-          <br />
-          <label>
-            Postal Code:
-            <input
-              type="text"
-              name="postalCode"
-              value={shippingInfoForExistUsers.postalCode}
-              onChange={handleChange}
-              required
-            />
-          </label>
-          <br />
-          <label>
-            Country:
-            <input
-              type="text"
-              name="country"
-              value={shippingInfoForExistUsers.country}
-              onChange={handleChange}
-              required
-            />
-          </label>
-          <div className='delivery_method'>
-            <fieldset>
-              <legend>Select a delivery method:</legend>
-              <div>
-                <input type="radio" id="standard" name="drone" value={0}
-                  checked onChange={(e) => handleSwitchDeliveryType(e, setSelectedDeliveryType)} />
-                <label htmlFor="standard">Standard Delivery To Posti Outlet (5-7 Days) 5.95 €.</label>
-              </div>
-
-              <div>
-                <input type="radio" id="express" name="drone" value={1} onChange={(e) => handleSwitchDeliveryType(e, setSelectedDeliveryType)} />
-                <label htmlFor="express">Express Delivery To Posti Outlet (1-3 Business Days) 12.95 €.</label>
-              </div>
-
-              <div>
-                <input type="radio" id="home" name="drone" value={2} onChange={(e) => handleSwitchDeliveryType(e, setSelectedDeliveryType)} />
-                <label htmlFor="home">Standard Delivery To Posti Outlet (4-7 Days) 10.95 €.</label>
-              </div>
-            </fieldset>
-
-          </div>
-          <br />
-          <h2>Subtotal: {totalPrice} €</h2>
-          <button className='checkout-button' type="submit">Check out</button>
-        </form>
-      </div>
+      <CartHeadingForTable />
+      <CartTable 
+      itemImagesFor34={itemImagesFor34} 
+      itemImagesFor36={itemImagesFor36} 
+      dispatch={dispatch}
+       />
+      <CartHeadingForDeliveryMethod />
+      <CartDeliveryMethod />
     </div>
   )
 }
