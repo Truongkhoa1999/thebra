@@ -9,7 +9,6 @@ export const detectIfOrderedItemIsZero = (cart: CartProps[], dispatch: AppDispat
     if (updatedCart) {
         localStorage.removeItem('cart')
         dispatch(saveCart(updatedCart))
-        console.log(cart)
     }
     return updatedCart
 }

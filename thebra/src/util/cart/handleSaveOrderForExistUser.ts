@@ -4,7 +4,7 @@ import { DecodedToken } from "../../type/DecodedToken";
 import { cartTotal } from "./computeCart";
 import { CartProps } from "../../type/CartProps";
 
-export const handleSaveOrder = async (cart: CartProps[], token: any, deliveryPrice: number, shippingInfoForExistUsers: ShippingInfo) => {
+export const handleSaveOrderForExistUser = async (cart: CartProps[], token: any, deliveryPrice: number, shippingInfoForExistUsers: ShippingInfo) => {
     const { address, city, postalCode, country } = shippingInfoForExistUsers
     const mergedAddress = `${address},${city},${postalCode},${country}`
     let deliveryMethod = '';
@@ -24,9 +24,11 @@ export const handleSaveOrder = async (cart: CartProps[], token: any, deliveryPri
         shippingAddress: mergedAddress,
         deliveryMethod: deliveryMethod,
         orderDate: new Date(),
+        // userId: isSignedIn ? userId : ""
         userId: userId
     }
-    const response = await fetch('http://localhost:8080/api/v1/order/', {
+
+    const response = await fetch('https://thebrabe.onrender.com/api/v1/order/', {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json',

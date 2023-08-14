@@ -1,8 +1,8 @@
 import { CartProps } from "../../type/CartProps";
 
-export const handleSavedOrderItems = async (cart: CartProps[], orderId: string) => {
+export const handleSavedOrderItemsForExistUser = async (cart: CartProps[], orderId: string) => {
   const token = localStorage.getItem('jwt');
-  const url = 'http://localhost:8080/api/v1/orderItems/';
+  const url = 'https://thebrabe.onrender.com/api/v1/orderItems/';
   try {
     if (token) {
       const orderItemsArray = []

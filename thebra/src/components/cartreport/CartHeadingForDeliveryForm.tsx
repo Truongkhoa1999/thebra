@@ -1,4 +1,4 @@
-import './style/cartreport.scss'
+import './style/cartdeliverymethod.scss'
 export const CartHeadingForDeliveryForm = () => {
     return (
         <div className='heading2'>

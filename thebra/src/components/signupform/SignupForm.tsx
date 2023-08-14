@@ -2,7 +2,7 @@ import { useDispatch } from 'react-redux';
 import './style/signupform.scss';
 import { AppDispatch } from '../../redux/store';
 import { useNavigate } from 'react-router-dom';
-import { handleSignUp } from '../../util/signup/handleSignup';
+import { handleSignUp } from '../../util/signup/handleSignUp';
 
 export const SignupForm = () => {
   const dispatch = useDispatch<AppDispatch>();
@@ -30,13 +30,13 @@ export const SignupForm = () => {
       phone: phone.value,
       gmail: gmail.value,
     };
-    dispatch(handleSignUp(newUser, navigate)    ) 
+    dispatch(handleSignUp(newUser, navigate))
 
   };
 
   return (
     <div className='form_container'>
-      <h1>Create an Account</h1>
+      <h1>Register New Account</h1>
       <form onSubmit={handleSubmit}>
         <div className='input_container'>
           <div>
@@ -67,7 +67,7 @@ export const SignupForm = () => {
 
         <div className='submit_container'>
           <button className='button2 signup_button' type='submit'>
-            Sign Up
+            Register
           </button>
         </div>
       </form>

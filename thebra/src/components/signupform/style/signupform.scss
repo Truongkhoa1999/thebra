@@ -5,6 +5,18 @@
     flex-direction: column;
     align-items: center;
     justify-content: space-evenly;
+    font-family: 'Quicksand-regular';
+
+    h1 {
+        text-align: center;
+        font-size: 1.65rem;
+        margin-top: 1rem;
+
+        @media(min-width:768px) {
+            font-size: 2rem;
+            margin-top: 4rem;
+        }
+    }
 
     form {
         display: flex;
@@ -13,6 +25,7 @@
         justify-content: space-evenly;
         width: 100%;
         height: auto;
+        margin-top: 2rem;
 
         div {
             display: flex;
@@ -42,32 +55,27 @@
             display: flex;
             justify-content: space-around;
 
-            .button2 {
-                width: 10em;
-                height: 2em;
-                padding: 0.5em;
+            .signup_button {
+                color: black;
                 text-align: center;
-                @media (min-width:768px) {
-                width: 30%;
+                font-size: 1rem;
+                background-color: transparent;
+                padding: 1rem;
+                border: none;
+                font-family: 'Quicksand-regular';
+
+                &:hover {
+                    color: black;
+                    border: 1px solid black;
+                    cursor: pointer;
                 }
-                cursor: pointer;
-             
             }
-            .signup_button{
-                border-radius: 8%;
-                background-color: blue;
-                color: white;
-                box-sizing: border-box;
-                text-align: center;
-                font-size: 0.95rem;
-                padding: 1rem 0 1rem 0;
-                 vertical-align: middle;
-                text-align: center;
-            }
-            .newaccount_button{
+
+            .newaccount_button {
                 border: none;
                 background-color: transparent;
             }
+
             @media (min-width: 768px) {
                 width: 50%;
                 height: 10rem;

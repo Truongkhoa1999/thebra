@@ -1,35 +1,56 @@
 import { CartProps } from "../../type/CartProps";
-import { isTokenExpired } from "../jwt/checkIfJwtExpried"
+import { isNonUser, isTokenExpired } from "../jwt/checkIfJwtExpried"
 import { isCartEmpty } from "./isCartEmpty";
 
-import { handleSavedOrderItems } from "./handleSavedOrderItems";
 import { ShippingInfo } from "../../type/ShippingInfo";
-import { handleSaveOrder } from "./handleSaveOrder";
+import { handleSaveOrderForExistUser } from "./handleSaveOrderForExistUser";
+import { handleSaveOrderForNonUser } from "./handleSaveOrderForNonUser";
+import { handleSavedOrderItemsForExistUser } from "./handleSavedOrderItemsForExistUser";
+import { handleSavedOrderItemsForNonUser } from "./handleSavedOrderItemsForNonUser";
 
 
-export const handleCartCheckout = async (navigate:Function,cart: CartProps[], deliveryPrice: number, shippingInfoForExistUsers: ShippingInfo) => {
+export const handleCartCheckout = async (
+    navigate: Function,
+    cart: CartProps[],
+    deliveryPrice: number,
+    shippingInfoForExistUsers: ShippingInfo,
+    setIsNotificationVisible: (value: boolean) => void,
+) => {
     try {
+        // first IF
         if (!isTokenExpired()) {
             const token = localStorage.getItem('jwt')
             if (!isCartEmpty()) {
-                const response = await handleSaveOrder(cart, token, deliveryPrice, shippingInfoForExistUsers)
+                const response = await handleSaveOrderForExistUser(cart, token, deliveryPrice, shippingInfoForExistUsers)
                 if (response.status === 200) {
                     const order = await response.json();
-                    console.log(order)
                     for (const item of cart) {
-                        await handleSavedOrderItems([item], order.id)
+                        await handleSavedOrderItemsForExistUser([item], order.id)
 
                     }
                     navigate(`/payment?orderId=${order.id}`)
                     console.log("ur cart has been saved in our BE")
                 }
-            } else {
+            }
+            else {
                 throw new Error('Your cart is empty!');
 
             }
-        } else {
-            throw new Error('User login session has been expired, please sign-in again.');
+            // second if
+        } else if (isNonUser()) {
+            const response = await handleSaveOrderForNonUser(cart, deliveryPrice, shippingInfoForExistUsers)
+            if (response.status === 200) {
+                const order = await response.json();
+                for (const item of cart) {
+                    await handleSavedOrderItemsForNonUser([item], order.id)
 
+                }
+                navigate(`/payment?orderId=${order.id}`)
+                console.log("ur cart has been saved in our BE")
+            }
+        } else {
+            setIsNotificationVisible(true)
+            throw new Error('User login session has been expired, please sign-in again.');
         }
     } catch (error: any) {
         console.error(error.message);

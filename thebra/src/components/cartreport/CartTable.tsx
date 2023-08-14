@@ -4,7 +4,9 @@ import { AppDispatch, RootState } from "../../redux/store"
 import { CartProps } from "../../type/CartProps"
 import { findListOfSize34, findListOfSize36, handleDecreaseQuantityFor34, handleDecreaseQuantityFor36, handleIncreaseQuantityFor34, handleIncreaseQuantityFor36 } from "../../util/cart/computeCart"
 import './style/cartreport.scss'
-import { useState } from "react"
+import './style/carttable.scss'
+import { useEffect, useState } from "react"
+import { fetchProducts } from "../../redux/actions/getProducts"
 export const CartTable = ({
     itemImagesFor34,
     itemImagesFor36,
@@ -27,9 +29,14 @@ export const CartTable = ({
         setListOfSize36(prevList => prevList.filter(item => item.productId !== productId));
         window.location.reload()
     };
+    useEffect(() => {
+        if (!products) {
+            dispatch(fetchProducts())
+            console.log(products)
+        }
+    }, [])
     return (
         <div className="table_container">
-
             <table>
                 <tbody>
                     {listOfSize34.map((item: CartProps, index: number) => (
@@ -48,18 +55,32 @@ export const CartTable = ({
                                     </div>
                                 </div>
                             </td>
-                            <div className='stock_container'>
-                                <td className='quantity_box'>
-                                    <button onClick={() => handleDecreaseQuantityFor34(item, dispatch)}>-</button>
-                                    <span>{item.productSize['34']}</span>
-                                    <button onClick={() => handleIncreaseQuantityFor34(products, item, dispatch)}>+</button>
-                                </td>
+                            {/* <div className='stock_container'> */}
+                            <td className='quantity_box'>
+                                <button
+                                    className={`button ${item.productSize['34'] === 1 ? "disabledButton" : ""}`}
+                                    disabled={item.productSize['34'] === 1}
+                                    onClick={() => handleDecreaseQuantityFor34(item, dispatch)}>-
+                                </button>
+                                <span>{item.productSize['34']}</span>
+                                <button
+                                    disabled={item.productSize['34'] >= products?.find(product => product.id === item.productId)?.productSize['34']}
+                                    onClick={() => handleIncreaseQuantityFor34(products, item, dispatch)}
+                                    className={`button ${item.productSize['34'] >= products?.find(product => product.id === item.productId)?.productSize['34']
+                                        ? "disabledButton"
+                                        : ''
+                                        }`}
+                                >
+                                    +
+                                </button>
+                            </td>
+                            <td>
                                 <button className='closeButton' onClick={() => handleRemoveItem(item.productId, true, false)}>Remove</button>
-
-                            </div>
-                            <div className='price_container'>
-                                <td>{item.price * item.productSize['34']} €</td>
-                            </div>
+                            </td>
+                            {/* </div> */}
+                            {/* <div className='price_container'> */}
+                            <td>{item.price * item.productSize['34']} €</td>
+                            {/* </div> */}
                         </tr>
                     ))}
                     {listOfSize36.map((item: CartProps, index: number) => (
@@ -78,17 +99,30 @@ export const CartTable = ({
                                     </div>
                                 </div>
                             </td>
-                            <div className='stock_container'>
-                                <td className='quantity_box'>
-                                    <button onClick={() => handleDecreaseQuantityFor36(item, dispatch)}>-</button>
-                                    <span>{item.productSize['36']}</span>
-                                    <button onClick={() => handleIncreaseQuantityFor36(products, item, dispatch)}>+</button>
-                                </td>
+                            <td className='quantity_box'>
+                                <button
+                                    className={`button ${item.productSize['36'] === 1 ? "disabledButton" : ""}`}
+                                    disabled={item.productSize['36'] === 1}
+                                    onClick={() => handleDecreaseQuantityFor36(item, dispatch)}>-
+                                </button>
+                                <span>{item.productSize['36']}</span>
+                                <button
+                                    disabled={item.productSize['36'] >= products?.find(product => product.id === item.productId)?.productSize['36']}
+                                    onClick={() => handleIncreaseQuantityFor36(products, item, dispatch)}
+                                    className={`button ${item.productSize['36'] >= products?.find(product => product.id === item.productId)?.productSize['36']
+                                        ? "disabledButton"
+                                        : ''
+                                        }`}
+                                >
+                                    +
+                                </button>
+                            </td>
+                            <td>
                                 <button className='closeButton' onClick={() => handleRemoveItem(item.productId, false, true)}>Remove</button>
-                            </div>
-                            <div className='price_container'>
-                                <td>{item.price * item.productSize['36']} €</td>
-                            </div>
+                            </td>
+                            {/* <div className='price_container'> */}
+                            <td>{item.price * item.productSize['36']}€</td>
+                            {/* </div> */}
                         </tr>
                     ))}
                 </tbody>

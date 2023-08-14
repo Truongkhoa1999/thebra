@@ -11,3 +11,7 @@ export const isTokenExpired = (): boolean => {
     }
     return true;
 }
+export const isNonUser = () => {
+    const isNonUserValue = localStorage.getItem('isNonUser');
+    return isNonUserValue === 'true';
+}

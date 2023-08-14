@@ -1,4 +1,3 @@
-import { Link, useNavigate } from 'react-router-dom'
 import './style/cartreport.scss'
 import { useDispatch, useSelector } from 'react-redux'
 import { AppDispatch, RootState } from '../../redux/store'
