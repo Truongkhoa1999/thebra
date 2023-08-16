@@ -1,9 +1,8 @@
 import { CardElement, useStripe, useElements } from "@stripe/react-stripe-js";
 import "./style/paymentform.scss";
 import CreditCardIcon from "@mui/icons-material/CreditCard";
-import Preloader from "../loader/Preloader";
 import { useEffect, useState } from "react";
-import { useLocation, useParams } from "react-router-dom";
+import { useLocation } from "react-router-dom";
 import { handlePayment } from "../../util/cart/handlePayment";
 
 export const PaymentForm = () => {
@@ -11,16 +10,16 @@ export const PaymentForm = () => {
   const elements = useElements();
   const [totalAmount, setTotalAmount] = useState<number>(0);
   const totalAmountInCents = Math.round(totalAmount * 100);
-  console.log(totalAmount);
   const location = useLocation();
   const searchParams = new URLSearchParams(location.search);
   const orderId = searchParams.get("orderId");
 
   useEffect(() => {
+    // Get orders informaiton
     const fetchOrder = async () => {
       try {
         const response = await fetch(
-          `http://localhost:8080/api/v1/order/${orderId}`
+          `https://thebrabe.onrender.com/api/v1/order/${orderId}`
         );
         if (response.ok) {
           const orderData = await response.json();
@@ -36,52 +35,25 @@ export const PaymentForm = () => {
     fetchOrder();
   }, []);
 
-  // const handlePayment = async () => {
-  //   if (!stripe || !elements) {
-  //     return (<Preloader />);
-  //   }
-  //   const cardElement = elements.getElement(CardElement);
-  //   try {
-  //     const { token } = await stripe.createToken(cardElement!);
-  //     console.log(token)
-
-  //     const response = await fetch('http://localhost:8080/api/v1/stripe/charge', {
-  //       method: 'POST',
-  //       headers: {
-  //         'Content-Type': 'application/json',
-  //       },
-  //       body: JSON.stringify({
-  //         amount: totalAmountInCents,
-  //         currency: 'EUR',
-  //         stripeToken: token?.id
-  //       }),
-  //     });
-
-  //     if (response.ok) {
-  //       console.log('Payment successful!');
-  //     } else {
-  //       console.log('Payment failed:', await response.text());
-  //     }
-  //   } catch (error: any) {
-  //     console.log('Error:', error.message);
-  //   }
-  // }
-
   return (
     <div className="payment_form_container">
       <div>
         <h1>Payment</h1>
         <CreditCardIcon />
       </div>
-
+      {/* <PaymentElement /> */}
       <CardElement className="card-elements" />
       <button
+        disabled={!stripe}
         onClick={() => {
-          handlePayment(stripe, elements, totalAmountInCents,orderId);
+          // handlePayment(stripe, elements, totalAmountInCents, orderId);
+          handlePayment(stripe, elements, totalAmountInCents);
+
         }}
       >
         Pay EUR Now
       </button>
+
     </div>
   );
 };

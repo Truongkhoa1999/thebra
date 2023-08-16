@@ -2,7 +2,7 @@ import { CartProps } from "../../type/CartProps";
 import { isNonUser, isTokenExpired } from "../jwt/checkIfJwtExpried"
 import { isCartEmpty } from "./isCartEmpty";
 
-import { ShippingInfo } from "../../type/ShippingInfo";
+import { ShippingInfo, ShippingInfoForNonUser } from "../../type/ShippingInfo";
 import { handleSaveOrderForExistUser } from "./handleSaveOrderForExistUser";
 import { handleSaveOrderForNonUser } from "./handleSaveOrderForNonUser";
 import { handleSavedOrderItemsForExistUser } from "./handleSavedOrderItemsForExistUser";
@@ -14,6 +14,7 @@ export const handleCartCheckout = async (
     cart: CartProps[],
     deliveryPrice: number,
     shippingInfoForExistUsers: ShippingInfo,
+    shippingInfoForNonUsers: ShippingInfoForNonUser,
     setIsNotificationVisible: (value: boolean) => void,
 ) => {
     try {
@@ -38,7 +39,7 @@ export const handleCartCheckout = async (
             }
             // second if
         } else if (isNonUser()) {
-            const response = await handleSaveOrderForNonUser(cart, deliveryPrice, shippingInfoForExistUsers)
+            const response = await handleSaveOrderForNonUser(cart, deliveryPrice, shippingInfoForNonUsers)
             if (response.status === 200) {
                 const order = await response.json();
                 for (const item of cart) {

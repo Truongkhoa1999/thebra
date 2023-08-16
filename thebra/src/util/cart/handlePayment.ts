@@ -1,21 +1,25 @@
-import { CardElement } from "@stripe/react-stripe-js";
+import { CardElement, useElements, useStripe } from "@stripe/react-stripe-js";
 import { Stripe, StripeElements } from "@stripe/stripe-js";
+import { CurrencyEnum } from "../../data/CurrencyEnum";
 
 export const handlePayment = async (
   stripe: Stripe | null,
   elements: StripeElements | null,
   totalAmountInCents: number,
-  orderId:string | null
+  // orderId: string | null
 ) => {
   if (!stripe || !elements) {
-    throw new Error("Stripe or elements not available");
+    return;
   }
 
   const cardElement = elements.getElement(CardElement);
-  try {
-    const { token } = await stripe.createToken(cardElement!);
+  if (!cardElement) {
+    return;
+  }
 
-    const response = await fetch("https://thebrabe.onrender.com/api/v1/stripe/charge", {
+  try {
+    const { token } = await stripe.createToken(cardElement);
+    const response = await fetch("https://thebrabe.onrender.com/api/v1/stripe/", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -24,14 +28,15 @@ export const handlePayment = async (
         amount: totalAmountInCents,
         currency: "EUR",
         stripeToken: token?.id,
+        // orderId: orderId,
       }),
     });
 
     if (response.ok) {
-      return "Payment successful";
-      const updateOrderStatus = await fetch(`https://thebrabe.onrender.com/api/v1/order/${orderId}`)
+      console.log("Payment successful!");
     } else {
-      throw new Error("Payment failed");
+      // Handle payment failure
+      console.log("Payment failed:", await response.text());
     }
   } catch (error) {
     if (error instanceof Error) {

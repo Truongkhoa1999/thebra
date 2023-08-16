@@ -1,9 +1,9 @@
-import { ShippingInfo } from "../../type/ShippingInfo";
+import { ShippingInfoForNonUser } from "../../type/ShippingInfo";
 import { cartTotal } from "./computeCart";
 import { CartProps } from "../../type/CartProps";
 
-export const handleSaveOrderForNonUser = async (cart: CartProps[], deliveryPrice: number, shippingInfoForExistUsers: ShippingInfo) => {
-    const { address, city, postalCode, country } = shippingInfoForExistUsers
+export const handleSaveOrderForNonUser = async (cart: CartProps[], deliveryPrice: number, shippingInfoForNonUsers: ShippingInfoForNonUser) => {
+    const { address, city, postalCode, country, gmail } = shippingInfoForNonUsers
     const mergedAddress = `${address},${city},${postalCode},${country}`
     let deliveryMethod = '';
     if (deliveryPrice === 5.95) {
@@ -20,8 +20,7 @@ export const handleSaveOrderForNonUser = async (cart: CartProps[], deliveryPrice
         shippingAddress: mergedAddress,
         deliveryMethod: deliveryMethod,
         orderDate: new Date(),
-        // userId: isSignedIn ? userId : ""
-        // userId: ""
+        anonymousUserGmail: gmail
     }
 
     const response = await fetch('https://thebrabe.onrender.com/api/v1/order/forNonUser', {

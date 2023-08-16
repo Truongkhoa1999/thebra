@@ -9,6 +9,7 @@ import { cartTotal } from "../../util/cart/computeCart";
 import { CartHeadingForDeliveryForm } from "./CartHeadingForDeliveryForm";
 import './style/cartdeliverymethod.scss'
 import SignInSuggestion from "../notification/signin/SignInSuggestion";
+import { isNonUser } from "../../util/jwt/checkIfJwtExpried";
 export const CartDeliveryMethod = () => {
     const [selectedDeliveryType, setSelectedDeliveryType] = useState(0)
     const deliveryPrice = deliveryFee[selectedDeliveryType];
@@ -22,10 +23,18 @@ export const CartDeliveryMethod = () => {
         postalCode: '',
         country: '',
     });
+    const [shippingInfoForNonUsers, setshippingInfoForNonUsers] = useState({
+        address: '',
+        city: '',
+        postalCode: '',
+        country: '',
+        gmail: ''
+    });
 
     const handleChange = (e: ChangeEvent<HTMLInputElement>) => {
         const { name, value } = e.target;
         setShippingInfoForExistUsers((prevInfo) => ({ ...prevInfo, [name]: value }));
+        setshippingInfoForNonUsers((prevInfo) => ({ ...prevInfo, [name]: value }))
     };
     const totalPrice = useMemo(() => cartTotal(cart, deliveryPrice), [deliveryPrice])
 
@@ -36,22 +45,6 @@ export const CartDeliveryMethod = () => {
 
     return (
         <div className='delivery_method'>
-            {/* <fieldset>
-                <div className="fieldsetItem">
-                    <input type="radio" id="standard" name="drone" value={0}
-                        checked onChange={(e) => handleSwitchDeliveryType(e, setSelectedDeliveryType)} />
-                    <label htmlFor="standard">Standard Delivery To Posti Outlet (5-7 Days) 5.95 €.</label>
-                </div>
-
-                <div className="fieldsetItem">
-                    <input type="radio" id="express" name="drone" value={1} onChange={(e) => handleSwitchDeliveryType(e, setSelectedDeliveryType)} />
-                    <label htmlFor="express">Express Delivery To Posti Outlet (1-3 Business Days) 12.95 €.</label>
-                </div>
-                <div className="fieldsetItem">
-                    <input type="radio" id="home" name="drone" value={2} onChange={(e) => handleSwitchDeliveryType(e, setSelectedDeliveryType)} />
-                    <label htmlFor="home">Standard Delivery To Posti Outlet (4-7 Days) 10.95 €.</label>
-                </div>
-            </fieldset> */}
             <div className="deliveryMethod_container">
                 <button
                     className={`methodButton ${selectedDeliveryType === 0 ? "methodButton-active" : ""}`}
@@ -77,7 +70,7 @@ export const CartDeliveryMethod = () => {
             <div className='checkout_container'>
                 <form onSubmit={(e) => {
                     e.preventDefault()
-                    handleCartCheckout(navigate, cart, deliveryPrice, shippingInfoForExistUsers, setIsNotificationVisible)
+                    handleCartCheckout(navigate, cart, deliveryPrice, shippingInfoForExistUsers, shippingInfoForNonUsers, setIsNotificationVisible)
                 }}>
                     <label>
                         Address:
@@ -122,6 +115,18 @@ export const CartDeliveryMethod = () => {
                             required
                         />
                     </label>
+                    {isNonUser() && (
+                        <label>
+                            Gmail:
+                            <input
+                                type="email"
+                                name="gmail"
+                                value={shippingInfoForNonUsers.gmail}
+                                onChange={handleChange}
+                                required
+                            />
+                        </label>
+                    )}
                     <br />
                     <button className='checkout-button' type="submit">Check out</button>
                 </form>

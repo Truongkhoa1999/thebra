@@ -24,7 +24,6 @@ export const handleSaveOrderForExistUser = async (cart: CartProps[], token: any,
         shippingAddress: mergedAddress,
         deliveryMethod: deliveryMethod,
         orderDate: new Date(),
-        // userId: isSignedIn ? userId : ""
         userId: userId
     }
 
