@@ -29,7 +29,7 @@ export const handleCartCheckout = async (
                         await handleSavedOrderItemsForExistUser([item], order.id)
 
                     }
-                    navigate(`/payment?orderId=${order.id}`)
+                    navigate(`/payments?orderId=${order.id}`)
                     console.log("ur cart has been saved in our BE")
                 }
             }
@@ -46,7 +46,7 @@ export const handleCartCheckout = async (
                     await handleSavedOrderItemsForNonUser([item], order.id)
 
                 }
-                navigate(`/payment?orderId=${order.id}`)
+                navigate(`/payments?orderId=${order.id}`)
                 console.log("ur cart has been saved in our BE")
             }
         } else {

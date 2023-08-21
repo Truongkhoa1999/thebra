@@ -1,4 +1,12 @@
-.payment_container{
-    width: 100vw;
-    height: 100vh;
+.payment_container {
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  overflow-y: hidden;
+  align-items: center;
+  h1 {
+    text-align: center;
+  }
 }
