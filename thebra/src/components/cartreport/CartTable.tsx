@@ -1,5 +1,5 @@
 import { useSelector } from "react-redux"
-import { deleteCartItem, saveCart } from "../../redux/actions/cart"
+import { deleteCartItem } from "../../redux/actions/cart"
 import { AppDispatch, RootState } from "../../redux/store"
 import { CartProps } from "../../type/CartProps"
 import { findListOfSize34, findListOfSize36, handleDecreaseQuantityFor34, handleDecreaseQuantityFor36, handleIncreaseQuantityFor34, handleIncreaseQuantityFor36 } from "../../util/cart/computeCart"

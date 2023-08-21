@@ -7,7 +7,7 @@ import { ProductProps } from "../../type/ProductProps";
 interface ProductDetailProps  {
   products: ProductProps[];
 }
-export const ProductDetails:React.FC<ProductDetailProps> = ({products}) => {
+export const ProductDetails:React.FC<ProductDetailProps> = () => {
 
   return (
     <div className="productDetails_container">

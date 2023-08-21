@@ -1,13 +1,12 @@
 import { Link } from "react-router-dom";
 import "./style/PopupMenu.scss";
-import { useEffect, useState } from "react";
-import { isUserSignedIn } from "../../util/checkingSigninStatus/isUserSignedIn";
-import { handleAuthenticationStatus } from "../../util/checkingSigninStatus/handleAuthenticationStatus";
+// import { useEffect, useState } from "react";
+// import { isUserSignedIn } from "../../util/checkingSigninStatus/isUserSignedIn";
 export const PopupMenu = ({ className }: { className: string }) => {
-  const [isSignedIn, setIsSignedIn] = useState(isUserSignedIn());
-  useEffect(() => {
-    setIsSignedIn(isUserSignedIn());
-  }, []);
+  // const [isSignedIn, setIsSignedIn] = useState(isUserSignedIn());
+  // useEffect(() => {
+  //   setIsSignedIn(isUserSignedIn());
+  // }, []);
 
   return (
     <div className={className}>

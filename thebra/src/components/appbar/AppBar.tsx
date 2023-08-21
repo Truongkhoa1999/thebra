@@ -11,7 +11,7 @@ import Marquee from "./Marquee";
 import { useEffect, useState } from "react";
 import { handleAuthenticationStatus } from "../../util/checkingSigninStatus/handleAuthenticationStatus";
 import { isUserSignedIn } from "../../util/checkingSigninStatus/isUserSignedIn";
-import { Badge, colors } from "@mui/material";
+import { Badge } from "@mui/material";
 import { useSelector } from "react-redux";
 import { RootState } from "../../redux/store";
 import { CartProps } from "../../type/CartProps";

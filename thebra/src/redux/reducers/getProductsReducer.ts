@@ -6,7 +6,7 @@ import {
     ProductActionTypes,
   } from '../actions/getProducts'
   // PLS BRING CART OUT OF MY SHIT!!!
-  const savedCart = localStorage.getItem('cart')
+  // const savedCart = localStorage.getItem('cart')
   
   // >?>?>
   

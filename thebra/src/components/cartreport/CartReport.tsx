@@ -1,17 +1,10 @@
 import './style/cartreport.scss'
 import { useDispatch, useSelector } from 'react-redux'
 import { AppDispatch, RootState } from '../../redux/store'
-import { ProductProps } from '../../type/ProductProps'
-import { cartTotal, findListOfSize34, findListOfSize36, handleDecreaseQuantityFor34, handleDecreaseQuantityFor36, handleIncreaseQuantityFor34, handleIncreaseQuantityFor36 } from '../../util/cart/computeCart'
-import { CartProps } from '../../type/CartProps'
-// import { truncateCartTitleLength } from '../../util/cart/cartTitle'
-import { handleCartCheckout } from '../../util/cart/handleCartCheckout'
-import { ChangeEvent, useEffect, useMemo, useState } from 'react'
-import { deliveryFee } from '../../data/deliveryCost'
-import { handleSwitchDeliveryType } from '../../util/cart/hanldeSwitchDeliveryType'
+import {  findListOfSize34, findListOfSize36} from '../../util/cart/computeCart'
+import {  useEffect, useState } from 'react'
 import { fetchItemImagesFor34, fetchItemImagesFor36 } from '../../util/getImageByProductId/getImageByProductId'
-import { removeItem } from '../../util/cart/removeItem'
-import { deleteCartItem, saveCart } from '../../redux/actions/cart'
+import {  saveCart } from '../../redux/actions/cart'
 import { CartTable } from './CartTable'
 import { CartDeliveryMethod } from './CartDeliveryMethod'
 import { CartHeadingForTable } from './CartHeadingForTable'
@@ -49,7 +42,7 @@ export const CartReport = () => {
       dispatch={dispatch}
        />
       <CartHeadingForDeliveryMethod />
-      <CartDeliveryMethod />
+    <CartDeliveryMethod />
     </div>
   )
 }

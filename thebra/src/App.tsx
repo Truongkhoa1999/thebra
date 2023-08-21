@@ -30,6 +30,7 @@ function App() {
   return (
     <Router>
       <Routes>
+      <Route path="/*" element={<Homepage />} />
         <Route path="/homepage" element={<Homepage />} />
         <Route path="/product/:id" element={<ProductDetails products={products} />} />
         <Route path="/signin" element={<SignIn />} />
@@ -45,10 +46,6 @@ function App() {
           path="/payments"
           element={<Elements stripe={stripePromise}><Payments /></Elements>}
         />
-        {/* <Route
-          path="/payment?orderId=:orderId"
-          element={<Elements stripe={stripePromise}><Payment /></Elements>}
-        /> */}
       </Routes>
     </Router>
   );

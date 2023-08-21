@@ -1,6 +1,6 @@
 import { useNavigate } from "react-router-dom";
 
-const SignInSuggestion = ({ className, setIsNotificationVisible }: { className: string, setIsNotificationVisible: (value: boolean) => void }) => {
+const SignInSuggestion = ({  setIsNotificationVisible }: { className: string, setIsNotificationVisible: (value: boolean) => void }) => {
     const navigate = useNavigate()
 
     const handleCloseClick = () => {

@@ -11,6 +11,7 @@ export const handleSaveCart = async (dispatch: any, productById: ProductProps, c
       "36": is36 ? 1 : 0
     },
     productId: productById?.id ?? '',
+    images:[],
     map: undefined,
   }
   const existingItemIndex = cart.findIndex((item: CartProps) =>
