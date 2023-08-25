@@ -1,86 +1,81 @@
 .relevant_container {
-    width: 85%;
+  width: 85%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-left: auto;
+  margin-right: auto;
+  padding: 0;
+
+  @media (min-width: 768px) {
+    width: 70%;
+  }
+
+  .heading {
+    font-family: "Quicksand-regular";
+    margin: 2rem 0 2rem 0;
+  }
+
+  // Moblie
+  .relevant-items {
     display: flex;
-    flex-direction: column;
-    align-items: center;
-    margin-left: auto;
-    margin-right: auto;
+    flex-direction: row;
+    flex-wrap: wrap;
     padding: 0;
 
-    @media(min-width:768px) {
-        width: 70%;
-
+    @media (min-width: 768px) {
+      width: 90%;
+      margin-left: auto;
+      margin-right: auto;
     }
 
-    .heading {
-        font-family: 'Quicksand-regular';
-        margin: 2rem 0 2rem 0;
-    }
+    .item {
+      display: flex;
+      flex-direction: column;
+      width: calc(50% - 10px);
+      margin-bottom: 4rem;
+      margin-right: 10px;
+      @media (min-width: 768px) {
+        width: calc(33.33% - 10px);
+      }
 
-    // Moblie
-    .relevant-items {
-        display: flex;
-        flex-direction: row;
-        flex-wrap: wrap;
-        padding: 0;
+      .item-img {
+        width: 100%;
+        height: 14rem;
 
-        @media(min-width:768px) {
-            width: 90%;
-            margin-left: auto;
-            margin-right: auto;
+        @media (min-width: 768px) {
+          width: 60%;
+          align-self: center;
+        }
+      }
+
+      .item-text {
+        width: 100%;
+        margin-top: 12px;
+        padding-bottom: 10px;
+
+        h2 {
+          font-size: 14px;
+          font-family: "Quicksand-regular";
+          color: black;
+          text-decoration: none !important;
         }
 
-
-        .item {
-            display: flex;
-            flex-direction: column;
-            width: calc(50% - 10px);
-            margin-bottom: 4rem;
-            // border: 1px solid red;
-margin-right: 10px;
-            @media (min-width:768px) {
-                width: calc(33.33% - 10px);
-            }
-
-
-            .item-img {
-                width: 100%;
-                height: 14rem;
-
-                @media (min-width:768px) {
-                    width: 60%;
-                    align-self: center;
-                }
-            }
-
-            .item-text {
-                width: 100%;
-                margin-top: 12px;
-                padding-bottom: 10PX;
-
-                h2 {
-                    font-size: 14px;
-                    font-family: 'Quicksand-regular';
-                }
-
-                @media (min-width:768px) {
-                    width: 60%;
-                    align-self: center;
-                }
-            }
-
-            &:hover {
-                cursor: pointer;
-
-                .item-text {
-                    border-bottom: 1px solid black;
-
-                }
-            }
-
+        @media (min-width: 768px) {
+          width: 60%;
+          align-self: center;
         }
-    }
+      }
 
+      &:hover {
+        cursor: pointer;
+        color: brown;
+        .item-text {
+          border-bottom: 1px solid black;
+        }
+      }
+    }
+  }
 }
 
 // desktop

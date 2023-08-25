@@ -35,14 +35,12 @@ export const RelevantProductsByCategory = ({
       <h2 className="heading">{category}</h2>
       <div className="relevant-items">
         {relevantProductsByCategory?.map((p) => (
-          <Link className="item" to={`/product/${p.id}`} key={p.id}>
-            {/* <div className="item"> */}
+          <Link style={{textDecoration:"none"}} className="item" to={`/product/${p.id}`} key={p.id}>
             <img className="item-img" src={p.images[2]} />
             <div className="item-text">
-              <h2>{p.title}</h2>
+              <h2 >{p.title}</h2>
               <h2>{p.price}</h2>
             </div>
-            {/* </div> */}
           </Link>
         ))}
       </div>

@@ -12,6 +12,7 @@ import { AppDispatch, RootState } from "../../redux/store";
 import { fetchProducts } from "../../redux/actions/getProducts";
 import { useEffect } from "react";
 import { smoothScroll } from "../../util/window/smoothScroll";
+import { InstagramView } from "../../components/instagramview/InstagramView";
 
 const Homepage = () => {
   const dispatch = useDispatch<AppDispatch>()
@@ -29,6 +30,7 @@ const Homepage = () => {
       <Carousel key="carousel1" />
       <ProductByCategories />
       <ProductByNumberOfClicks products={products} />
+      <InstagramView />
       <Footer />
     </div>
   );

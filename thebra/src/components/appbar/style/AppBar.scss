@@ -125,7 +125,7 @@
       }
 
       .accountButton--active {
-        color: green;
+       color: green;
       }
 
       display: flex;
@@ -163,8 +163,5 @@
   .lower {
     width: 100%;
 
-    @media (min-width: 768px) {
-      width: 70%;
-    }
   }
 }

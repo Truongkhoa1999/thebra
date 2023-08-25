@@ -20,7 +20,8 @@ export const handleSaveOrderForNonUser = async (cart: CartProps[], deliveryPrice
         shippingAddress: mergedAddress,
         deliveryMethod: deliveryMethod,
         orderDate: new Date(),
-        anonymousUserGmail: gmail
+        anonymousUserGmail: gmail,
+        country: country
     }
 
     const response = await fetch('https://thebrabe.onrender.com/api/v1/order/forNonUser', {

@@ -69,8 +69,11 @@
           margin-top: 10px;
           width: 100%;
           font-family: 'Quicksand-Bold';
-          color: rgb(180, 167, 167);
+          color: black;
 
+        }
+        h4{
+          color: black;
         }
 
         &:hover {
@@ -78,8 +81,8 @@
             border-bottom: 1px solid rgb(180, 167, 167);
             color: black;
 
-            h5 {
-              color: black;
+            h5,h4 {
+              color: brown;
             }
 
           }

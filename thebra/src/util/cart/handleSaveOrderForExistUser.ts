@@ -24,7 +24,8 @@ export const handleSaveOrderForExistUser = async (cart: CartProps[], token: any,
         shippingAddress: mergedAddress,
         deliveryMethod: deliveryMethod,
         orderDate: new Date(),
-        userId: userId
+        userId: userId, 
+        country: country
     }
 
     const response = await fetch('https://thebrabe.onrender.com/api/v1/order/', {

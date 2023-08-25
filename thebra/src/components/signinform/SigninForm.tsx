@@ -37,7 +37,7 @@ export const SigninForm = () => {
       
                 <div className='submit_container'>
                 <button className=' button1 login_button' type="submit" >Login</button>
-                <button  className=' button1 newaccount_button'>create an account</button>
+                <button onClick={() => {navigate("/signup")}}  className=' button1 newaccount_button'>create an account</button>
                      </div>
             </form>
         </div>

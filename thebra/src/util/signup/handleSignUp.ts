@@ -13,7 +13,9 @@ export const handleSignUp = (userInput: userInputProps, navigate: Function) => {
         const { username, password, lastName, firstName, phone, gmail } = userInput
 
         try {
-            const response = await fetch('https://thebrabe.onrender.com/api/v1/customers/signup', {
+            const url="https://thebrabe.onrender.com/api/v1/customers/signup"
+
+            const response = await fetch(url, {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
