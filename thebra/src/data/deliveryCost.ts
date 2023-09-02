@@ -1,2 +1,2 @@
-export const deliveryFee = [1, 12.95]
+export const deliveryFee = [0.60,9.90,19.90]
 

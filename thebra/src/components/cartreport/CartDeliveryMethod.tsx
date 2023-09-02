@@ -11,15 +11,22 @@ import "./style/cartdeliverymethod.scss";
 import SignInSuggestion from "../notification/signin/SignInSuggestion";
 import { isNonUser } from "../../util/jwt/checkIfJwtExpried";
 import { smoothScroll } from "../../util/window/smoothScroll";
+import { countryData } from "../../data/countryData";
 export const CartDeliveryMethod = () => {
   const [selectedDeliveryType, setSelectedDeliveryType] = useState(0);
+  const [isFreeShipForZone1, setIsFreeShipForZone1] = useState(false);
+  const [isFreeShipForZone2, setIsFreeShipForZone2] = useState(false);
+  const [isInFinland, setisInFinland] = useState(true);
+
   const deliveryPrice = deliveryFee[selectedDeliveryType];
   const [isNotificationVisible, setIsNotificationVisible] = useState(false);
-  const [isFreeShip, setIsFreeShip] = useState(false);
+  const [isFreeShipForFinland, setIsFreeShipForFinland] = useState(false);
+
+  const [isZone1, setIsZone1] = useState(false);
+  const [isZone2, setIsZone2] = useState(false);
 
   const navigate = useNavigate();
   const { cart } = useSelector((state: RootState) => state.cart);
-  const [isOutsideFinland, setIsOutSideFinland] = useState(false);
   const [shippingInfoForExistUsers, setShippingInfoForExistUsers] = useState({
     address: "",
     city: "",
@@ -35,20 +42,60 @@ export const CartDeliveryMethod = () => {
     gmail: "",
     telephone: "",
   });
-  const countryData = [
-    { value: "Finland", label: "Finland" },
-    { value: "Russia", label: "Russia" },
-  ];
 
   const handleChange = (
     e: ChangeEvent<HTMLInputElement | HTMLSelectElement>
   ) => {
     const { name, value } = e.target;
     if (name === "country") {
-      const isOutsideFinland = value !== "Finland";
-      setIsOutSideFinland(isOutsideFinland);
-      setSelectedDeliveryType(isOutsideFinland ? 1 : 0);
+      // if (value === "zone1") {
+      //   setSelectedDeliveryType(1);
+      //   setIsZone1(true);
+      //   setIsZone2(false);
+      //   setisInFinland(false);
+      // } else if (value === "zone2") {
+      //   setSelectedDeliveryType(2);
+      //   setIsZone1(false);
+      //   setIsZone2(true);
+      //   setisInFinland(false);
+      // } else if (value === "Finland") {
+      //   setSelectedDeliveryType(0);
+      //   setIsZone1(false);
+      //   setIsZone2(false);
+      //   setisInFinland(true);
+      // }
+
+      const selectedCountry = countryData.find((country) =>
+        Array.isArray(country.label)
+          ? country.label.includes(value)
+          : country.value === value
+      );
+
+      if (selectedCountry) {
+        setSelectedDeliveryType(
+          selectedCountry.value === "zone1"
+            ? 1
+            : selectedCountry.value === "zone2"
+            ? 2
+            : 0
+        );
+        setIsZone1(selectedCountry.value === "zone1");
+        setIsZone2(selectedCountry.value === "zone2");
+        setisInFinland(selectedCountry.value === "Finland");
+      }
+
+      // Log the updated state values
+      console.log("Updated shippingInfoForExistUsers:", {
+        ...shippingInfoForExistUsers,
+        [name]: value,
+      });
+
+      console.log("Updated shippingInfoForNonUsers:", {
+        ...shippingInfoForNonUsers,
+        [name]: value,
+      });
       smoothScroll("deliverySection", true);
+
       setShippingInfoForExistUsers((prevInfo) => ({
         ...prevInfo,
         [name]: value,
@@ -57,8 +104,6 @@ export const CartDeliveryMethod = () => {
         ...prevInfo,
         [name]: value,
       }));
-      console.log(shippingInfoForExistUsers);
-      console.log(shippingInfoForNonUsers);
     } else {
       setShippingInfoForExistUsers((prevInfo) => ({
         ...prevInfo,
@@ -68,20 +113,23 @@ export const CartDeliveryMethod = () => {
         ...prevInfo,
         [name]: value,
       }));
-      console.log(shippingInfoForExistUsers);
-      console.log(shippingInfoForNonUsers);
     }
   };
 
   const totalPrice = useMemo(
-    () => cartTotal(cart, deliveryPrice, isOutsideFinland),
+    () => cartTotal(cart, deliveryPrice, isInFinland, isZone1, isZone2),
     [deliveryPrice]
   );
+
   useEffect(() => {
-    if (totalPrice >= 49 && !isOutsideFinland) {
-      setIsFreeShip(true);
+    if (totalPrice >= 49 && isInFinland) {
+      setIsFreeShipForFinland(true);
+    } else if (totalPrice >= 89 && isZone1) {
+      setIsFreeShipForZone1(true);
+    } else if (totalPrice >= 149 && isZone2) {
+      setIsFreeShipForZone2(true);
     }
-  }, [isFreeShip,selectedDeliveryType]);
+  }, [totalPrice, isInFinland, isZone1, isZone2, selectedDeliveryType]);
   return (
     <div id="deliverySection" className="delivery_method">
       <div className="deliveryMethod_container">
@@ -91,7 +139,9 @@ export const CartDeliveryMethod = () => {
             selectedDeliveryType === 0 ? "methodButton-active" : ""
           }`}
         >
-          {isFreeShip? "Standard Delivery Inside Finland (1-3 Business Days) 0€.": "Standard Delivery Inside Finland (1-3 Business Days) 5.95 €."}
+          {isFreeShipForFinland
+            ? "Standard Delivery Inside Finland (1-3 Business Days) 0€."
+            : "Standard Delivery Inside Finland (1-3 Business Days) 5.90 €."}
         </button>
         <button
           disabled={true}
@@ -99,7 +149,20 @@ export const CartDeliveryMethod = () => {
             selectedDeliveryType === 1 ? "methodButton-active" : ""
           }`}
         >
-          Standard Delivery Outside Finland (7-10 Business Days) 12.95€.
+          {isFreeShipForZone1
+            ? "Standard Delivery for Zone 1 (3-5 Business Days) 0€."
+            : "Standard Delivery for Zone 1 (3-5 Business Days) 9.90€."}
+        </button>
+        {/* >>>>>> */}
+        <button
+          disabled={true}
+          className={`methodButton ${
+            selectedDeliveryType === 2 ? "methodButton-active" : "" 
+          }`}
+        >
+          {isFreeShipForZone2
+            ? "Standard Delivery for Zone 2 (4-9 Business Days) 0€."
+            : "Standard Delivery for Zone 2 (4-9 Business Days) 19.90€."}
         </button>
         <h2 className="total-price">Subtotal: {totalPrice} €</h2>
       </div>
@@ -124,7 +187,11 @@ export const CartDeliveryMethod = () => {
             <input
               type="text"
               name="address"
-              value={shippingInfoForExistUsers.address}
+              value={
+                isNonUser()
+                  ? shippingInfoForNonUsers.address
+                  : shippingInfoForExistUsers.address
+              }
               onChange={handleChange}
               required
             />
@@ -135,7 +202,11 @@ export const CartDeliveryMethod = () => {
             <input
               type="text"
               name="city"
-              value={shippingInfoForExistUsers.city}
+              value={
+                isNonUser()
+                  ? shippingInfoForNonUsers.city
+                  : shippingInfoForExistUsers.city
+              }
               onChange={handleChange}
               required
             />
@@ -146,7 +217,11 @@ export const CartDeliveryMethod = () => {
             <input
               type="text"
               name="postalCode"
-              value={shippingInfoForExistUsers.postalCode}
+              value={
+                isNonUser()
+                  ? shippingInfoForNonUsers.postalCode
+                  : shippingInfoForExistUsers.postalCode
+              }
               onChange={handleChange}
               required
             />
@@ -159,15 +234,28 @@ export const CartDeliveryMethod = () => {
             </h5>
             <select
               name="country"
-              value={shippingInfoForExistUsers.country}
+              value={
+                isNonUser()
+                  ? shippingInfoForNonUsers.country
+                  : shippingInfoForExistUsers.country
+              }
               onChange={handleChange}
               required
+              defaultValue={"Finland"}
             >
-              {countryData.map((country, index) => (
-                <option key={index} value={country.value}>
-                  {country.label}
-                </option>
-              ))}
+              {countryData.map((country, index) =>
+                Array.isArray(country.label) ? (
+                  country.label.map((subCountry, subIndex) => (
+                    <option key={`${index}-${subIndex}`} value={subCountry}>
+                      {subCountry}
+                    </option>
+                  ))
+                ) : (
+                  <option key={index} value={country.value}>
+                    {country.label}
+                  </option>
+                )
+              )}
             </select>
           </label>
           <br />
@@ -176,7 +264,6 @@ export const CartDeliveryMethod = () => {
             <input
               type="text"
               name="telephone"
-              // value={shippingInfoForExistUsers.telephone shippingInfoForNonUsers.telephone}
               value={
                 isNonUser()
                   ? shippingInfoForNonUsers.telephone

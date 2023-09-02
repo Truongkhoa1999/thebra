@@ -1,0 +1,18 @@
+.checkoutprogress_container{
+    width: 100%;
+    display: flex;
+    margin-bottom: 1rem;
+    @media (min-width:768px) {
+        width: 68%;
+    }
+    .progress_button{
+        background-color: transparent;
+        margin-left: 1rem;
+        padding:  0.5rem;
+        border: none;
+        &:hover{
+            border-bottom: 1px solid black;
+            cursor: pointer;
+        }
+    }
+}

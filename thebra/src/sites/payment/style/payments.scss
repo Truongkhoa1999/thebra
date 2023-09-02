@@ -1,10 +1,97 @@
-// .cardelement{
-//     width: 80%;
-// }
-.payment_container{
-    width: 100%;
-    .cardelement{
-    width: 50%;
-    height: 40rem;
-}
+.payment_container {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  overflow-y: scroll;
+    overflow-x: hidden;
+  .paymentInfo_container {
+    font-family: "Quicksand-regular";
+    width: 90%;
+    margin-top: 2rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding-top: 4rem;
+    padding-bottom: 4rem;
+    @media (min-width: 768px) {
+      display: flex;
+      flex-direction: row;
+      align-items: stretch;
+      justify-content: center;
+    }
+    .orderInfo_container {
+      display: flex;
+      flex-direction: column;
+      width: 90%;
+
+      @media (min-width: 768px) {
+        width: 40%;
+      }
+      p {
+        width: 100%;
+      }
+      .subInfo_container {
+        width: 80%;
+        img {
+          margin-top: 1rem;
+          width: 60%;
+        }
+      }
+    }
+
+    .payment_form {
+      width: 90%;
+      background-color: white;
+      display: flex;
+      flex-direction: column;
+      display: flex;
+      align-items: stretch;
+      margin-top: 2rem;
+      border-radius: 4%;
+      box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+      @media (min-width: 768px) {
+        width: 30%;
+        margin-top: 0;
+      }
+      .cardelement {
+        width: 90%;
+        border: none;
+        padding-top: 1.5rem;
+        padding-bottom: 1.5rem;
+        border-radius: 4px;
+        align-self: center;
+        justify-self: center;
+      }
+      .pay_button {
+        width: 60%;
+        padding: 1rem;
+        background-color: transparent;
+        color: black;
+        border-radius: 4px;
+        border: none;
+        cursor: pointer;
+        transition: background-color 0.2s;
+        align-self: center;
+        margin-top: 2rem;
+        margin-bottom: 1rem;
+        @media (min-width: 768px) {
+          width: 50%;
+        }
+        &:hover{
+            border: 1px solid black;
+        }
+      }
+      .pay_button-disabled{
+        width: 60%;
+        padding: 1rem;
+        background-color: rgb(222, 221, 221);
+        border-radius: 4px;
+        border: none;
+        transition: background-color 0.2s;
+        align-self: center;
+        margin-top: 2rem;
+        margin-bottom: 1rem;
+      }
+    }
+  }
 }
