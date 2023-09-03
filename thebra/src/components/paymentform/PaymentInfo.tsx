@@ -131,12 +131,6 @@ export const PaymentInfo = () => {
         <p>Address: {order.shippingAddress}</p>
         <p>Total: {totalAmount}€</p>
         <p>Payment Status: {order.paymentStatus}</p>
-        {/* <div className="subInfo_container">
-          <img
-            src="https://firebasestorage.googleapis.com/v0/b/thebra-f81ef.appspot.com/o/power-by-stripe_03.png?alt=media&token=0cf0e15e-7e07-40ae-81b2-19d93baf1761"
-            alt=""
-          />
-        </div> */}
       </div>
       <div className="payment_form">
         <CardElement className="cardelement" />
@@ -149,32 +143,28 @@ export const PaymentInfo = () => {
         Pay Now
       </button>
       <div className="stripeInfo_container">
-        <h2>We support - Powered By Stripe </h2>
-        {/* Array list then */}
-        <img
-          src="https://firebasestorage.googleapis.com/v0/b/thebra-f81ef.appspot.com/o/LOGO%2FCard%20Logo%2FAmerican-Express-logo.png_1.avif?alt=media&token=3c89827e-12e5-4695-991c-086cefd5bec7"
-          alt="1"
-        />
-        <img
-          src="https://firebasestorage.googleapis.com/v0/b/thebra-f81ef.appspot.com/o/LOGO%2FCard%20Logo%2FMaster-Card-Blue-icon.png.avif?alt=media&token=ada574c5-2f6f-4a02-9feb-d59f183ece99"
-          alt="2"
-        />
-        <img
-          src="https://imgix.bustle.com/elite-daily/2016/05/07051134/13100877_1117225501673213_1002803250533131677_n.jpg?w=1200&h=630&fit=crop&crop=faces&fm=jpg"
-          alt="3"
-        />
-        <img
-          src="https://imgix.bustle.com/elite-daily/2016/05/07051134/13100877_1117225501673213_1002803250533131677_n.jpg?w=1200&h=630&fit=crop&crop=faces&fm=jpg"
-          alt="4"
-        />
-        <img
-          src="https://imgix.bustle.com/elite-daily/2016/05/07051134/13100877_1117225501673213_1002803250533131677_n.jpg?w=1200&h=630&fit=crop&crop=faces&fm=jpg"
-          alt=""
-        />
-        <img
-          src="https://imgix.bustle.com/elite-daily/2016/05/07051134/13100877_1117225501673213_1002803250533131677_n.jpg?w=1200&h=630&fit=crop&crop=faces&fm=jpg"
-          alt=""
-        />
+        <h2>Secured Payment By Stripe </h2>
+        <div className="logo_container">
+          <h1 className="logo-card visa">VISA</h1>
+          <h1 className="logo-card mc">
+            <span style={{ color: "orange" }}>Master</span>
+            <span style={{ color: "red" }}>Card</span>
+          </h1>
+          <h1 className="logo-card ae">American Express</h1>
+          <h1 className="logo-card ddc">
+            Disc<span style={{ color: "orange" }}>o</span>ver & Diners Club
+          </h1>
+          <h1 className="logo-card cu">
+            <span style={{ color: "red" }}>China</span>
+            <span style={{ color: "blue" }}> Union</span>
+            <span style={{ color: "#00908b" }}> Pay </span>
+          </h1>
+          <h1 className="logo-card">
+            <span style={{ color: "blue" }}>Japan</span>
+            <span style={{ color: "red" }}>Credit</span>
+            <span style={{ color: "green" }}>Bureau</span>
+          </h1>
+        </div>
       </div>
     </div>
   );

@@ -12,7 +12,7 @@ export const UserPopUpMenu = ({ isSignedIn }: { isSignedIn: boolean }) => {
      <div onClick={handleSignOut}>
         {isSignedIn ? "Sign-out" : "Sign-in"}
       </div>
-      <div onClick={() => navigate("/myorders")}>My Orders</div>
+      <div onClick={() => navigate("/myOrders")}>My Orders</div>
     </div>
   );
 };

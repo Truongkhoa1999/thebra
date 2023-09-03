@@ -8,8 +8,38 @@
     src: url('./fonts/quicksand/Quicksand-Bold.otf') format('opentype');
 
 }
+@font-face {
+    font-family: 'MyriadPro-Regular';
+    src: url('./fonts/Myriad/MYRIADPRO-REGULAR.OTF') format('opentype');
+}
+@font-face {
+    font-family: 'MyriadPro-Bold';
+    src: url('./fonts/Myriad/MYRIADPRO-BOLD.OTF') format('opentype');
+}
+@font-face {
+    font-family: 'BentonSans-Regular';
+    src: url('./fonts/BentonSan/BentonSansCompBlackRegular.otf') format('opentype');
+}
 
+
+// true type
 @font-face {
     font-family: 'Bebas_Neue';
     src: url('./fonts//Bebas_Neue/BebasNeue-Regular.ttf') format('truetype');
+}
+@font-face {
+    font-family: 'DejaVuSans';
+    src: url('./fonts/DejaVu/DejaVuSans.ttf') format('truetype');
+}
+@font-face {
+    font-family: 'DejaVuSans-Bold';
+    src: url('./fonts/DejaVu/DejaVuSans-Bold.ttf') format('truetype');
+}
+@font-face {
+    font-family: 'FuturaHeavy';
+    src: url('./fonts/FuturaHeavy/FuturaHeavyFont.ttf') format('truetype');
+}
+@font-face {
+    font-family: 'SavignyBNI';
+    src: url('./fonts/Savigny/SavignyW01BoldNormItalic.ttf') format('truetype');
 }
