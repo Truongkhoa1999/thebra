@@ -14,7 +14,6 @@ import { fetchProducts } from "./redux/actions/getProducts";
 import { Cart } from "./sites/cart/Cart";
 import { Elements } from "@stripe/react-stripe-js";
 import { loadStripe } from "@stripe/stripe-js";
-import { Payment } from "./sites/payment/Payment";
 import Products from "./sites/products/Products";
 import Preloader from "./components/loader/Preloader";
 import { Payments } from "./sites/payment/Payments";
@@ -40,10 +39,7 @@ function App() {
         <Route path="/cart" element={<Cart />} />
         <Route path='/products/:category' element={<Products />} />
         <Route path='/preloader' element={<Preloader />} />
-        <Route
-          path="/payment"
-          element={<Elements stripe={stripePromise}><Payment /></Elements>}
-        />
+   
            <Route
           path="/payments"
           element={<Elements stripe={stripePromise}><Payments /></Elements>}

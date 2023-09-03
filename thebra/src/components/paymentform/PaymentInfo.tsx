@@ -150,21 +150,22 @@ export const PaymentInfo = () => {
       </button>
       <div className="stripeInfo_container">
         <h2>We support - Powered By Stripe </h2>
+        {/* Array list then */}
         <img
-          src="https://imgix.bustle.com/elite-daily/2016/05/07051134/13100877_1117225501673213_1002803250533131677_n.jpg?w=1200&h=630&fit=crop&crop=faces&fm=jpg"
-          alt=""
+          src="https://firebasestorage.googleapis.com/v0/b/thebra-f81ef.appspot.com/o/LOGO%2FCard%20Logo%2FAmerican-Express-logo.png_1.avif?alt=media&token=3c89827e-12e5-4695-991c-086cefd5bec7"
+          alt="1"
+        />
+        <img
+          src="https://firebasestorage.googleapis.com/v0/b/thebra-f81ef.appspot.com/o/LOGO%2FCard%20Logo%2FMaster-Card-Blue-icon.png.avif?alt=media&token=ada574c5-2f6f-4a02-9feb-d59f183ece99"
+          alt="2"
         />
         <img
           src="https://imgix.bustle.com/elite-daily/2016/05/07051134/13100877_1117225501673213_1002803250533131677_n.jpg?w=1200&h=630&fit=crop&crop=faces&fm=jpg"
-          alt=""
+          alt="3"
         />
         <img
           src="https://imgix.bustle.com/elite-daily/2016/05/07051134/13100877_1117225501673213_1002803250533131677_n.jpg?w=1200&h=630&fit=crop&crop=faces&fm=jpg"
-          alt=""
-        />
-        <img
-          src="https://imgix.bustle.com/elite-daily/2016/05/07051134/13100877_1117225501673213_1002803250533131677_n.jpg?w=1200&h=630&fit=crop&crop=faces&fm=jpg"
-          alt=""
+          alt="4"
         />
         <img
           src="https://imgix.bustle.com/elite-daily/2016/05/07051134/13100877_1117225501673213_1002803250533131677_n.jpg?w=1200&h=630&fit=crop&crop=faces&fm=jpg"
