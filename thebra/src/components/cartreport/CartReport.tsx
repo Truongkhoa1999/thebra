@@ -1,8 +1,6 @@
 // style
-import '../checkoutprogress/style/checkoutprogress.scss'
+import "../checkoutprogress/style/checkoutprogress.scss";
 import "./style/cartreport.scss";
-
-
 
 import { useDispatch, useSelector } from "react-redux";
 import { AppDispatch, RootState } from "../../redux/store";
@@ -48,7 +46,6 @@ export const CartReport = () => {
 
   return (
     <div className="cartreport_container">
-      <CheckOutProgress orderId={null} />
       <CartHeadingForTable />
       <CartTable
         itemImagesFor34={itemImagesFor34}

@@ -1,18 +1,39 @@
-.checkoutprogress_container{
-    width: 100%;
-    display: flex;
-    margin-bottom: 1rem;
-    @media (min-width:768px) {
-        width: 68%;
+.checkoutprogress_container {
+  width: 100%;
+  margin-bottom: 1rem;
+  font-family: "Quicksand-regular";
+  margin-left: auto;
+  margin-right: auto;
+  @media (min-width: 768px) {
+    width: 55%;
+  }
+  .progress_button {
+    background-color: transparent;
+    margin-left: 0.5rem;
+    padding: 1rem;
+    border: none;
+    color: gray;
+    &:hover {
+      border-bottom: 1px solid black;
+      cursor: pointer;
+      color: black;
     }
-    .progress_button{
-        background-color: transparent;
-        margin-left: 1rem;
-        padding:  0.5rem;
-        border: none;
-        &:hover{
-            border-bottom: 1px solid black;
-            cursor: pointer;
-        }
+  }
+  .progress_button-active {
+    background-color: transparent;
+    margin-left: 0.5rem;
+    padding: 1rem;
+    border: none;
+    border-bottom: 1px solid black;
+    color: black;
+
+    &:hover {
+      border-bottom: 1px solid black;
+      cursor: not-allowed;
     }
+  }
+  @media (min-width: 1920px) {
+    padding: 1.25rem;
+    font-size: 1.25rem;
+  }
 }

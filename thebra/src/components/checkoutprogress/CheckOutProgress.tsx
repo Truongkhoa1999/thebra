@@ -1,24 +1,33 @@
 import { useNavigate } from "react-router-dom";
 import "./style/checkoutprogress.scss";
-import { CheckoutProgressProps } from "../../type/CheckoutProgressProps";
-import { checkIfCurrentPath } from "../../util/window/checkIfCurrentPath";
+import {
+  checkIfCurrentPath,
+  checkIfOrderIdNull,
+} from "../../util/window/checkIfCurrentPath";
 
-export const CheckOutProgress = ({ orderId }: CheckoutProgressProps) => {
+export const CheckOutProgress = () => {
   const navigate = useNavigate();
-  const cartURL = checkIfCurrentPath("http://localhost:5173/cart");
+  const isCartURL = checkIfCurrentPath("/cart");
+  const isPaymentUrl = checkIfCurrentPath("/payments");
+  const isOrderIdNull = checkIfOrderIdNull();
+  const orderId = localStorage.getItem("orderId")
   return (
     <div className="checkoutprogress_container">
       <button
-        disabled={cartURL}
+        disabled={isOrderIdNull}
         onClick={() => navigate("/cart")}
-        className="progress_button"
+        className={`${
+          isCartURL ? "progress_button-active" : "progress_button"
+        }`}
       >
         My Cart
       </button>
       <button
-        disabled={orderId == null}
-        onClick={() => navigate("./payments?orderId=${orderId}")}
-        className="progress_button"
+        disabled={isOrderIdNull}
+        onClick={() => navigate(`/payments?orderId=${orderId}`)}
+        className={`${
+          isPaymentUrl ? "progress_button-active" : "progress_button"
+        }`}
       >
         Payment
       </button>
