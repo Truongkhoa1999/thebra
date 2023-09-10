@@ -1,4 +1,4 @@
-import { setToken, setWarning } from "../../redux/actions/getToken";
+import { setToken } from "../../redux/actions/getToken";
 
 export const handleSignIn = (
   username: string,

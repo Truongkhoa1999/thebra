@@ -3,21 +3,14 @@ import { fetchOrderDataByUserId } from "../../util/order/fetchOrderData";
 import { OrderProps } from "../../type/OrderProps";
 // style
 import "./style/myorderlist.scss";
-import { PopupShopping } from "../popupShopping/PopupShopping";
 export const MyOrderList = () => {
   const [orderPaidListData, setOrderPaidListDataListData] = useState<
     OrderProps[]
   >([]);
-  const [orderPendingListData, setOrderPendingListDataListData] = useState<
-    OrderProps[]
-  >([]);
+
 
   const [expandedOrderId, setExpandedOrderId] = useState<string | null>(null);
-  const [isContinueShopping, setIsContinueShopping] = useState(true);
-  const [orderId, setOrderId] = useState("");
-  const handleContinueShopping = (orderId: string) => {
-    setOrderId(orderId);
-  };
+
   useEffect(() => {
     const fetchOrderData = async () => {
       const orderData = await fetchOrderDataByUserId();
@@ -26,10 +19,7 @@ export const MyOrderList = () => {
           (p) => p.paymentStatus === "paid"
         );
         setOrderPaidListDataListData(filterPaidData);
-        const filterPendingData = orderData.filter(
-          (p) => p.paymentStatus === "pending"
-        );
-        setOrderPendingListDataListData(filterPendingData);
+   
       }
     };
     fetchOrderData();

@@ -4,50 +4,42 @@ import FavoriteIcon from "@mui/icons-material/Favorite";
 import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useParams } from "react-router-dom";
-import { v4 as uuidv4 } from 'uuid'
+import { v4 as uuidv4 } from "uuid";
 import { AppDispatch, RootState } from "../../redux/store";
 import { getProductById } from "../../redux/actions/getProductById";
 import { handleSaveCart } from "../../util/cart/handleSaveCart";
-import { handleSize34Confirm, handleSize36Confirm } from "../../util/sizeSelection/sizeSelection";
-
+import {
+  handleSize34Confirm,
+  handleSize36Confirm,
+} from "../../util/sizeSelection/sizeSelection";
+import GeneralNotification from "../notification/GeneralNotification";
 
 export const ProductInformation = () => {
-  const { id } = useParams<{ id: ReturnType<typeof uuidv4> }>()
-  const dispatch = useDispatch<AppDispatch>()
-  const { productById } = useSelector((state: RootState) => state.productById)
-  const { cart } = useSelector((state: RootState) => state.cart)
-  const [is34, setIs34] = useState(false)
-  const [is36, setIs36] = useState(false)
+  const { id } = useParams<{ id: ReturnType<typeof uuidv4> }>();
+  const dispatch = useDispatch<AppDispatch>();
+  const { productById } = useSelector((state: RootState) => state.productById);
+  const { cart } = useSelector((state: RootState) => state.cart);
+  const [is34, setIs34] = useState(false);
+  const [is36, setIs36] = useState(false);
+  const [isNotificationVisible, setIsNotificationVisible] = useState(false);
 
-  useEffect(
-    () => {
-      if (id) {
-        dispatch(getProductById(id))
-      }
-
-    }, [dispatch]
-  )
+  useEffect(() => {
+    if (id) {
+      dispatch(getProductById(id));
+    }
+  }, [dispatch]);
 
   return (
     <div className="productInformation_container">
       <div className="upper">
         <div className="productInformation_image">
           <div className="main">
-            <img
-              src={productById?.images[0]}
-              alt=" "
-            />
+            <img src={productById?.images[0]} alt=" " />
           </div>
 
           <div className="minor">
-            <img
-              src={productById?.images[1]}
-              alt=" "
-            />
-            <img
-              src={productById?.images[2]}
-              alt=" "
-            />
+            <img src={productById?.images[1]} alt=" " />
+            <img src={productById?.images[2]} alt=" " />
           </div>
         </div>
         <div className="productInformation_text">
@@ -59,20 +51,38 @@ export const ProductInformation = () => {
             <div className="size_group">
               <h4>Size</h4>
               <div>
-                <button className={`sizeSelection ${is34 ? "activated" : ""}`} onClick={() => handleSize34Confirm(is34, setIs34)}>34</button>
-                <button className={`sizeSelection ${is36 ? "activated" : ""}`} onClick={() => handleSize36Confirm(is36, setIs36)}>36</button>
+                <button
+                  className={`sizeSelection ${is34 ? "activated" : ""}`}
+                  onClick={() => handleSize34Confirm(is34, setIs34)}
+                >
+                  34
+                </button>
+                <button
+                  className={`sizeSelection ${is36 ? "activated" : ""}`}
+                  onClick={() => handleSize36Confirm(is36, setIs36)}
+                >
+                  36
+                </button>
               </div>
             </div>
             <div className="buttons">
-              <button onClick={() => { if (productById && (is34 || is36)) { handleSaveCart(dispatch, productById, cart, is34, is36) } }} className="addcart">Buy now</button>
+              <button
+                onClick={() => {
+                  if (productById && (is34 || is36)) {
+                    handleSaveCart(dispatch, productById, cart, is34, is36);
+                    setIsNotificationVisible(true)
+                  }
+                }}
+                className="addcart"
+              >
+                Buy now
+              </button>
               <button className="favorite" disabled={true}>
                 <FavoriteIcon />
               </button>
             </div>
           </div>
-          <div className="textSet">
-            {productById?.description}
-          </div>
+          <div className="textSet">{productById?.description}</div>
         </div>
       </div>
 
@@ -82,6 +92,15 @@ export const ProductInformation = () => {
           alt=" "
         />
       </div>
+      {isNotificationVisible ? (
+        <GeneralNotification
+          notification="Your Item has been added"
+          setIsNotificationVisible={setIsNotificationVisible}
+          className="signin-notification"
+        />
+      ) : (
+        ""
+      )}
     </div>
   );
 };

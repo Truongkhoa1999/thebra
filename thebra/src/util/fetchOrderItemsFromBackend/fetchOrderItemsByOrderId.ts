@@ -1,5 +1,5 @@
 import { v4 as uuidv4 } from "uuid";
-import { OrderItemProps, OrderItemsProps } from "../../redux/actions/cart";
+import { OrderItemsProps } from "../../redux/actions/cart";
 export const fetchOrderItemsProduct = async (
   id: ReturnType<typeof uuidv4>
 ): Promise<string[]> => {

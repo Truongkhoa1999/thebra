@@ -159,7 +159,7 @@ export const CartDeliveryMethod = () => {
             e.preventDefault();
             setIsLoading(true);
             try {
-              const checkOut = handleCartCheckout(
+              handleCartCheckout(
                 navigate,
                 cart,
                 deliveryPrice,
@@ -167,6 +167,8 @@ export const CartDeliveryMethod = () => {
                 shippingInfoForNonUsers,
                 setIsNotificationVisible
               );
+            setIsLoading(false);
+
             } catch (error) {
               console.log(error);
               setIsLoading(false);
