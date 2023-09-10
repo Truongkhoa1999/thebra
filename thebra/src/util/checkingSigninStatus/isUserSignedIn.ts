@@ -1,4 +1,9 @@
 export const isUserSignedIn = ():boolean => {
     const jwtToken = localStorage.getItem('jwt')
-    return !!jwtToken
+    const isNonUser = localStorage.getItem('isNonUser')
+    if (jwtToken && !isNonUser){
+        return true
+    } else{
+        return false
+    }
 }

@@ -27,6 +27,7 @@ export const CartTable = ({
         dispatch(deleteCartItem(productId, isSize34, isSize36));
         setListOfSize34(prevList => prevList.filter(item => item.productId !== productId));
         setListOfSize36(prevList => prevList.filter(item => item.productId !== productId));
+        localStorage.removeItem('orderId')
         window.location.reload()
     };
     useEffect(() => {

@@ -24,6 +24,7 @@ export const CartDeliveryMethod = () => {
 
   const [isZone1, setIsZone1] = useState(false);
   const [isZone2, setIsZone2] = useState(false);
+  const [isLoading, setIsLoading] = useState(false);
 
   const navigate = useNavigate();
   const { cart } = useSelector((state: RootState) => state.cart);
@@ -31,14 +32,14 @@ export const CartDeliveryMethod = () => {
     address: "",
     city: "",
     postalCode: "",
-    country: "",
+    country: "Finland",
     telephone: "",
   });
   const [shippingInfoForNonUsers, setshippingInfoForNonUsers] = useState({
     address: "",
     city: "",
     postalCode: "",
-    country: "",
+    country: "Finland",
     gmail: "",
     telephone: "",
   });
@@ -48,23 +49,6 @@ export const CartDeliveryMethod = () => {
   ) => {
     const { name, value } = e.target;
     if (name === "country") {
-      // if (value === "zone1") {
-      //   setSelectedDeliveryType(1);
-      //   setIsZone1(true);
-      //   setIsZone2(false);
-      //   setisInFinland(false);
-      // } else if (value === "zone2") {
-      //   setSelectedDeliveryType(2);
-      //   setIsZone1(false);
-      //   setIsZone2(true);
-      //   setisInFinland(false);
-      // } else if (value === "Finland") {
-      //   setSelectedDeliveryType(0);
-      //   setIsZone1(false);
-      //   setIsZone2(false);
-      //   setisInFinland(true);
-      // }
-
       const selectedCountry = countryData.find((country) =>
         Array.isArray(country.label)
           ? country.label.includes(value)
@@ -85,15 +69,15 @@ export const CartDeliveryMethod = () => {
       }
 
       // Log the updated state values
-      console.log("Updated shippingInfoForExistUsers:", {
-        ...shippingInfoForExistUsers,
-        [name]: value,
-      });
+      // console.log("Updated shippingInfoForExistUsers:", {
+      //   ...shippingInfoForExistUsers,
+      //   [name]: value,
+      // });
 
-      console.log("Updated shippingInfoForNonUsers:", {
-        ...shippingInfoForNonUsers,
-        [name]: value,
-      });
+      // console.log("Updated shippingInfoForNonUsers:", {
+      //   ...shippingInfoForNonUsers,
+      //   [name]: value,
+      // });
       smoothScroll("deliverySection", true);
 
       setShippingInfoForExistUsers((prevInfo) => ({
@@ -114,6 +98,7 @@ export const CartDeliveryMethod = () => {
         [name]: value,
       }));
     }
+    localStorage.removeItem("orderId");
   };
 
   const totalPrice = useMemo(
@@ -157,7 +142,7 @@ export const CartDeliveryMethod = () => {
         <button
           disabled={true}
           className={`methodButton ${
-            selectedDeliveryType === 2 ? "methodButton-active" : "" 
+            selectedDeliveryType === 2 ? "methodButton-active" : ""
           }`}
         >
           {isFreeShipForZone2
@@ -172,14 +157,20 @@ export const CartDeliveryMethod = () => {
         <form
           onSubmit={(e) => {
             e.preventDefault();
-            handleCartCheckout(
-              navigate,
-              cart,
-              deliveryPrice,
-              shippingInfoForExistUsers,
-              shippingInfoForNonUsers,
-              setIsNotificationVisible
-            );
+            setIsLoading(true);
+            try {
+              const checkOut = handleCartCheckout(
+                navigate,
+                cart,
+                deliveryPrice,
+                shippingInfoForExistUsers,
+                shippingInfoForNonUsers,
+                setIsNotificationVisible
+              );
+            } catch (error) {
+              console.log(error);
+              setIsLoading(false);
+            }
           }}
         >
           <label>
@@ -286,8 +277,11 @@ export const CartDeliveryMethod = () => {
             </label>
           )}
           <br />
-          <button className="checkout-button" type="submit">
-            Check out
+          <button
+            className={`checkout-button ${isLoading ? "loading-text" : ""}`}
+            // className="checkout-button" type="submit"
+          >
+            {isLoading ? "Loading..." : "Check out"}
           </button>
         </form>
       </div>

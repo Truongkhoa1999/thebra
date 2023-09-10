@@ -1,11 +1,13 @@
 .checkoutprogress_container {
-  width: 100%;
+  width: 90%;
   margin-bottom: 1rem;
   font-family: "Quicksand-regular";
   margin-left: auto;
   margin-right: auto;
+  padding: 1rem 0 1rem 0;
+  background-color: rgb(242, 244, 246);
   @media (min-width: 768px) {
-    width: 55%;
+    width: 80%;
   }
   .progress_button {
     background-color: transparent;
@@ -16,6 +18,13 @@
     &:hover {
       border-bottom: 1px solid black;
       cursor: pointer;
+      color: black;
+    }
+  }
+  .progress_button[disabled] {
+    &:hover {
+      border: none;
+      cursor: not-allowed;
       color: black;
     }
   }

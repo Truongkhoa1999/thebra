@@ -1,4 +1,4 @@
-const GeneralNotification = ({
+const ThankYouNotification = ({
   notification,
   setIsNotificationVisible,
 }: {
@@ -8,13 +8,14 @@ const GeneralNotification = ({
 }) => {
   const handleCloseClick = () => {
     setIsNotificationVisible(false);
-    window.location.reload()
+    window.location.reload();
   };
   return (
     <div className="signin-notification">
       <div className="headingNotification">
         <button onClick={handleCloseClick}>X</button>
       </div>
+      <h1 className="heading">THANK YOU❣️</h1>
       <p className="title">{notification}</p>
       <div className="buttons">
         <button onClick={handleCloseClick}>Ok</button>
@@ -22,4 +23,4 @@ const GeneralNotification = ({
     </div>
   );
 };
-export default GeneralNotification;
+export default ThankYouNotification;

@@ -1,0 +1,166 @@
+.orders {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  .paidList {
+    display: flex;
+    justify-content: center;
+    width: 95%;
+    margin-top: 2rem;
+    @media (min-width: 768px) {
+      width: 40%;
+    }
+    .order {
+      width: 85%;
+      display: flex;
+      // justify-content: space-between;
+      flex-wrap: wrap;
+      background-color: rgb(217, 251, 165);
+      padding: 1rem;
+      // margin-top: 2rem;
+
+      @media (min-width: 768px) {
+        width: 100%;
+      }
+      .orderInfo {
+        display: flex;
+        width: 100%;
+        .upper {
+          display: flex;
+          flex-direction: column;
+          width: 90%;
+        }
+      }
+      .expandedInformation {
+        width: 100%;
+        margin-left: auto;
+        margin-right: auto;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        margin-top: 2rem;
+        background-color: white;
+        padding: 0.5rem;
+        overflow: hidden;
+        transition: max-height 0.3s ease-in-out;
+        &.active {
+          max-height: 100%; /* Show the content when the active class is applied */
+        }
+        .state-container {
+          display: flex;
+          flex-direction: column;
+          width: 100%;
+          .stateTitle {
+            font-size: 1rem;
+            @media (min-width: 768px) {
+              font-size: 0.85rem;
+            }
+          }
+          .states {
+            display: flex;
+            flex-direction: column;
+            @media (min-width: 768px) {
+              flex-direction: row;
+            }
+            .state {
+              font-family: "Quicksand-regular";
+              width: 33%;
+              color: gray;
+              text-align: left;
+              font-size: 0.85rem;
+            }
+            .state-active {
+              color: Green;
+            }
+          }
+        }
+        .orderGraph_container {
+          display: flex;
+          div {
+            width: 4rem;
+            height: 4rem;
+            border-radius: 50%;
+          }
+        }
+        .posti {
+          font-size: 0.85rem;
+          margin-top: 1rem;
+        }
+      }
+    }
+    .buttons {
+      width: 30%;
+      display: flex;
+      flex-direction: column;
+
+      @media (min-width: 768px) {
+        flex-direction: row;
+        justify-content: center;
+        align-items: center;
+      }
+      button {
+        margin-top: 0.5rem;
+        padding: 1rem 2rem 1rem 2rem;
+        border: none;
+        background-color: transparent;
+        @media (min-width: 768px) {
+          margin-top: 0;
+          margin-left: 0.5rem;
+        }
+        &:hover {
+          border-bottom: 1px solid black;
+          cursor: pointer;
+        }
+      }
+    }
+  }
+  .pendingList {
+    display: flex;
+    flex-direction: column;
+    width: 95%;
+    margin-top: 1rem;
+    border: 1px solid red;
+    justify-content: center;
+    align-items: center;
+    @media (min-width: 768px) {
+      width: 40%;
+    }
+    .pendingOrder {
+      width: 95%;
+      display: flex;
+      flex-direction: row;
+      justify-content: center;
+      margin-top: 1rem;
+      background-color: rgb(217, 251, 165);
+      border: 1px solid red;
+
+      @media (min-width: 768px) {
+        width: 100%;
+      }
+      .pendingOrderInfo {
+        width: 100%;
+        display: flex;
+        flex-direction: row;
+        padding: 1rem;
+        .title {
+          width: 80%;
+          border: 1px solid red;
+          img {
+            width: 20%;
+          }
+        }
+      }
+      .continue {
+        padding: 1rem 2rem 1rem 2rem;
+        width: 20%;
+        background-color: transparent;
+        border: none;
+        &:hover {
+          border-bottom: 1px solid black;
+          cursor: pointer;
+        }
+      }
+    }
+  }
+}

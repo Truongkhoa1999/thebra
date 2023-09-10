@@ -38,10 +38,12 @@ function App() {
         <Route path="/signin" element={<SignIn />} />
         <Route path="/signup" element={<Signup />} />
         <Route path="/cart" element={<Cart />} />
+        <Route path="/cart/:orderId" element={<Cart />} />
+
         <Route path="/myOrders" element={<MyOrders />} />
         <Route path='/products/:category' element={<Products />} />
+
         <Route path='/preloader' element={<Preloader />} />
-   
            <Route
           path="/payments"
           element={<Elements stripe={stripePromise}><Payments /></Elements>}

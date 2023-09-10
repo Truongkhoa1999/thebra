@@ -10,7 +10,7 @@
   margin-left: auto;
   margin-right: auto;
 
-  @media (min-width:2560) {
+  @media (min-width: 2560) {
     width: 65%;
   }
 
@@ -76,7 +76,7 @@
       border: none;
       // box-shadow: 1px 4px 4px black;
       color: rgb(180, 167, 167);
-      font-family: 'Quicksand-Regular';
+      font-family: "Quicksand-Regular";
       transition: 0.5s;
 
       @media (min-width: 768px) {
@@ -88,7 +88,6 @@
           border-bottom: 2px solid black;
           transition: 0;
           color: black;
-
         }
       }
     }
@@ -96,25 +95,22 @@
     .button-red--active {
       border-bottom: 2px solid black;
       cursor: default;
-      font-family: 'Quicksand-Bold';
+      font-family: "Quicksand-Bold";
       color: rgb(0, 0, 0);
-
     }
 
     .button-blue--active {
       border-bottom: 2px solid black;
       cursor: default;
-      font-family: 'Quicksand-Bold';
+      font-family: "Quicksand-Bold";
       color: rgb(0, 0, 0);
-
     }
 
     .button-green--active {
       border-bottom: 2px solid black;
       cursor: default;
-      font-family: 'Quicksand-Bold';
+      font-family: "Quicksand-Bold";
       color: rgb(0, 0, 0);
-
     }
 
     // desktop
@@ -156,7 +152,6 @@
         }
       }
 
-
       // box-shadow: 1px 4px 4px black;
     }
 
@@ -174,17 +169,19 @@
 
       &:hover {
         border-bottom: 1px solid rgb(180, 167, 167);
-
         h2 {
           color: brown !important;
         }
-        .lower{
-          p{
-              color: brown;
-            
+        .upper {
+          h3 {
+            color: brown !important;
           }
         }
-     
+        .lower {
+          p {
+            color: brown;
+          }
+        }
       }
 
       .descrip {
@@ -199,25 +196,22 @@
 
           h3 {
             color: black;
-            font-family: 'Quicksand-Bold';
+            font-family: "Quicksand-Bold";
           }
 
           h2 {
             font-size: 1.25em;
-            font-family: 'Quicksand-Regular';
+            font-family: "Quicksand-Regular";
             color: black;
-
-
           }
         }
 
         .lower {
-          color: rgb(180, 167, 167);
           font-size: 1rem;
+          color: black;
           width: 100%;
           display: flex;
           justify-content: flex-start;
-       
         }
 
         @media (min-width: 768px) {

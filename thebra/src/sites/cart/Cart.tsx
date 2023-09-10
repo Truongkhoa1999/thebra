@@ -8,6 +8,7 @@ export const Cart = () => {
   return (
     <div className="cart_container">
       <AppBar />
+      <h1>Cart</h1>
       <CheckOutProgress />
       <CartReport />
       <Footer />

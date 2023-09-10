@@ -20,7 +20,6 @@ import { CartHeadingForTable } from "./CartHeadingForTable";
 import { CartHeadingForDeliveryMethod } from "./CartHeadingForDeliveryMethod";
 // import { CartHeadingForDeliveryForm } from './CartHeadingForDeliveryForm'
 import { detectIfOrderedItemIsZero } from "../../util/cart/detectIfOrderedItemIsZero";
-import { CheckOutProgress } from "../checkoutprogress/CheckOutProgress";
 
 export const CartReport = () => {
   const { cart } = useSelector((state: RootState) => state.cart);

@@ -29,21 +29,21 @@ export const checkIfOrderIsPaid = (orderData: any) => {
 };
 // >>>>>>
 export const fetchOrderDataByUserId = async (
-  jwtToken: string 
-): Promise<OrderProps | null> => {
+): Promise<OrderProps[] | null> => {
+  const jwtToken = localStorage.getItem('jwt')
   try {
     const orderResponse = await fetch(
-      `https://thebrabe.onrender.com/api/v1/order/myOrders`,
+      'https://thebrabe.onrender.com/api/v1/order/myOrders',
       {
         headers: {
-          Authorization: `Bearer ${jwtToken}`, // Include the JWT token in the headers
+          Authorization: `Bearer ${jwtToken}`, 
         },
       }
     );
 
     if (orderResponse.ok) {
       const orderData = await orderResponse.json();
-      return orderData as OrderProps;
+      return orderData as OrderProps[];
     } else {
       return null;
     }
