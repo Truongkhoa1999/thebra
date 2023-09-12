@@ -45,7 +45,7 @@ export const Footer = () => {
             <div className="letter_form">
               <p>
                 My Order <br />
-                Return Policy <br />
+                Return & Refund <br />
                 Shipping Cost & Delivery Time 
               </p>
               <form className="newsletter_form">
