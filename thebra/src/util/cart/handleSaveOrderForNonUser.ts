@@ -1,7 +1,6 @@
 import { ShippingInfoForNonUser } from "../../type/ShippingInfo";
 import { cartTotal } from "./computeCart";
 import { CartProps } from "../../type/CartProps";
-import { useState } from "react";
 
 export const handleSaveOrderForNonUser = async (
   cart: CartProps[],

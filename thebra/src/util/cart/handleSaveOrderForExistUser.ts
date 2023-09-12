@@ -3,7 +3,6 @@ import { ShippingInfo } from "../../type/ShippingInfo";
 import { DecodedToken } from "../../type/DecodedToken";
 import { cartTotal } from "./computeCart";
 import { CartProps } from "../../type/CartProps";
-import { useState } from "react";
 
 export const handleSaveOrderForExistUser = async (
   cart: CartProps[],
