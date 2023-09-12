@@ -16,14 +16,15 @@ export const CartDeliveryMethod = () => {
   const [selectedDeliveryType, setSelectedDeliveryType] = useState(0);
   const [isFreeShipForZone1, setIsFreeShipForZone1] = useState(false);
   const [isFreeShipForZone2, setIsFreeShipForZone2] = useState(false);
-  const [isInFinland, setisInFinland] = useState(true);
 
   const deliveryPrice = deliveryFee[selectedDeliveryType];
   const [isNotificationVisible, setIsNotificationVisible] = useState(false);
   const [isFreeShipForFinland, setIsFreeShipForFinland] = useState(false);
-
+  // isZone
+  const [isInFinland, setisInFinland] = useState(true);
   const [isZone1, setIsZone1] = useState(false);
   const [isZone2, setIsZone2] = useState(false);
+  // >>
   const [isLoading, setIsLoading] = useState(false);
 
   const navigate = useNavigate();
@@ -104,6 +105,20 @@ export const CartDeliveryMethod = () => {
       setIsFreeShipForZone2(true);
     }
   }, [totalPrice, isInFinland, isZone1, isZone2, selectedDeliveryType]);
+
+  // Onsubmit handle:
+  // const handleSubmit = async () => {
+  //   setIsLoading(true)
+  //   try {
+
+  //     setIsLoading(false)
+
+  //   } catch (error) {
+  //     console.log(error);
+  //     setIsLoading(false)
+  //   }
+  // };
+
   return (
     <div id="deliverySection" className="delivery_method">
       <div className="deliveryMethod_container">
@@ -144,20 +159,25 @@ export const CartDeliveryMethod = () => {
       <CartHeadingForDeliveryForm />
       <div className="checkout_container">
         <form
-          onSubmit={(e) => {
+          onSubmit={async (e) => {
             e.preventDefault();
             setIsLoading(true);
             try {
-              handleCartCheckout(
-                navigate,
+              const orderId = await handleCartCheckout(
+                // navigate,
                 cart,
                 deliveryPrice,
                 shippingInfoForExistUsers,
                 shippingInfoForNonUsers,
-                setIsNotificationVisible
+                setIsNotificationVisible,
+                isInFinland,
+                isZone1,
+                isZone2
               );
-            setIsLoading(false);
-
+              if (orderId) {
+                setIsLoading(false);
+                navigate(`/payments?orderId=${orderId}`);
+              }
             } catch (error) {
               console.log(error);
               setIsLoading(false);
