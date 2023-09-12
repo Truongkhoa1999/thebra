@@ -67,17 +67,6 @@ export const CartDeliveryMethod = () => {
         setIsZone2(selectedCountry.value === "zone2");
         setisInFinland(selectedCountry.value === "Finland");
       }
-
-      // Log the updated state values
-      // console.log("Updated shippingInfoForExistUsers:", {
-      //   ...shippingInfoForExistUsers,
-      //   [name]: value,
-      // });
-
-      // console.log("Updated shippingInfoForNonUsers:", {
-      //   ...shippingInfoForNonUsers,
-      //   [name]: value,
-      // });
       smoothScroll("deliverySection", true);
 
       setShippingInfoForExistUsers((prevInfo) => ({
@@ -234,7 +223,7 @@ export const CartDeliveryMethod = () => {
               }
               onChange={handleChange}
               required
-              defaultValue={"Finland"}
+              // defaultValue={"Finland"}
             >
               {countryData.map((country, index) =>
                 Array.isArray(country.label) ? (
