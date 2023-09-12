@@ -10,37 +10,43 @@ export const Footer = () => {
         <div className="customerservice_container">
           <button className="button_footer">Customer service</button>
           <p>
-            HAIR & BEAUTY CARE are our passions at Lyko, as is providing
-            absolutely first-class CUSTOMER SERVICE. We'll help you figure out
-            how to make your curls last longer, which lipstick goes with your
-            weekend outfit, which beard trimmer gives the best results or where
-            in the world the order confirmation disappeared - we're here for
-            you! You can find our contact information and customer service
-            opening hours below. There are no stupid questions - feel free to
-            contact us! Psst! You can find answers to the most common questions
-            on the Frequently Asked Questions page.
+            We are passionate about the comfort of choosing soft lingerie and
+            providing first-class CUSTOMER SERVICE at Thebra. No matter how you
+            are thinking about choosing your underwear or where the order
+            confirmation takes place, we are always ready to assist you. Our
+            contact details and chat hours can be found below. Don't sit and
+            think - Get in touch! In our customer service FAQs, you'll find our
+            most common questions and answers.
           </p>
           <p>
-            VISITING HOURS: Chat Mon-Fri 09:00 - 16:00 By e-mail:
-            kaskapalvelu@lyko.fi
+            Chat <br />
+            Mon-Fri 8 - 22 <br />
+            Sat-Sun 10-20 <br />
+            E-mail thebra.lingerie@gmail.com <br />
           </p>
         </div>
         <div className="information_container">
-          <button className="button_footer">Information</button>
+          <button className="button_footer">About Thebra</button>
           <p>
-            Club Lyko My Pages Club Lyko Privacy Policy FAQ - Frequently Asked
-            Questions Privacy Notice Cookie Policy Order Terms About Lyko
-            Recommend to a friend Are you interested in cooperation with Lyko?
-            Toplist Discount codes Michael Edwards Fragrances of the World
+            Welcome to Thebra - our enchanting world of intimate lingerie, where
+            style, comfort, and confidence intertwine. As connoisseurs of
+            lingerie, we understand the importance of finding the perfect bra
+            that uplifts both your spirits and your silhouette. Indulge in the
+            beauty of our bra shop and embark on a journey of self-discovery,
+            where every bra you choose becomes a reflection of your unique
+            allure. Allow us to introduce you to our exceptional bra shop in
+            Helsinki (Finland), where elegance meets expertise, and every visit is a
+            celebration of your unique beauty.
           </p>
         </div>
         <div className="newsletter_container">
           <div className="upper_newsletter">
-            <button className="button_footer">News and offer</button>
+            <button className="button_footer">FAQs</button>
             <div className="letter_form">
               <p>
-                Subscribe to our newsletter and join our SMS list to get
-                information about current offers and campaigns!
+                My Order <br />
+                Return Policy <br />
+                Shipping Cost & Delivery Time 
               </p>
               <form className="newsletter_form">
                 <input
@@ -63,12 +69,16 @@ export const Footer = () => {
                   placeholder="Telephone"
                   className="input_text"
                   disabled={true}
-
                 />
                 <br />
                 <br />
 
-                <input className="submit-button" type="submit" value="Submit" disabled={true} />
+                <input
+                  className="submit-button"
+                  type="submit"
+                  value="Submit"
+                  disabled={true}
+                />
               </form>
             </div>
           </div>
