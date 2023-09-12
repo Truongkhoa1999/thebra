@@ -75,7 +75,7 @@
       font-size: 12px;
       border: none;
       // box-shadow: 1px 4px 4px black;
-      color: rgb(180, 167, 167);
+      color: black;
       font-family: "Quicksand-Regular";
       transition: 0.5s;
 
@@ -87,30 +87,30 @@
         &:hover {
           border-bottom: 2px solid black;
           transition: 0;
-          color: black;
+          color: brown;
         }
       }
     }
 
     .button-red--active {
-      border-bottom: 2px solid black;
+      border-bottom: 2px solid brown;
       cursor: default;
       font-family: "Quicksand-Bold";
-      color: rgb(0, 0, 0);
+      color: brown;
     }
 
     .button-blue--active {
-      border-bottom: 2px solid black;
+      border-bottom: 2px solid brown;
       cursor: default;
       font-family: "Quicksand-Bold";
-      color: rgb(0, 0, 0);
+      color: brown;
     }
 
     .button-green--active {
-      border-bottom: 2px solid black;
+      border-bottom: 2px solid brown;
       cursor: default;
       font-family: "Quicksand-Bold";
-      color: rgb(0, 0, 0);
+      color: brown;
     }
 
     // desktop
