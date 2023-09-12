@@ -2,9 +2,11 @@ import { useNavigate } from "react-router-dom";
 
 const SignInSuggestion = ({
   setIsNotificationVisible,
+  setIsLoading
 }: {
-  className: string;
-  setIsNotificationVisible: (value: boolean) => void;
+  className: string,
+  setIsNotificationVisible: (value: boolean) => void,
+  setIsLoading: (value:boolean) => void 
 }) => {
   const navigate = useNavigate();
 
@@ -16,11 +18,13 @@ const SignInSuggestion = ({
     if (!jwtToken) {
       localStorage.setItem("isNonUser", "true");
       setIsNotificationVisible(false);
+      setIsLoading(false);
       handleCloseClick();
     } else {
-        localStorage.removeItem('jwt')
-          localStorage.setItem("isNonUser", "true");
+      localStorage.removeItem("jwt");
+      localStorage.setItem("isNonUser", "true");
       setIsNotificationVisible(false);
+      setIsLoading(false);
       handleCloseClick();
     }
   };

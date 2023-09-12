@@ -9,13 +9,16 @@ import { handleSavedOrderItemsForExistUser } from "./handleSavedOrderItemsForExi
 import { handleSavedOrderItemsForNonUser } from "./handleSavedOrderItemsForNonUser";
 
 export const handleCartCheckout = async (
-  navigate: Function,
+  // navigate: any,
   cart: CartProps[],
   deliveryPrice: number,
   shippingInfoForExistUsers: ShippingInfo,
   shippingInfoForNonUsers: ShippingInfoForNonUser,
-  setIsNotificationVisible: (value: boolean) => void
-) => {
+  setIsNotificationVisible: (value: boolean) => void,
+  isInFinland: boolean,
+  isZone1: boolean,
+  isZone2: boolean
+): Promise<String | null> => {
   try {
     // first IF
     if (!isTokenExpired()) {
@@ -25,7 +28,10 @@ export const handleCartCheckout = async (
           cart,
           token,
           deliveryPrice,
-          shippingInfoForExistUsers
+          shippingInfoForExistUsers,
+          isInFinland,
+          isZone1,
+          isZone2
         );
         if (response.status === 200) {
           const order = await response.json();
@@ -34,9 +40,11 @@ export const handleCartCheckout = async (
           }
           if (order.id) {
             localStorage.setItem("orderId", order.id);
-            navigate(`/payments?orderId=${order.id}`);
+            // navigate(`/payments?orderId=${order.id}`);
+            return order.id;
           } else {
             console.log("orderId is null");
+            return null;
           }
         }
       } else {
@@ -47,7 +55,10 @@ export const handleCartCheckout = async (
       const response = await handleSaveOrderForNonUser(
         cart,
         deliveryPrice,
-        shippingInfoForNonUsers
+        shippingInfoForNonUsers,
+        isInFinland,
+        isZone1,
+        isZone2
       );
       if (response.status === 200) {
         const order = await response.json();
@@ -56,9 +67,11 @@ export const handleCartCheckout = async (
         }
         if (order.id) {
           localStorage.setItem("orderId", order.id);
-          navigate(`/payments?orderId=${order.id}`);
+          // navigate(`/payments?orderId=${order.id}`);
+          return order.id;
         } else {
           console.log("orderId is null");
+          return null;
         }
       }
     } else {
@@ -67,7 +80,9 @@ export const handleCartCheckout = async (
         "User login session has been expired, please sign-in again."
       );
     }
+    return null;
   } catch (error: any) {
     console.error(error.message);
+    return null;
   }
 };

@@ -9,24 +9,30 @@ export const handleSaveOrderForExistUser = async (
   cart: CartProps[],
   token: any,
   deliveryPrice: number,
-  shippingInfoForExistUsers: ShippingInfo
+  shippingInfoForExistUsers: ShippingInfo,
+  isInFinland:boolean,
+  isZone1:boolean,
+  isZone2:boolean
 ) => {
   const { address, city, postalCode, country } = shippingInfoForExistUsers;
   const mergedAddress = `${address},${city},${postalCode},${country}`;
-  const [isInFinland, setIsInFinland] = useState(false);
-  const [isZone1, setIsZone1] = useState(false);
-  const [isZone2, setIsZone2] = useState(false);
-  if (country === "Finland") {
-    setIsInFinland(true);
-  } else if (
-    country === "Latvia" ||
-    country === "Lithuania" ||
-    country === "Estonia"
-  ) {
-    setIsZone1(true);
-  } else {
-    setIsZone2(true);
-  }
+  // const [isInFinland, setIsInFinland] = useState(false);
+  // const [isZone1, setIsZone1] = useState(false);
+  // const [isZone2, setIsZone2] = useState(false);
+
+
+
+  // if (country === "Finland") {
+  //   setIsInFinland(true);
+  // } else if (
+  //   country === "Latvia" ||
+  //   country === "Lithuania" ||
+  //   country === "Estonia"
+  // ) {
+  //   setIsZone1(true);
+  // } else {
+  //   setIsZone2(true);
+  // }
 
   let deliveryMethod = "";
   if (deliveryPrice === 5.95) {
