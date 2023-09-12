@@ -55,7 +55,10 @@ export const handleCartCheckout = async (
       const response = await handleSaveOrderForNonUser(
         cart,
         deliveryPrice,
-        shippingInfoForNonUsers
+        shippingInfoForNonUsers,
+        isInFinland,
+        isZone1,
+        isZone2
       );
       if (response.status === 200) {
         const order = await response.json();

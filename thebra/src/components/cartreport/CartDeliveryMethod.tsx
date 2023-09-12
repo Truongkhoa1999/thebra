@@ -104,7 +104,17 @@ export const CartDeliveryMethod = () => {
     } else if (totalPrice >= 149 && isZone2) {
       setIsFreeShipForZone2(true);
     }
-  }, [totalPrice, isInFinland, isZone1, isZone2, selectedDeliveryType]);
+    if (localStorage.getItem("isNonUser") !== null) {
+      setIsLoading(false);
+    }
+  }, [
+    totalPrice,
+    isInFinland,
+    isZone1,
+    isZone2,
+    selectedDeliveryType,
+    isLoading,
+  ]);
 
   // Onsubmit handle:
   // const handleSubmit = async () => {
@@ -299,6 +309,7 @@ export const CartDeliveryMethod = () => {
       {isNotificationVisible && (
         <SignInSuggestion
           className="signin-notification"
+          setIsLoading={setIsLoading}
           setIsNotificationVisible={setIsNotificationVisible}
         />
       )}
