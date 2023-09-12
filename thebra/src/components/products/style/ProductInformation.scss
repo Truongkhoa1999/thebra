@@ -12,13 +12,16 @@
     flex-direction: column;
     margin-top: 1rem;
     font-family: "Quicksand-Regular";
-
+    background-color: white;
+    margin-left: auto;
+    padding-bottom: 0.5rem;
+    margin-right: auto;
+    border-radius: 4%;
     .title {
       width: 300px;
       font-size: 1.25rem;
       color: black;
       font-family: "Quicksand-Bold";
-
     }
 
     .textSet {
@@ -47,8 +50,6 @@
         color: white;
         border: 2px solid;
         height: 4rem;
-
-
       }
 
       .favorite {
@@ -62,8 +63,6 @@
     .buttonSet {
       display: flex;
       flex-direction: column;
-
-
 
       .size_group {
         display: flex;
@@ -92,7 +91,6 @@
           color: white;
         }
       }
-
     }
 
     .right {
@@ -107,7 +105,8 @@
     display: flex;
     width: 85%;
     justify-content: space-evenly;
-
+    margin-left: auto;
+    margin-right: auto;
     .main {
       flex-basis: 60%;
       display: flex;
@@ -128,7 +127,7 @@
         max-width: 100%;
       }
 
-      img+img {
+      img + img {
         margin-top: 0.25em;
       }
     }
@@ -136,7 +135,7 @@
 
   .sizeguide {
     width: 100%;
-    margin-top: 2em;
+    margin-top: 2rem;
     // background-color: rgb(48, 48, 48);
     display: flex;
     justify-content: center;
@@ -256,7 +255,6 @@
         width: 45%;
         justify-content: space-evenly;
 
-
         .main {
           img {
             max-width: 55%;
@@ -274,7 +272,7 @@
             max-width: 40%;
           }
 
-          img+img {
+          img + img {
             margin-top: 0.25em;
           }
         }
@@ -283,7 +281,8 @@
 
     .sizeguide {
       width: 100%;
-      margin-top: 2em;
+      margin-top: 6rem;
+      margin-bottom: 6rem;
       display: flex;
       justify-content: center;
 

@@ -1,14 +1,17 @@
 * {
     margin: 0;
+    
 
 }
 html{
      overflow-x: hidden;
+     
 
 }
 body{
-    background-color: white ;
-
+    background-image: url("https://firebasestorage.googleapis.com/v0/b/thebra-f81ef.appspot.com/o/Background%2FcaroBackground.png?alt=media&token=29dc4f26-6964-4beb-bb6b-0381fa2f3bab");
+    background-size: 60%;
+    background-position: center;
 
 p{
     font-family: 'Quicksand-Regular';

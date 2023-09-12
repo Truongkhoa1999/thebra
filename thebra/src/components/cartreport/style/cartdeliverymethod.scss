@@ -76,7 +76,8 @@
       width: 100%;
       z-index: 0;
       .country_note {
-        color: brown;
+        font-weight: lighter;
+        font-family: "Quicksand-Regular";
       }
       input,
       select,
@@ -87,7 +88,7 @@
       }
 
       input,
-      select {
+      select {  
         width: 100%;
         height: 3rem;
         align-self: center;
@@ -95,6 +96,7 @@
         border-bottom: 0.5px solid rgba($color: #4c4c4c, $alpha: 0.5);
         font-family: "Quicksand-Regular";
         font-size: 1rem;
+        background-color: #e9e8e8a4;
       }
 
       h2 {
