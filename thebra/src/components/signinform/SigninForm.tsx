@@ -1,5 +1,3 @@
-// utils
-
 // style
 import { useDispatch } from "react-redux";
 import { handleSignIn } from "../../util/login/handleSignIn";
@@ -88,6 +86,14 @@ export const SigninForm = () => {
             className=" button1 newaccount_button"
           >
             create an account
+          </button>
+          <button
+            onClick={() => {
+              navigate("/myAccount");
+            }}
+            className=" button1 newaccount_button"
+          >
+            Forgot my password
           </button>
         </div>
       </form>

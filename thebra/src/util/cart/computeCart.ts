@@ -9,11 +9,6 @@ export const cartTotal = (
   isZone1: boolean,
   isZone2: boolean
 ): number => {
-  console.log("this is delivert price", deliveryFee);
-  console.log("this is in Finland", isInFinland);
-  console.log("this is in Zone1", isZone1);
-  console.log("this is in Zone2", isZone2);
-
   const listOfSize34 = cart.filter(
     (item: CartProps) => item.productSize[34] > 0
   );
