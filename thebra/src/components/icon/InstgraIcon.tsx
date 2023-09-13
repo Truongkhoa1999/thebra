@@ -1,4 +1,4 @@
-export const InstagramIcon = ({ color = "#000000" }) => {
+export const InstagramIcon = () => {
   return (
     // <svg
     //   fill={color}

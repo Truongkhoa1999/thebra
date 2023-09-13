@@ -17,7 +17,7 @@ export const PaymentInfo = () => {
   const [totalAmount, setTotalAmount] = useState<number>(0);
   const stripe = useStripe();
   const elements = useElements();
-  const [clientSecret, setClientSecret] = useState("");
+  // const [clientSecret, setClientSecret] = useState("");
   const [isNotificationVisible, setIsNotificationVisible] = useState(false);
   const [email, setEmail] = useState("");
   const [isLoading, setIsLoading] = useState(false);
