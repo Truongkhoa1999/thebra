@@ -126,18 +126,35 @@
       &:hover {
         border: 1px solid black;
       }
+      &:disabled{
+        background-color: gray;
+        cursor: not-allowed;
+        border: none;
+        color: white;
+      }
     }
-    .pay_button-disabled {
-      width: 60%;
-      padding: 1rem;
-      background-color: rgb(222, 221, 221);
-      border-radius: 4px;
-      border: none;
-      transition: background-color 0.2s;
-      align-self: center;
-      margin-top: 2rem;
-      margin-bottom: 1rem;
-    }
+    // .pay_button-disabled {
+    //   width: 60%;
+    //   padding: 1rem;
+    //   background-color: rgb(222, 221, 221);
+    //   border-radius: 4px;
+    //   border: none;
+    //   transition: background-color 0.2s;
+    //   align-self: center;
+    //   margin-top: 2rem;
+    //   margin-bottom: 1rem;
+    // }
+    // .pay_button[disabled] {
+    //   width: 60%;
+    //   padding: 1rem;
+    //   background-color: rgb(222, 221, 221);
+    //   border-radius: 4px;
+    //   border: none;
+    //   transition: background-color 0.2s;
+    //   align-self: center;
+    //   margin-top: 2rem;
+    //   margin-bottom: 1rem;
+    // }
     .emailInput {
       width: 90%;
       border: none;

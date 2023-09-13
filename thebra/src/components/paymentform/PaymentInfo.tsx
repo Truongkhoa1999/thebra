@@ -164,11 +164,11 @@ export const PaymentInfo = () => {
           required
         />
         <button
-          disabled={isPaid}
+          disabled={isPaid||isLoading}
           className={` ${isLoading ? "loading-text" : "pay_button"}`}
           onClick={handlePayment}
         >
-          Pay Now
+          {isLoading? "Loading...":"Pay Now"}
         </button>
         {/* payment card support */}
         <div className="stripeInfo_container">
