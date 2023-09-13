@@ -62,35 +62,48 @@ export const PaymentInfo = () => {
   // handle payment>>>>>
   const handlePayment = async () => {
     setIsLoading(true);
-    const response = await fetch(
-      "https://thebrabe.onrender.com/api/v1/stripe/paymentintents",
-      {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({
-          amount: totalAmount * 100,
-          currency: "EUR",
-          orderId: orderId,
-          userEmail: email,
-        }),
-      }
-    );
 
-    if (response.ok) {
-      const responseData = await response.json();
-      const clientSecret = responseData.clientSecret;
-      setClientSecret(clientSecret);
-      confirmPayment();
-      setIsLoading(false);
-    } else {
-      console.log("Failed to create PaymentIntent");
-      setIsLoading(false);
+    try {
+      const response = await fetch(
+        "https://thebrabe.onrender.com/api/v1/stripe/paymentintents",
+        {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({
+            amount: totalAmount * 100,
+            currency: "EUR",
+            orderId: orderId,
+            userEmail: email,
+          }),
+        }
+      );
+      if (!response.ok) {
+        console.log("Failed to create an itent");
+        setIsLoading(false)
+        return;
+      }
+      const responseData = await response.json()
+      const clientSec = responseData.clientSecret
+      confirmPayment(clientSec)
+    } catch (error) {
+      console.log(error);
     }
+
+    // if (response.ok) {
+    //   const responseData = await response.json();
+    //   const clientSecret = responseData.clientSecret;
+    //   setClientSecret(clientSecret);
+    //   confirmPayment();
+    //   setIsLoading(false);
+    // } else {
+    //   console.log("Failed to create PaymentIntent");
+    //   setIsLoading(false);
+    // }
   };
 
-  const confirmPayment = async () => {
+    const confirmPayment = async (clientSecret:string) => {
     if (!stripe || !elements) {
       return;
     }
@@ -132,6 +145,7 @@ export const PaymentInfo = () => {
         console.log("Payment done successfully");
         localStorage.removeItem("cart");
         localStorage.removeItem("orderId");
+        setIsLoading(false)
         setIsNotificationVisible(true);
       }
     } else if (paymentError) {
@@ -164,11 +178,11 @@ export const PaymentInfo = () => {
           required
         />
         <button
-          disabled={isPaid||isLoading}
+          disabled={isPaid || isLoading}
           className={` ${isLoading ? "loading-text" : "pay_button"}`}
           onClick={handlePayment}
         >
-          {isLoading? "Loading...":"Pay Now"}
+          {isLoading ? "Loading..." : "Pay Now"}
         </button>
         {/* payment card support */}
         <div className="stripeInfo_container">
