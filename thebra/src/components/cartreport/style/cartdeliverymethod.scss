@@ -128,8 +128,12 @@
       }
     }
     .checkout-button {
-      font-size: 2.5rem;
+      font-size: 1.5rem;
+      width: 60%;
+      @media(min-width:768px){
       width: 40%;
+
+      }
     }
     .loading-text {
       animation: flicker 1.5s infinite;
