@@ -1,6 +1,7 @@
 // lib and material
+import { InstagramIcon } from "../icon/InstgraIcon";
+import { TiktokIcon } from "../icon/TiktokIcon";
 import "./style/Footer.scss";
-import { Facebook, Instagram } from "@mui/icons-material";
 
 export const Footer = () => {
   return (
@@ -35,8 +36,8 @@ export const Footer = () => {
             beauty of our bra shop and embark on a journey of self-discovery,
             where every bra you choose becomes a reflection of your unique
             allure. Allow us to introduce you to our exceptional bra shop in
-            Helsinki (Finland), where elegance meets expertise, and every visit is a
-            celebration of your unique beauty.
+            Helsinki (Finland), where elegance meets expertise, and every visit
+            is a celebration of your unique beauty.
           </p>
         </div>
         <div className="newsletter_container">
@@ -46,7 +47,7 @@ export const Footer = () => {
               <p>
                 My Order <br />
                 Return & Refund <br />
-                Shipping Cost & Delivery Time 
+                Shipping Cost & Delivery Time
               </p>
               <form className="newsletter_form">
                 <input
@@ -85,8 +86,12 @@ export const Footer = () => {
           <div className="lower_newsletter">
             <button className="button_footer">Follow us</button>
             <div className="social_ic">
-              <Facebook />
-              <Instagram />
+              <a target="_blank" href="">
+                <TiktokIcon />
+              </a>
+              <a target="_blank" href="">
+                <InstagramIcon />
+              </a>
             </div>
           </div>
         </div>

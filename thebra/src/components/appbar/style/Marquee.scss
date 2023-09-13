@@ -13,7 +13,7 @@
   .marquee {
     display: inline-block;
     white-space: nowrap;
-    animation: marqueeAnimation 30s linear infinite;
+    animation: marqueeAnimation 20s linear infinite;
     transform: translateX(100%);
     color: white  ;
   }

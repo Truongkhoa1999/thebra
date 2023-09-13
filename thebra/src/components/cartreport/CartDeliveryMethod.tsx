@@ -116,18 +116,6 @@ export const CartDeliveryMethod = () => {
     isLoading,
   ]);
 
-  // Onsubmit handle:
-  // const handleSubmit = async () => {
-  //   setIsLoading(true)
-  //   try {
-
-  //     setIsLoading(false)
-
-  //   } catch (error) {
-  //     console.log(error);
-  //     setIsLoading(false)
-  //   }
-  // };
 
   return (
     <div id="deliverySection" className="delivery_method">
@@ -163,7 +151,7 @@ export const CartDeliveryMethod = () => {
             ? "Standard Delivery for Zone 2 (4-9 Business Days) 0€."
             : "Standard Delivery for Zone 2 (4-9 Business Days) 19.90€."}
         </button>
-        <h2 className="total-price">Subtotal: {totalPrice} €</h2>
+        <h2 className="total-price">{totalPrice}€</h2>
       </div>
 
       <CartHeadingForDeliveryForm />

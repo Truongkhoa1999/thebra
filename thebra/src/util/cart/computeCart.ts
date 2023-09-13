@@ -38,6 +38,9 @@ export const cartTotal = (
   let total = totalWithoutShipFee;
 
   switch (true) {
+    case totalWithoutShipFee === 0:
+      total = 0
+      break;
     case totalWithoutShipFee >= 149 && isZone2:
       total = totalWithoutShipFee;
       break;

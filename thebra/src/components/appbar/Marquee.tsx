@@ -23,7 +23,7 @@ const Marquee: React.FC = () => {
     return (
         <div className='marquee-container'>
             <div className="marquee" ref={marqueeRef}>
-                <span>✈️ Enjoy Free Standard Shipping for Orders Over 49€ within EU Countries! &nbsp; &nbsp; <span style={{color:"red"}}>Get 10% Off Your Next Order!</span></span>
+                <span>✈️ Enjoy Free Standard Shipping for Orders Over 49€ within 🇫🇮 Finland 🇫🇮 ! &nbsp; &nbsp; <span style={{color:"red"}}>Get 10% Off Your Next Order!</span></span>
             </div>
         </div>
 
