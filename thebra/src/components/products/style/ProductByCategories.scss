@@ -64,7 +64,10 @@
     justify-content: space-around;
     margin-top: 4rem;
     margin-bottom: 4rem;
+@media(min-width:2560px){
+  margin-bottom: 6rem;
 
+}
     .button-red,
     .button-green,
     .button-blue {
@@ -222,6 +225,7 @@
 
       img {
         width: 90px;
+        border-radius: 5%;
         /* Adjust the image width as needed */
       }
 

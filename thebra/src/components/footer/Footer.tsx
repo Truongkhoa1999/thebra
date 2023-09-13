@@ -1,9 +1,26 @@
 // lib and material
-import { InstagramIcon } from "../icon/InstgraIcon";
-import { TiktokIcon } from "../icon/TiktokIcon";
+// import { InstagramIcon } from "../icon/InstgraIcon";
+// import { TiktokIcon } from "../icon/TiktokIcon";
+import { useEffect } from "react";
 import "./style/Footer.scss";
 
 export const Footer = () => {
+  useEffect(() => {
+    // JavaScript code for iPhone devices
+
+    if (/iPhone/.test(navigator.userAgent)) {
+      const buttons = document.querySelectorAll(".button_footer");
+      buttons.forEach((button) => {
+        button.addEventListener("click", () => {
+          const content = button.nextElementSibling;
+          if (content) {
+            content.classList.toggle("visible");
+          }
+        });
+      });
+    }
+  }, []);
+
   return (
     <div className="footer_container">
       <h1 className="upper">TheBra</h1>
@@ -85,14 +102,14 @@ export const Footer = () => {
           </div>
           <div className="lower_newsletter">
             <button className="button_footer">Follow us</button>
-            <div className="social_ic">
+            {/* <div className="social_ic">
               <a target="_blank" href="">
                 <TiktokIcon />
               </a>
               <a target="_blank" href="">
                 <InstagramIcon />
               </a>
-            </div>
+            </div> */}
           </div>
         </div>
       </div>
