@@ -19,7 +19,7 @@
       background-color: transparent;
       cursor: pointer;
       font-size: 1rem;
-      color: rgb(180, 167, 167);
+      color: gray;
 
       &:hover {
         border: 0.05px solid black;
@@ -43,6 +43,7 @@
       padding-top: 1rem;
       padding-bottom: 1rem;
       font-family: "Quicksand-Bold";
+      font-size: 2.5rem;
     }
   }
 
@@ -79,6 +80,8 @@
       .country_note {
         font-weight: lighter;
         font-family: "Quicksand-Regular";
+        color: red;
+        font-style: italic;
       }
       input,
       select,
@@ -123,6 +126,10 @@
           color: brown;
         }
       }
+    }
+    .checkout-button {
+      font-size: 2.5rem;
+      width: 40%;
     }
     .loading-text {
       animation: flicker 1.5s infinite;
