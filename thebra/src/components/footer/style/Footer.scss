@@ -7,10 +7,10 @@
   color: white;
   margin-bottom: 0.5em;
   margin-top: 0.5em;
-  margin-left: 0.25em;
+  // margin-left: 0.25em;
   font-size: 1.75em;
 
-  @media (min-width:768px) {
+  @media (min-width: 768px) {
     width: 100%;
     padding-left: 0.25em;
     margin-bottom: 0.5em;
@@ -20,54 +20,47 @@
   }
 }
 
-.visible {
-  max-height: 1000px; /* Adjust the value to match the maximum height of your content */
-  visibility: visible;
-  transition: max-height 0.5s ease; /* Adjust the duration and easing as needed */
-}
-
-/* Initially hide the content */
-.button_footer + p {
-  max-height: 0;
-  visibility: hidden;
-  overflow: hidden;
-  transition: max-height 0.5s ease; /* Adjust the duration and easing as needed */
-}
-
-
-input {
-  width: 80%;
-  height: 2em;
-  margin-top: 0.5em;
-}
-
 // Desktop view
 @media (min-width: 768px) {
   .footer_container {
     display: flex;
     flex-direction: column;
     justify-content: space-around;
-    width: 99%;
+    width: 95%;
     margin-left: auto;
     margin-right: auto;
     color: black;
     background-color: transparent;
     padding-top: 2em;
-
     .upper {
       width: 95%;
       display: flex;
       justify-content: flex-start;
       border-bottom: 1px solid black;
       margin-left: 1em;
-    }
+      font-size: 2rem;
+      padding: 1rem 0 1rem 0;
+      margin-bottom: 1rem;
 
+    }
+    .bottom {
+      width: 95%;
+      display: flex;
+      justify-content: flex-start;
+      border-top: 1px solid black;
+      margin-left: 2em;
+      font-size: 1.05rem;
+      padding: 1rem 0 1rem 0;
+    }
     .lower {
       margin-bottom: 1em;
-
-      p {
-        font-size: 0.9em;
-      }
+      width: 95%;
+      align-self: center;
+      display: flex;
+      justify-content: space-between;
+      // p {
+      //   font-size: 0.9em;
+      // }
 
       button {
         width: 100%;
@@ -81,53 +74,36 @@ input {
         margin-top: 0.5em;
       }
 
-      display: flex;
-      justify-content: space-evenly;
-
       .customerservice_container {
         width: 30%;
         display: flex;
         flex-direction: column;
-      }
-
-      .information_container {
-        width: 30%;
-        display: flex;
-        flex-direction: column;
-      }
-
-      .newsletter_container {
-        width: 30%;
-        display: flex;
-        flex-direction: column;
-
-        .newsletter_form {
+        p {
           width: 100%;
-          margin-top: 1em;
+        }
+      }
 
-          input {
-            width: 80%;
-            height: 2em;
-          }
+      .aboutus_container {
+        width: 30%;
+        display: flex;
+        flex-direction: column;
+        p {
+          width: 100%;
+        }
+      }
 
-          .submit-button {
-            width: 30%;
-            border: 0.5px solid black;
-          }
+      .fq_container {
+        width: 30%;
+        display: flex;
+        flex-direction: column;
+        p {
+          width: 100%;
         }
       }
     }
-
-    .bottom {
-      width: 95%;
-      display: flex;
-      justify-content: flex-start;
-      border-top: 1px solid black;
-      margin-left: 1em;
-      padding: 1em 0 1em 0;
-    }
   }
 }
+// >>>>>>>>>>>>>>>>>
 
 // Mobile view
 @media (max-width: 767px) {
@@ -140,70 +116,19 @@ input {
     padding-bottom: 1rem;
     padding-top: 5rem;
     background-color: transparent;
-
     .upper {
       width: 90%;
       display: flex;
       justify-content: flex-start;
       border-bottom: 1px solid black;
-      margin-left: 0.25em;
     }
 
     .lower {
-
-      .customerservice_container,
-      .information_container {
-        p {
-          visibility: hidden;
-          max-height: 0;
-          overflow: hidden;
-          transition: max-height 0.5s ease;
-          font-size: 14px;
-          margin-left: 0.75em;
-          width: 90%;
-        }
-
-        button:focus+p {
-          visibility: visible;
-          max-height: 1000px;
-          /* Adjust the value to match the maximum height of your content */
-          transition: max-height 2s ease;
-        }
+      display: flex;
+      flex-direction: column;
+      p {
+        width: 90%;
       }
-
-      .newsletter_container {
-
-        p,
-        .letter_form {
-          font-size: 14px;
-          margin-left: 0.75em;
-          width: 90%;
-        }
-
-        .letter_form {
-          visibility: hidden;
-          max-height: 0;
-          overflow: hidden;
-          transition: max-height 0.5s ease;
-        }
-
-        button:focus+.letter_form {
-          visibility: visible;
-          max-height: 1000px;
-          transition: max-height 2s ease;
-        }
-
-        .lower_newsletter {
-          .social_ic {
-            margin-left: 0.25em;
-          }
-        }
-      }
-    }
-
-    .bottom {
-      margin-left: 0.25em;
-
     }
   }
 }
