@@ -1,12 +1,11 @@
 import { Link } from "react-router-dom";
 import "./style/PopupMenu.scss";
-// import { useEffect, useState } from "react";
-// import { isUserSignedIn } from "../../util/checkingSigninStatus/isUserSignedIn";
+import { smoothScroll } from "../../util/window/smoothScroll";
+
 export const PopupMenu = ({ className }: { className: string }) => {
-  // const [isSignedIn, setIsSignedIn] = useState(isUserSignedIn());
-  // useEffect(() => {
-  //   setIsSignedIn(isUserSignedIn());
-  // }, []);
+  const handleScroll = () => {
+    smoothScroll("posts", true);
+  };
 
   return (
     <div className={className}>
@@ -20,9 +19,12 @@ export const PopupMenu = ({ className }: { className: string }) => {
         <Link to="/homepage" className="menuLink ">
           Home
         </Link>
-        <Link to="/signin" className="menuLink ">
+        <button onClick={handleScroll} className="menuLink ">
           Products
-        </Link>
+        </button>
+        {/* <Link to="/homepage/#posts" className="menuLink ">
+          Products
+        </Link> */}
         <Link to="/signin" className="menuLink ">
           Contact
         </Link>

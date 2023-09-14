@@ -19,7 +19,19 @@
     font-size: 0.5em;
   }
 }
+.sc-media {
+  display: flex;
+  flex-direction: column;
+  margin-top: 1rem;
+  h2{
+    font-family: "Quicksand-Regular";
+  }
+  div {
+    margin-top: 0.05rem;
 
+    display: flex;
+  }
+}
 // Desktop view
 @media (min-width: 768px) {
   .footer_container {
@@ -41,7 +53,6 @@
       font-size: 2rem;
       padding: 1rem 0 1rem 0;
       margin-bottom: 1rem;
-
     }
     .bottom {
       width: 95%;

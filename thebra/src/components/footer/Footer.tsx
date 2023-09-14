@@ -3,6 +3,9 @@
 // import { TiktokIcon } from "../icon/TiktokIcon";
 import { useEffect, useState } from "react";
 import "./style/Footer.scss";
+import { InstagramIcon } from "../icon/InstgraIcon";
+import { TiktokIcon } from "../icon/TiktokIcon";
+import { Link } from "react-router-dom";
 
 export const Footer = () => {
   const [csVisible, setCSVisible] = useState(false);
@@ -11,7 +14,7 @@ export const Footer = () => {
   const [isDesktop, setIsDesktop] = useState(false);
 
   const handleOnClickCS = () => {
-    if(!isDesktop){
+    if (!isDesktop) {
       setCSVisible(!csVisible);
     }
   };
@@ -43,7 +46,7 @@ export const Footer = () => {
     return () => {
       window.removeEventListener("resize", handleResize);
     };
-  }, [csVisible,atVisible,fqVisible]);
+  }, [csVisible, atVisible, fqVisible]);
 
   return (
     <div className="footer_container">
@@ -61,10 +64,12 @@ export const Footer = () => {
               confirmation takes place, we are always ready to assist you. Our
               contact details and chat hours can be found below. Don't sit and
               think - Get in touch! In our customer service FAQs, you'll find
-              our most common questions and answers. Chat <br />
+              our most common questions and answers.
+              <br />
+              <span style={{ color: "red" }}>Working hours:</span> <br />
               Mon-Fri 8 - 22 <br />
               Sat-Sun 10-20 <br />
-              E-mail thebra.lingerie@gmail.com <br />
+              E-mail: thebra.lingerie@gmail.com <br />
             </p>
           ) : (
             ""
@@ -105,6 +110,23 @@ export const Footer = () => {
           ) : (
             ""
           )}
+          <div className="sc-media">
+            <h2>Follow us</h2>
+            <div>
+              <a
+                target="_blank"
+                href="https://www.instagram.com/thebra_lingerie/?fbclid=IwAR1PTVbRGhjfYYAEMKga8mpE9VoKiGQNWODcFOXo8Xfi_WJT52v0XKyEjzM"
+              >
+                <InstagramIcon />
+              </a>
+              {/* <Link to="https://www.tiktok.com/@thebra_lingerie" > */}
+              <a href="https://www.tiktok.com/@thebra_lingerie" target="_blank">
+                {" "}
+                <TiktokIcon />
+              </a>
+              {/* </Link> */}
+            </div>
+          </div>
         </div>
       </div>
       <div className="bottom">
