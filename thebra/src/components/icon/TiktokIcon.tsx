@@ -1,4 +1,4 @@
-export const TiktokIcon = ({ color = "#000000" }) => {
+export const TiktokIcon = () => {
   return (
    <div style={{marginLeft:"0.5rem"}}>
      <svg
