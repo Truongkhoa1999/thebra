@@ -1,11 +1,8 @@
-// lib and material
-// import { InstagramIcon } from "../icon/InstgraIcon";
-// import { TiktokIcon } from "../icon/TiktokIcon";
+
 import { useEffect, useState } from "react";
 import "./style/Footer.scss";
 import { InstagramIcon } from "../icon/InstgraIcon";
 import { TiktokIcon } from "../icon/TiktokIcon";
-import { Link } from "react-router-dom";
 
 export const Footer = () => {
   const [csVisible, setCSVisible] = useState(false);
