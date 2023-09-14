@@ -20,6 +20,21 @@
   }
 }
 
+.visible {
+  max-height: 1000px; /* Adjust the value to match the maximum height of your content */
+  visibility: visible;
+  transition: max-height 0.5s ease; /* Adjust the duration and easing as needed */
+}
+
+/* Initially hide the content */
+.button_footer + p {
+  max-height: 0;
+  visibility: hidden;
+  overflow: hidden;
+  transition: max-height 0.5s ease; /* Adjust the duration and easing as needed */
+}
+
+
 input {
   width: 80%;
   height: 2em;
