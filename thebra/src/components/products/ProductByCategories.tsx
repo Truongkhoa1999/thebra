@@ -31,6 +31,7 @@ const ProductByCategories = () => {
 
   return (
     <div className="post_container" id='posts'>
+      <h1>SET</h1>
       {/* <div className="heading_container">
         <div className="logo" />
         <h1 className="collection_title">Explore our collection</h1>

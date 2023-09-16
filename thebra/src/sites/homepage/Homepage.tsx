@@ -13,6 +13,7 @@ import { fetchProducts } from "../../redux/actions/getProducts";
 import { useEffect } from "react";
 import { smoothScroll } from "../../util/window/smoothScroll";
 import { InstagramView } from "../../components/instagramview/InstagramView";
+import { ItemCollection } from "../../components/itemcollection/ItemCollection";
 
 const Homepage = () => {
   const dispatch = useDispatch<AppDispatch>()
@@ -29,6 +30,7 @@ const Homepage = () => {
       <AppBar />
       <Carousel key="carousel1" />
       <ProductByCategories />
+      <ItemCollection />
       <ProductByNumberOfClicks products={products} />
       <InstagramView />
       <Footer />

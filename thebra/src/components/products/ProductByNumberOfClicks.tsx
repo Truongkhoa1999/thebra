@@ -9,7 +9,7 @@ export const ProductByNumberOfClicks: React.FC<ProductByNumberOfClicksProps> = (
   const firstthreeproducts = products.slice(0, 3);
   return (
     <div className="productbynumberofclicks_container">
-      <h1>Best seller</h1>
+      <h1>BEST SELLER</h1>
       <div className="bestseller_cards">
         {firstthreeproducts.map((p) => (
 

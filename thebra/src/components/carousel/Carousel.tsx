@@ -21,7 +21,7 @@ const Carousel = () => {
         {...swipeHandlers(arrayIndex, setArrayIndex, setIsDelayed)}
       >
         <button
-          className="arrow_button"
+          className="arrow_button L"
           onClick={() =>
             updateArrayIndex(-1, arrayIndex, setArrayIndex, setIsDelayed)
           }
@@ -30,7 +30,7 @@ const Carousel = () => {
         </button>
         <img src={CarouselData[arrayIndex]} alt="1" key={arrayIndex} />
         <button
-          className="arrow_button"
+          className="arrow_button R"
           onClick={() =>
             updateArrayIndex(+1, arrayIndex, setArrayIndex, setIsDelayed)
           }

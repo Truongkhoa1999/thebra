@@ -4,9 +4,11 @@
   flex-direction: column;
   margin-left: auto;
   margin-right: auto;
-  padding-bottom: 5rem;
-  margin-bottom: 5rem;
   border: none;
+  padding-bottom: 2rem;
+  padding-top: 2rem;
+  margin-bottom: 1rem;
+  margin-top: 1rem;
 
   @media (min-width: 2560px) {
     width: 65%;

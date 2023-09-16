@@ -288,7 +288,6 @@ export const CartDeliveryMethod = () => {
           <br />
           <button
             className={`checkout-button ${isLoading ? "loading-text" : ""}`}
-            // className="checkout-button" type="submit"
           >
             {isLoading ? "Loading..." : "Check out"}
           </button>

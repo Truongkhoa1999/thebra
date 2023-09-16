@@ -3,9 +3,7 @@ import "./style/PopupMenu.scss";
 import { smoothScroll } from "../../util/window/smoothScroll";
 
 export const PopupMenu = ({ className }: { className: string }) => {
-  const handleScroll = () => {
-    smoothScroll("posts", true);
-  };
+
 
   return (
     <div className={className}>
@@ -15,17 +13,16 @@ export const PopupMenu = ({ className }: { className: string }) => {
             isSignedIn ? "Sign-out" : "Sign-in"
           }
         </Link> */}
-
         <Link to="/homepage" className="menuLink ">
           Home
         </Link>
-        <button onClick={handleScroll} className="menuLink ">
-          Products
-        </button>
-        {/* <Link to="/homepage/#posts" className="menuLink ">
-          Products
-        </Link> */}
-        <Link to="/signin" className="menuLink ">
+   
+            <Link
+              className="menuLink "
+              to={"/homepage#posts"}
+              onClick={() => smoothScroll("posts", true)}
+            >Products</Link>
+        <Link to="/contact" className="menuLink ">
           Contact
         </Link>
       </div>

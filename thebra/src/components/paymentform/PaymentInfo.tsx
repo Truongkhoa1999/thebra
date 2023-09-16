@@ -142,7 +142,6 @@ export const PaymentInfo = () => {
           console.log("3D Secure authentication redirect URL is missing.");
         }
       } else if (paymentIntent.status === "succeeded") {
-        console.log("Payment done successfully");
         localStorage.removeItem("cart");
         localStorage.removeItem("orderId");
         setIsLoading(false)
