@@ -13,6 +13,7 @@ import {
   handleSize36Confirm,
 } from "../../util/sizeSelection/sizeSelection";
 import GeneralNotification from "../notification/GeneralNotification";
+import { formatNumberWithTwoDecimalPlaces } from "../../util/id/formatID";
 
 export const ProductInformation = () => {
   const { id } = useParams<{ id: ReturnType<typeof uuidv4> }>();
@@ -46,7 +47,9 @@ export const ProductInformation = () => {
           <div className="buttonSet">
             <h5>The Bra</h5>
             <div className="title">{productById?.title}</div>
-            <div className="price">{productById?.price} €</div>
+            <div className="price">
+              {formatNumberWithTwoDecimalPlaces(productById!.price)} €
+            </div>
             <h5>Included Tax</h5>
             <div className="size_group">
               <h4>Size</h4>
@@ -70,7 +73,7 @@ export const ProductInformation = () => {
                 onClick={() => {
                   if (productById && (is34 || is36)) {
                     handleSaveCart(dispatch, productById, cart, is34, is36);
-                    setIsNotificationVisible(true)
+                    setIsNotificationVisible(true);
                   }
                 }}
                 className="addcart"

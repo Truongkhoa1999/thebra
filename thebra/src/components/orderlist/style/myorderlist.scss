@@ -5,6 +5,7 @@
   align-items: center;
   .paidList {
     display: flex;
+    flex-direction: column;
     justify-content: center;
     width: 95%;
     margin-top: 2rem;
@@ -14,11 +15,10 @@
     .order {
       width: 85%;
       display: flex;
-      // justify-content: space-between;
       flex-wrap: wrap;
       background-color: rgb(217, 251, 165);
       padding: 1rem;
-      // margin-top: 2rem;
+      margin-top: 1rem;
 
       @media (min-width: 768px) {
         width: 100%;

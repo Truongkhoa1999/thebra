@@ -36,7 +36,7 @@ export const RelevantProductsByCategory = ({
       <div className="relevant-items">
         {relevantProductsByCategory?.map((p) => (
           <Link style={{textDecoration:"none"}} className="item" to={`/product/${p.id}`} key={p.id}>
-            <img className="item-img" src={p.images[2]} />
+            <img className="item-img" src={p.images[0]} />
             <div className="item-text">
               <h2 >{p.title}</h2>
               <h2>{p.price}</h2>

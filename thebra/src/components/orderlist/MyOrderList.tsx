@@ -3,6 +3,7 @@ import { fetchOrderDataByUserId } from "../../util/order/fetchOrderData";
 import { OrderProps } from "../../type/OrderProps";
 // style
 import "./style/myorderlist.scss";
+import { formatOrderId } from "../../util/id/formatID";
 export const MyOrderList = () => {
   const [orderPaidListData, setOrderPaidListDataListData] = useState<
     OrderProps[]
@@ -40,6 +41,7 @@ export const MyOrderList = () => {
           <div className="order" key={i}>
             <div className="orderInfo">
               <div className="upper">
+                <p>Order ID: {formatOrderId(order.id)}</p>
                 <p>Payment status: {order.paymentStatus}</p>
                 <p>Delivery Address: {order.shippingAddress}</p>
                 <p>Total Price: {order.totalAmount}EUR</p>
