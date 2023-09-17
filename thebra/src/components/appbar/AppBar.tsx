@@ -68,7 +68,7 @@ const AppBar = () => {
             <Link style={{ textDecoration: "none" }} to="/homepage">
               <img
                 className="myLogo"
-                src="https://firebasestorage.googleapis.com/v0/b/thebra-f81ef.appspot.com/o/LOGO%2FDC05151B-1FCB-4FDE-96C8-301D13A2B0EB_4_5005_c.jpeg?alt=media&token=3e210d80-7f3b-4d32-9ee1-7bf851d38733"
+                src="https://firebasestorage.googleapis.com/v0/b/thebra-f81ef.appspot.com/o/LOGO%2Flogo.avif?alt=media&token=ff9f07e1-ab03-4d18-bdb5-87b36b41ce24"
                 alt="logo"
               />
             </Link>

@@ -14,6 +14,7 @@ import {
 } from "../../util/sizeSelection/sizeSelection";
 import GeneralNotification from "../notification/GeneralNotification";
 import { formatNumberWithTwoDecimalPlaces } from "../../util/id/formatID";
+import { detectIfPantyOrBra } from "../../util/productByCategory/filterProductByCategory";
 
 export const ProductInformation = () => {
   const { id } = useParams<{ id: ReturnType<typeof uuidv4> }>();
@@ -23,12 +24,17 @@ export const ProductInformation = () => {
   const [is34, setIs34] = useState(false);
   const [is36, setIs36] = useState(false);
   const [isNotificationVisible, setIsNotificationVisible] = useState(false);
+  const [isPantyOrBra, setIsPantyOrBra] = useState(false);
 
   useEffect(() => {
     if (id) {
       dispatch(getProductById(id));
+      if (productById) {
+        const isSingleItem = detectIfPantyOrBra(productById);
+        setIsPantyOrBra(isSingleItem);
+      }
     }
-  }, [dispatch]);
+  }, [id, dispatch, productById]);
 
   return (
     <div className="productInformation_container">
@@ -37,11 +43,14 @@ export const ProductInformation = () => {
           <div className="main">
             <img src={productById?.images[0]} alt=" " />
           </div>
-
-          <div className="minor">
-            <img src={productById?.images[1]} alt=" " />
-            <img src={productById?.images[2]} alt=" " />
-          </div>
+          {isPantyOrBra ? (
+            ""
+          ) : (
+            <div className="minor">
+              <img src={productById?.images[1]} alt=" " />
+              <img src={productById?.images[2]} alt=" " />
+            </div>
+          )}
         </div>
         <div className="productInformation_text">
           <div className="buttonSet">

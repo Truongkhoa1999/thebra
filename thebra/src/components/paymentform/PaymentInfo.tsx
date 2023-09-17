@@ -90,17 +90,6 @@ export const PaymentInfo = () => {
     } catch (error) {
       console.log(error);
     }
-
-    // if (response.ok) {
-    //   const responseData = await response.json();
-    //   const clientSecret = responseData.clientSecret;
-    //   setClientSecret(clientSecret);
-    //   confirmPayment();
-    //   setIsLoading(false);
-    // } else {
-    //   console.log("Failed to create PaymentIntent");
-    //   setIsLoading(false);
-    // }
   };
 
     const confirmPayment = async (clientSecret:string) => {

@@ -87,7 +87,7 @@ export const Footer = () => {
               self-discovery, where every bra you choose becomes a reflection of
               your unique allure. Allow us to introduce you to our exceptional
               bra shop in Helsinki (Finland), where elegance meets expertise,
-              and every visit is a celebration of your unique beauty. fqVisible
+              and every visit is a celebration of your unique beauty.
             </p>
           ) : (
             ""
