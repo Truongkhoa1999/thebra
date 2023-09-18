@@ -24,8 +24,8 @@ export const ProductByNumberOfClicks: React.FC<
     <div className="productbynumberofclicks_container">
       <h1>BEST SELLER</h1>
       {isLoading ? (
-        <p className="loading-text">Loading...</p>
-      ) : filteredData && filteredData.length > 0 ? (
+        <div className="loader"></div>
+      ) : (
         <div className="bestseller_cards">
           {filteredData.map((p) => (
             <div className="bestseller_card" key={p.id}>
@@ -39,8 +39,6 @@ export const ProductByNumberOfClicks: React.FC<
             </div>
           ))}
         </div>
-      ) : (
-        <p>No products available.</p>
       )}
     </div>
   );

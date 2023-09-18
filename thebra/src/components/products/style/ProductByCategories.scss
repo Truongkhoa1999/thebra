@@ -75,25 +75,22 @@
     .button-blue {
       background-color: transparent;
       cursor: pointer;
-      width: 6rem;
-      padding: 0.25rem;
-      font-size: 12px;
+      width: 33%;
+      // padding: 0.25rem;
+      font-size: 20px;
       border: none;
-      // box-shadow: 1px 4px 4px black;
       color: black;
       font-family: "Quicksand-Regular";
       transition: 0.5s;
-
+      &:hover {
+        border-bottom: 2px solid black;
+        transition: 0;
+        color: brown;
+      }
       @media (min-width: 768px) {
-        width: 15%;
+        width: 12rem;
         padding: 1rem;
-        font-size: 25px;
-
-        &:hover {
-          border-bottom: 2px solid black;
-          transition: 0;
-          color: brown;
-        }
+        font-size: 1.5rem;
       }
     }
 
@@ -276,24 +273,18 @@
     }
   }
   //   >>>>>>>
-  .loading-text {
-    animation: flicker 1.5s infinite;
-    // border: 1px solid red;
-    width: 20rem;
-    height: 20rem;
-    text-align: center;
-    font-size: 1.5rem;
+  .loader {
+    border: 5px solid #f3f3f3; /* Light grey */
+    border-top: 5px solid black; /* Blue */
+    border-radius: 50%;
+    width: 50px;
+    height: 50px;
+    animation: spin 2s linear infinite;
   }
-
-  @keyframes flicker {
-    0%,
-    100% {
-      opacity: 0.2; /* Text is mostly transparent */
-    }
-    25%,
-    75% {
-      opacity: 1; /* Text is fully opaque */
-    }
+  
+  @keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
   }
   // >>>>>>
 }

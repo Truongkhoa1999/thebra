@@ -30,7 +30,6 @@ function App() {
   const stripePromise = loadStripe(
     "pk_live_51NWsLeKEPicYF8bFJMAFuEdhspcw9XwQa6Cr11Teo7OLVJJi2sFwkfV3Fb40uwTtRumOv2IRZiIAyaJgKUmZcUf600o4Y3QZiH"
   );
-  // const stripePromise = loadStripe('pk_test_51NWsLeKEPicYF8bFJDh3qQrRuRi61NgIGgzcm2C2aE1p6P8THLoqQYDH1VP0Kccl7BVdz8Pc77Fz9Z2R6riDlAjS00UT89BzRl');
 
   return (
     <Router>

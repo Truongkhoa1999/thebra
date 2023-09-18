@@ -15,6 +15,7 @@ import {
 import GeneralNotification from "../notification/GeneralNotification";
 import { formatNumberWithTwoDecimalPlaces } from "../../util/id/formatID";
 import { detectIfPantyOrBra } from "../../util/productByCategory/filterProductByCategory";
+import { smoothScroll } from "../../util/window/smoothScroll";
 
 export const ProductInformation = () => {
   const { id } = useParams<{ id: ReturnType<typeof uuidv4> }>();
@@ -37,7 +38,7 @@ export const ProductInformation = () => {
   }, [id, dispatch, productById]);
 
   return (
-    <div className="productInformation_container">
+    <div id="pro_con" className="productInformation_container">
       <div className="upper">
         <div className="productInformation_image">
           <div className="main">

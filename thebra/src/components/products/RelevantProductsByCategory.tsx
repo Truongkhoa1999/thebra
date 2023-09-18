@@ -17,6 +17,7 @@ export const RelevantProductsByCategory = ({
     useState<ProductProps[]>(products);
   const dispatch = useDispatch<AppDispatch>();
 
+
   useEffect(() => {
     dispatch(fetchProducts());
   }, [dispatch]);
@@ -31,14 +32,19 @@ export const RelevantProductsByCategory = ({
     }
   }, [category, products]);
   return (
-    <div className="relevant_container">
+    <div id="rc" className="relevant_container">
       <h2 className="heading">{category}</h2>
       <div className="relevant-items">
         {relevantProductsByCategory?.map((p) => (
-          <Link style={{textDecoration:"none"}} className="item" to={`/product/${p.id}`} key={p.id}>
+          <Link
+            style={{ textDecoration: "none" }}
+            className="item"
+            to={`/product/${p.id}`}
+            key={p.id}
+          >
             <img className="item-img" src={p.images[0]} />
             <div className="item-text">
-              <h2 >{p.title}</h2>
+              <h2>{p.title}</h2>
               <h2>{p.price}</h2>
             </div>
           </Link>

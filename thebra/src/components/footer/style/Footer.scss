@@ -9,6 +9,7 @@
   margin-top: 0.5em;
   // margin-left: 0.25em;
   font-size: 1.75em;
+
   @media (min-width: 768px) {
     width: 100%;
     padding-left: 0.25em;
@@ -111,10 +112,11 @@
         }
       }
     }
+    border: 1px solid red;
+
   }
 }
 // >>>>>>>>>>>>>>>>>
-
 // Mobile view
 @media (max-width: 767px) {
   .footer_container {

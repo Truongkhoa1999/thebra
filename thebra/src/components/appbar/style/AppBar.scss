@@ -6,12 +6,11 @@
   margin-right: auto;
   // padding-bottom: 1rem;
 
-
-  @media(min-width:768px) {
+  @media (min-width: 768px) {
     width: 100%;
   }
 
-  @media(min-width:2560) {
+  @media (min-width: 2560) {
     width: 75vw;
   }
 
@@ -23,19 +22,19 @@
 
   .upper {
     width: 100%;
-    margin-left: auto;
-    margin-right: auto;
+    // margin-left: auto;
+    // margin-right: auto;
     display: flex;
     flex-direction: row;
     align-items: center;
-    justify-content: space-between;
+    justify-content: space-around;
 
-    @media(min-width:500px) {
+    @media (min-width: 500px) {
       width: 95%;
       justify-content: space-between;
     }
 
-    @media(min-width:700px) {
+    @media (min-width: 700px) {
       width: 98%;
       justify-content: space-between;
     }
@@ -49,8 +48,7 @@
       align-items: center;
       cursor: pointer;
       color: black;
-      margin-left: 1rem;
-
+      // margin-left: 1rem;
       @media (min-width: 768px) {
         display: none;
       }
@@ -61,16 +59,16 @@
       font-family: "Quicksand-Regular";
       align-items: center;
 
-      @media(min-width:700px) {
-        width: 25%;
-        justify-content: space-around;
+      @media (min-width: 700px) {
+        // width: 2%;
+        // justify-content: space-around;
         // margin-left: 1rem;
       }
 
       .siteLinks {
         display: none;
 
-        @media(min-width: 768px) {
+        @media (min-width: 768px) {
           display: flex;
           flex-direction: row;
           align-items: center;
@@ -87,22 +85,19 @@
 
             &:hover {
               border-bottom: 1px solid rgb(180, 167, 167);
-              ;
             }
           }
         }
       }
-
-
     }
 
-
     .appbar_button {
-      @media(min-width:700px) {
+
+      @media (min-width: 700px) {
         margin-right: 1.5rem;
       }
 
-      @media (min-width:768px) {
+      @media (min-width: 768px) {
         display: flex;
         width: 10%;
       }
@@ -114,18 +109,16 @@
         &:hover {
           border-bottom: 1px solid rgb(180, 167, 167);
         }
-
       }
 
       .icon-ban {
         &:hover {
           border: none;
-
         }
       }
 
       .accountButton--active {
-       color: green;
+        color: green;
       }
 
       display: flex;
@@ -133,35 +126,18 @@
     }
 
     .logo_container {
-      width: 35%;
-      display: flex;
-      flex-direction: row;
-      justify-content: center;
-      margin-right: 0.25rem;
-    
-
 
       .myLogo {
         width: 8rem;
 
-        @media (min-width:768px) {
+        @media (min-width: 768px) {
           width: 9rem;
         }
-      }
-
-      @media (min-width: 768px) {
-        // width: 20rem;
-        // border: 2px solid blue;
-      width: 100%;
-
-        align-self: center;
-        margin-right: 6rem;
       }
     }
   }
 
   .lower {
     width: 100%;
-
   }
 }

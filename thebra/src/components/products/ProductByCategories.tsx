@@ -10,9 +10,6 @@ import { useDispatch, useSelector } from "react-redux";
 import { AppDispatch, RootState } from "../../redux/store";
 import { fetchProducts } from "../../redux/actions/getProducts";
 
-// interface ProductByCategoriesProps {
-//   products: ProductProps[];
-// }
 const ProductByCategories = () => {
   const [activeButton, setActiveButton] = useState("");
   const dispatch = useDispatch<AppDispatch>();
@@ -21,20 +18,26 @@ const ProductByCategories = () => {
     products.slice(0, 3)
   );
   const [category, setCategory] = useState("Bralette");
-  const [isLoading, setIsLoading] = useState(false);
+  const [isLoading, setIsLoading] = useState(true);
   const navigate = useNavigate();
 
   useEffect(() => {
-    if (products.length === 0) {
-      setIsLoading(true);
-      dispatch(fetchProducts());
-      if (products) {
+    const fetchProductsIfNeeded = async () => {
+      try {
+        const fetchedProducts = await dispatch(fetchProducts());
+        if (fetchedProducts) {
+          setFilteredProducts(fetchedProducts.slice(0, 3));
+          setIsLoading(false);
+        }
+      } catch (error) {
+        console.log(error);
         setIsLoading(false);
       }
-    } else {
-      setFilteredProducts(products.slice(0, 3));
+    };
+    if (products.length === 0 || location.pathname.includes("/homepage")) {
+      fetchProductsIfNeeded();
     }
-  }, [dispatch, products]);
+  }, [dispatch, products, location.pathname]);
 
   return (
     <div className="post_container" id="posts">
@@ -85,7 +88,8 @@ const ProductByCategories = () => {
         </button>
       </div>
       {isLoading ? (
-        <p className="loading-text">Loading...</p>
+        // <p className="loading-text">Loading...</p>
+        <div className="loader"></div>
       ) : (
         <div className="item_container">
           {filteredProducts.map((p) => (
@@ -113,7 +117,6 @@ const ProductByCategories = () => {
           </div>
         </div>
       )}
-      {/* >>>>> */}
     </div>
   );
 };
