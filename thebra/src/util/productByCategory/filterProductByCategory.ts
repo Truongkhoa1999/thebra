@@ -32,3 +32,9 @@ export const detectIfPantyOrBra = (productById: ProductProps) => {
   }
   return false;
 };
+export const detectIfPanty = (productById: ProductProps) => {
+  if (productById.category === "PANTY") {
+    return true;
+  }
+  return false;
+};

@@ -33,7 +33,7 @@ export const RelevantProductsByCategory = ({
   }, [category, products]);
   return (
     <div id="rc" className="relevant_container">
-      <h2 className="heading">{category}</h2>
+      <h2 className="heading">{category.toUpperCase()}</h2>
       <div className="relevant-items">
         {relevantProductsByCategory?.map((p) => (
           <Link

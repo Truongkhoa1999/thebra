@@ -14,8 +14,10 @@ import {
 } from "../../util/sizeSelection/sizeSelection";
 import GeneralNotification from "../notification/GeneralNotification";
 import { formatNumberWithTwoDecimalPlaces } from "../../util/id/formatID";
-import { detectIfPantyOrBra } from "../../util/productByCategory/filterProductByCategory";
-import { smoothScroll } from "../../util/window/smoothScroll";
+import {
+  detectIfPanty,
+  detectIfPantyOrBra,
+} from "../../util/productByCategory/filterProductByCategory";
 
 export const ProductInformation = () => {
   const { id } = useParams<{ id: ReturnType<typeof uuidv4> }>();
@@ -26,13 +28,16 @@ export const ProductInformation = () => {
   const [is36, setIs36] = useState(false);
   const [isNotificationVisible, setIsNotificationVisible] = useState(false);
   const [isPantyOrBra, setIsPantyOrBra] = useState(false);
+  const [isPanty, setIsPanty] = useState(false);
 
   useEffect(() => {
     if (id) {
       dispatch(getProductById(id));
       if (productById) {
         const isSingleItem = detectIfPantyOrBra(productById);
+        const isSingleItemAPanty = detectIfPanty(productById);
         setIsPantyOrBra(isSingleItem);
+        setIsPanty(isSingleItemAPanty);
       }
     }
   }, [id, dispatch, productById]);
@@ -64,23 +69,28 @@ export const ProductInformation = () => {
               €
             </div>
             <h5>Included Tax</h5>
-            <div className="size_group">
-              <h4>Size</h4>
-              <div>
-                <button
-                  className={`sizeSelection ${is34 ? "activated" : ""}`}
-                  onClick={() => handleSize34Confirm(is34, setIs34)}
-                >
-                  34
-                </button>
-                <button
-                  className={`sizeSelection ${is36 ? "activated" : ""}`}
-                  onClick={() => handleSize36Confirm(is36, setIs36)}
-                >
-                  36
-                </button>
+            {isPanty ? (
+              ""
+            ) : (
+              <div className="size_group">
+                <h4>Size</h4>
+                <div>
+                  <button
+                    className={`sizeSelection ${is34 ? "activated" : ""}`}
+                    onClick={() => handleSize34Confirm(is34, setIs34)}
+                  >
+                    34
+                  </button>
+                  <button
+                    className={`sizeSelection ${is36 ? "activated" : ""}`}
+                    onClick={() => handleSize36Confirm(is36, setIs36)}
+                  >
+                    36
+                  </button>
+                </div>
               </div>
-            </div>
+            )}
+
             <div className="buttons">
               <button
                 onClick={() => {

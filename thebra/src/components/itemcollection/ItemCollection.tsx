@@ -1,13 +1,15 @@
 import { Link } from "react-router-dom";
 import "./style/itemcollection.scss";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 export const ItemCollection = () => {
-  const [category, setCategory] = useState("bra");
-
+  const [category, setCategory] = useState("");
   function handleChangeCategory(newCategory: string): void {
     setCategory(newCategory);
   }
+  useEffect(() => {
+    handleChangeCategory;
+  }, [category]);
 
   return (
     <div className="itemCollection-container">

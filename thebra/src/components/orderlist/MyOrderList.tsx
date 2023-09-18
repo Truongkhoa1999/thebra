@@ -9,7 +9,6 @@ export const MyOrderList = () => {
     OrderProps[]
   >([]);
 
-
   const [expandedOrderId, setExpandedOrderId] = useState<string | null>(null);
 
   useEffect(() => {
@@ -20,7 +19,6 @@ export const MyOrderList = () => {
           (p) => p.paymentStatus === "paid"
         );
         setOrderPaidListDataListData(filterPaidData);
-   
       }
     };
     fetchOrderData();
@@ -41,10 +39,20 @@ export const MyOrderList = () => {
           <div className="order" key={i}>
             <div className="orderInfo">
               <div className="upper">
-                <p>Order ID: {formatOrderId(order.id)}</p>
-                <p>Payment status: {order.paymentStatus}</p>
-                <p>Delivery Address: {order.shippingAddress}</p>
-                <p>Total Price: {order.totalAmount}EUR</p>
+                <p>
+                  <span style={{ fontFamily: "Quicksand-Bold" }}>
+                    ID:{" "}
+                  </span>
+                  {formatOrderId(order.id)}
+                </p>
+                <p>
+                  <span style={{ fontFamily: "Quicksand-Bold" }}>
+                    Status:{" "}
+                  </span>{" "}
+                  {order.paymentStatus}
+                </p>
+                <p> <span style={{fontFamily:"Quicksand-Bold"}}>Address: </span> {order.shippingAddress}</p>
+                <p> <span style={{fontFamily:"Quicksand-Bold"}}>Price: </span> {order.totalAmount}EUR</p>
               </div>
               <div className="buttons">
                 <button onClick={() => handleTrackButtonClick(order.id)}>

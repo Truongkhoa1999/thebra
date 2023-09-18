@@ -3,12 +3,15 @@
   flex-direction: column;
   justify-content: center;
   align-items: center;
+
   .paidList {
     display: flex;
     flex-direction: column;
     justify-content: center;
     width: 95%;
     margin-top: 2rem;
+    align-items: center;
+
     @media (min-width: 768px) {
       width: 40%;
     }
