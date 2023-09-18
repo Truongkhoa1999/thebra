@@ -8,36 +8,49 @@
   background-color: transparent;
   margin-left: auto;
   margin-right: auto;
-  // min-height: 30rem;
   padding-bottom: 2rem;
-  // padding-top: 2rem;
+
   @media (min-width: 768px) {
     width: 100%;
     // margin: auto;
   }
 
+  // .products_container {
+  //   width: 100%;
+  //   display: flex;
+  //   flex-direction: row;
+
+  //   img {
+  //     width: 100%;
+  //     height: 56.25%;
+  //     @media (min-width: 768px) {
+  //       width: 100%;
+  //       height: 56.25%;
+  //     }
+  //   }
+  // }
+
   .products_container {
     width: 100%;
+    position: relative;
+    padding-bottom: 49%;
+    overflow-y: hidden; /* Hide any overflow if necessary */
     display: flex;
     flex-direction: row;
-    // justify-content: space-around;
 
-    // border: 2px solid red;
     img {
+      position: absolute; /* Position the image absolutely within the container */
+      top: 0;
+      left: 0;
       width: 100%;
-      height: 56.25%;
-      @media (min-width: 768px) {
-        width: 100%;
-        height: 56.25%;
-      }
+      height: 100%;
     }
   }
 
   .arrow_button {
     display: none;
     overflow: hidden;
-
-    @media (min-width: 768px) {
+    @media (min-width: 500px) {
       display: inline-block;
       height: 40px;
       width: 40px;
@@ -47,7 +60,6 @@
       background-color: transparent;
       color: black;
       position: absolute;
-
       &:hover {
         background-color: black;
         transition: 0.5s;
@@ -56,10 +68,15 @@
     }
   }
   .L {
-    left: 0;
+    left: 2%;
+    z-index: 1;
+    top: 50%;
+
   }
   .R {
-    right: 0;
+    right: 2%;
+    top: 50%;
+    z-index: 1;
   }
 
   .count_groups {

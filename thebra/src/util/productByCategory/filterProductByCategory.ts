@@ -27,7 +27,7 @@ export const detectRelevantItemsByCategory = (
 };
 
 export const detectIfPantyOrBra = (productById: ProductProps) => {
-  if (productById.category === "bra" || productById.category === "panty") {
+  if (productById.category === "BRA" || productById.category === "PANTY") {
     return true;
   }
   return false;

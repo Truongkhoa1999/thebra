@@ -57,7 +57,10 @@ export const ProductInformation = () => {
             <h5>The Bra</h5>
             <div className="title">{productById?.title}</div>
             <div className="price">
-              {formatNumberWithTwoDecimalPlaces(productById!.price)} €
+              {productById
+                ? formatNumberWithTwoDecimalPlaces(productById.price)
+                : ""}
+              €
             </div>
             <h5>Included Tax</h5>
             <div className="size_group">

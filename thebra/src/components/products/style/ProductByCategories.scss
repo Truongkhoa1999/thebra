@@ -275,4 +275,25 @@
       justify-content: space-evenly;
     }
   }
+  //   >>>>>>>
+  .loading-text {
+    animation: flicker 1.5s infinite;
+    // border: 1px solid red;
+    width: 20rem;
+    height: 20rem;
+    text-align: center;
+    font-size: 1.5rem;
+  }
+
+  @keyframes flicker {
+    0%,
+    100% {
+      opacity: 0.2; /* Text is mostly transparent */
+    }
+    25%,
+    75% {
+      opacity: 1; /* Text is fully opaque */
+    }
+  }
+  // >>>>>>
 }
