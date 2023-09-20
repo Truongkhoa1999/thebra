@@ -36,3 +36,37 @@ export const handleSaveCart = async (dispatch: any, productById: ProductProps, c
     dispatch(saveCart([...cart, newItem]));
   }
 }
+
+export const handleSaveCartForPanty = async (dispatch: any, productById: ProductProps, cart: CartProps[], isFreeSize:boolean) => {
+  const newItem: CartProps = {
+    cartId: productById?.id ?? '',
+    title: productById?.title ?? '',
+    price: productById?.price ?? 0,
+    productSize: {
+      "Freesize":isFreeSize? 1: 0
+    },
+    productId: productById?.id ?? '',
+    images:[],
+    map: undefined,
+  }
+  const existingItemIndex = cart.findIndex((item: CartProps) =>
+    item.cartId === newItem.cartId &&
+    ((isFreeSize && item.productSize['Freesize'] > 0))
+  )
+  if (existingItemIndex !== -1) {
+    const existingItem = cart[existingItemIndex];
+    const updatedItem = {
+      ...existingItem,
+      productSize: {
+        ...existingItem.productSize,
+        "Freesize": isFreeSize ? existingItem.productSize['Freesize'] + 1 : existingItem.productSize['Freesize'],
+      }
+    };
+    const updatedCart = [...cart];
+    updatedCart[existingItemIndex] = updatedItem;
+    dispatch(saveCart(updatedCart));
+  } else {
+    dispatch(addItemToCart(newItem));
+    dispatch(saveCart([...cart, newItem]));
+  }
+}

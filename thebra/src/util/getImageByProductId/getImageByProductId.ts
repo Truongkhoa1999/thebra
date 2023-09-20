@@ -26,3 +26,12 @@ export const fetchItemImagesFor34 = async (listOfSize34:CartProps[],setItemImage
     }
     setItemImagesFor36(imageMap);
   };
+  export const fetchItemImagesForFreesize = async (listOfSize36:CartProps[],setItemImagesForFreesize:any ) => {
+    const imageMap: Record<string, string> = {};
+
+    for (const item of listOfSize36) {
+      const image = await getImageByProductId(item.productId);
+      imageMap[item.productId] = image;
+    }
+    setItemImagesForFreesize(imageMap);
+  };

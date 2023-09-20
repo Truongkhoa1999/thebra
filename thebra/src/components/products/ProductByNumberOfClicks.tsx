@@ -11,11 +11,12 @@ export const ProductByNumberOfClicks: React.FC<
   const [isLoading, setIsLoading] = useState(true);
   const [filteredData, setFilteredData] = useState<ProductProps[]>([]);
   useEffect(() => {
+    if (products) {
+      setIsLoading(true);
+    }
     if (products && products.length > 0) {
       const firstthreeproducts = products.slice(0, 3);
       setFilteredData(firstthreeproducts);
-      setIsLoading(false);
-    } else {
       setIsLoading(false);
     }
   }, [products]);

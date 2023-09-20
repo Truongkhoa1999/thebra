@@ -7,17 +7,17 @@ import { useParams } from "react-router-dom";
 import { v4 as uuidv4 } from "uuid";
 import { AppDispatch, RootState } from "../../redux/store";
 import { getProductById } from "../../redux/actions/getProductById";
-import { handleSaveCart } from "../../util/cart/handleSaveCart";
+import {
+  handleSaveCart,
+  handleSaveCartForPanty,
+} from "../../util/cart/handleSaveCart";
 import {
   handleSize34Confirm,
   handleSize36Confirm,
 } from "../../util/sizeSelection/sizeSelection";
 import GeneralNotification from "../notification/GeneralNotification";
 import { formatNumberWithTwoDecimalPlaces } from "../../util/id/formatID";
-import {
-  detectIfPanty,
-  detectIfPantyOrBra,
-} from "../../util/productByCategory/filterProductByCategory";
+import { detectIfPanty } from "../../util/productByCategory/filterProductByCategory";
 
 export const ProductInformation = () => {
   const { id } = useParams<{ id: ReturnType<typeof uuidv4> }>();
@@ -27,20 +27,18 @@ export const ProductInformation = () => {
   const [is34, setIs34] = useState(false);
   const [is36, setIs36] = useState(false);
   const [isNotificationVisible, setIsNotificationVisible] = useState(false);
-  const [isPantyOrBra, setIsPantyOrBra] = useState(false);
   const [isPanty, setIsPanty] = useState(false);
 
   useEffect(() => {
     if (id) {
       dispatch(getProductById(id));
       if (productById) {
-        const isSingleItem = detectIfPantyOrBra(productById);
         const isSingleItemAPanty = detectIfPanty(productById);
-        setIsPantyOrBra(isSingleItem);
+        console.log(isSingleItemAPanty);
         setIsPanty(isSingleItemAPanty);
       }
     }
-  }, [id, dispatch, productById]);
+  }, [dispatch]);
 
   return (
     <div id="pro_con" className="productInformation_container">
@@ -49,7 +47,8 @@ export const ProductInformation = () => {
           <div className="main">
             <img src={productById?.images[0]} alt=" " />
           </div>
-          {isPantyOrBra ? (
+          {productById?.category === "BRA" ||
+          productById?.category === "PANTY" ? (
             ""
           ) : (
             <div className="minor">
@@ -69,8 +68,8 @@ export const ProductInformation = () => {
               €
             </div>
             <h5>Included Tax</h5>
-            {isPanty ? (
-              ""
+            {productById?.category === "PANTY" ? (
+              "Our pants are available in one size fits all."
             ) : (
               <div className="size_group">
                 <h4>Size</h4>
@@ -78,12 +77,14 @@ export const ProductInformation = () => {
                   <button
                     className={`sizeSelection ${is34 ? "activated" : ""}`}
                     onClick={() => handleSize34Confirm(is34, setIs34)}
+                    disabled={isPanty}
                   >
                     34
                   </button>
                   <button
                     className={`sizeSelection ${is36 ? "activated" : ""}`}
                     onClick={() => handleSize36Confirm(is36, setIs36)}
+                    disabled={isPanty}
                   >
                     36
                   </button>
@@ -94,8 +95,17 @@ export const ProductInformation = () => {
             <div className="buttons">
               <button
                 onClick={() => {
-                  if (productById && (is34 || is36)) {
-                    handleSaveCart(dispatch, productById, cart, is34, is36);
+                  if (
+                    productById?.category !== "BRA" &&
+                    productById?.category !== "PANTY"
+                  ) {
+                    if (productById && (is34 || is36)) {
+                      handleSaveCart(dispatch, productById, cart, is34, is36);
+                      setIsNotificationVisible(true);
+                    }
+                  } else if (productById?.category === "PANTY") {
+                    handleSaveCartForPanty(dispatch, productById, cart, true);
+
                     setIsNotificationVisible(true);
                   }
                 }}

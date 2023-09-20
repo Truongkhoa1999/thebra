@@ -4,7 +4,7 @@ import { CartProps } from "../../type/CartProps";
 
 export const detectIfOrderedItemIsZero = (cart: CartProps[], dispatch: AppDispatch) => {
     const updatedCart = cart.filter(
-        p => p.productSize['36'] !== 0 || p.productSize['34'] !== 0
+        p => p.productSize['36'] !== 0 || p.productSize['34'] !== 0 || p.productSize["Freesize"] !== 0
     )
     if (updatedCart) {
         localStorage.removeItem('cart')

@@ -24,10 +24,19 @@ const AppBar = () => {
   const { cart } = useSelector((state: RootState) => state.cart);
   const totalQuantity = cart.reduce(
     (total: number, item: CartProps) =>
-      total + item.productSize["34"] + item.productSize["36"],
+      !item.productSize["34"] && !item.productSize["36"]
+        ? total + item.productSize["Freesize"]
+        : item.productSize["34"] &&
+          item.productSize["36"] &&
+          item.productSize["Fressize"]
+        ? total +
+          item.productSize["34"] +
+          item.productSize["36"] +
+          item.productSize["Freesize"]
+        : total + item.productSize["34"] + item.productSize["36"],
+
     0
   );
-
   const openMenu = () => {
     setIsOpened(!isOpened);
   };

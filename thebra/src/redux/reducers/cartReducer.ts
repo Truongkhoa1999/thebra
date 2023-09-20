@@ -32,7 +32,7 @@ export const cartReducer = (state = initialState, action: AnyAction) => {
       }
     }
     case INCREASE_QUANTITY: {
-      const { productId, is34, is36 } = action.payload;
+      const { productId, is34, is36, isFreesize } = action.payload;
       const existingItemIndex = state.cart.findIndex(item => item.cartId === productId);
 
       if (existingItemIndex !== -1) {
@@ -43,6 +43,7 @@ export const cartReducer = (state = initialState, action: AnyAction) => {
             ...existingItem.productSize,
             "34": is34 ? existingItem.productSize['34'] + 1 : existingItem.productSize['34'],
             "36": is36 ? existingItem.productSize['36'] + 1 : existingItem.productSize['36'],
+            "Freesize": isFreesize? existingItem.productSize["Freesize"] + 1 : existingItem.productSize["Freesize"]
           },
         };
 
@@ -60,7 +61,7 @@ export const cartReducer = (state = initialState, action: AnyAction) => {
     }
 
     case DECREASE_QUANTITY: {
-      const { productId, is34, is36 } = action.payload;
+      const { productId, is34, is36, isFreesize } = action.payload;
       const existingItemIndex = state.cart.findIndex(item => item.cartId === productId);
 
       if (existingItemIndex !== -1) {
@@ -71,6 +72,7 @@ export const cartReducer = (state = initialState, action: AnyAction) => {
             ...existingItem.productSize,
             "34": is34 ? existingItem.productSize['34'] - 1 : existingItem.productSize['34'],
             "36": is36 ? existingItem.productSize['36'] - 1 : existingItem.productSize['36'],
+            "Freesize": isFreesize ? existingItem.productSize["Freesize"] - 1 : existingItem.productSize["Freesize"],
           },
         };
 
@@ -87,7 +89,7 @@ export const cartReducer = (state = initialState, action: AnyAction) => {
       return state;
     }
     case DELETE_ITEM: {
-      const { productId, is34, is36 } = action.payload;
+      const { productId, is34, is36, isFreesize } = action.payload;
       const existingItemIndex = state.cart.findIndex(item => item.cartId === productId)
       if (existingItemIndex !== -1) {
         const existingItem = state.cart[existingItemIndex]
@@ -96,7 +98,8 @@ export const cartReducer = (state = initialState, action: AnyAction) => {
           productSize: {
             ...existingItem.productSize,
             "34": is34 ? 0 : existingItem.productSize['34'],
-            "36": is36 ? 0 : existingItem.productSize['36']
+            "36": is36 ? 0 : existingItem.productSize['36'],
+            "Freesize": isFreesize ? 0 : existingItem.productSize["Freesize"]
 
           }
         }

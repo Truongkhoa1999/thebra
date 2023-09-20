@@ -37,7 +37,7 @@ const ProductByCategories = () => {
     if (products.length === 0 || location.pathname.includes("/homepage")) {
       fetchProductsIfNeeded();
     }
-  }, [dispatch, products, location.pathname]);
+  }, [dispatch, location.pathname]);
 
   return (
     <div className="post_container" id="posts">

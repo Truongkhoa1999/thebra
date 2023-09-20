@@ -52,32 +52,37 @@ export const addItemToCart = (cartItem: CartProps) => {
 export function increaseQuantity(
   productId: ReturnType<typeof uuidv4>,
   is34: boolean,
-  is36: boolean
+  is36: boolean,
+  isFreesize: boolean
+
 ) {
   return {
     type: INCREASE_QUANTITY,
-    payload: { productId, is34, is36 },
+    payload: { productId, is34, is36, isFreesize },
   };
 }
 
 export function decreaseQuantity(
   productId: ReturnType<typeof uuidv4>,
   is34: boolean,
-  is36: boolean
+  is36: boolean,
+  isFreesize: boolean
+
 ) {
   return {
     type: DECREASE_QUANTITY,
-    payload: { productId, is34, is36 },
+    payload: { productId, is34, is36,isFreesize},
   };
 }
 export function deleteCartItem(
   productId: ReturnType<typeof uuidv4>,
   is34: boolean,
-  is36: boolean
+  is36: boolean,
+  isFreesize:boolean
 ) {
   return {
     type: DELETE_ITEM,
-    payload: { productId, is34, is36 },
+    payload: { productId, is34, is36 , isFreesize },
   };
 }
 // save cart for users

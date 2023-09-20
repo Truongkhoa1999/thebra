@@ -33,6 +33,8 @@ export const detectIfPantyOrBra = (productById: ProductProps) => {
   return false;
 };
 export const detectIfPanty = (productById: ProductProps) => {
+  console.log(productById.category.toUpperCase() === "PANTY")
+
   if (productById.category === "PANTY") {
     return true;
   }

@@ -13,6 +13,7 @@ export const ItemCollection = () => {
 
   return (
     <div className="itemCollection-container">
+      <h2>Bras or Panties</h2>
       <div>
         <Link className="img_container " to={`/products/${category}`}>
           <img

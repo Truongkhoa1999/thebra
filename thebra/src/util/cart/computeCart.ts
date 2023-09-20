@@ -39,7 +39,7 @@ export const cartTotal = (
 
   switch (true) {
     case totalWithoutShipFee === 0:
-      total = 0
+      total = 0;
       break;
     case totalWithoutShipFee >= 149 && isZone2:
       total = totalWithoutShipFee;
@@ -66,6 +66,9 @@ export const findListOfSize34 = (cart: CartProps[]): CartProps[] => {
 export const findListOfSize36 = (cart: CartProps[]): CartProps[] => {
   return cart.filter((item: CartProps) => item.productSize[36] > 0);
 };
+export const findListOfFreesize = (cart: CartProps[]): CartProps[] => {
+  return cart.filter((item: CartProps) => item.productSize["Freesize"] > 0);
+};
 
 //Cart add or out handle
 export const handleIncreaseQuantityFor34 = (
@@ -75,8 +78,8 @@ export const handleIncreaseQuantityFor34 = (
 ) => {
   const product = products.find((p) => p.id === item.cartId);
   if (product && item.productSize["34"] < product.productSize["34"]) {
-    dispatch(increaseQuantity(item.cartId, true, false));
-    localStorage.removeItem('orderId')
+    dispatch(increaseQuantity(item.cartId, true, false, false));
+    localStorage.removeItem("orderId");
     window.location.reload();
   }
 };
@@ -88,22 +91,44 @@ export const handleIncreaseQuantityFor36 = (
 ) => {
   const product = products.find((p) => p.id === item.cartId);
   if (product && item.productSize["36"] < product.productSize["36"]) {
-    dispatch(increaseQuantity(item.cartId, false, true));
-    localStorage.removeItem('orderId')
+    dispatch(increaseQuantity(item.cartId, false, true, false));
+    localStorage.removeItem("orderId");
     window.location.reload();
   }
 };
 export const handleDecreaseQuantityFor34 = (item: CartProps, dispatch: any) => {
   if (item.productSize["34"] > 1) {
-    dispatch(decreaseQuantity(item.cartId, true, false));
-    localStorage.removeItem('orderId')
+    dispatch(decreaseQuantity(item.cartId, true, false, false));
+    localStorage.removeItem("orderId");
     window.location.reload();
   }
 };
 export const handleDecreaseQuantityFor36 = (item: CartProps, dispatch: any) => {
   if (item.productSize["36"] > 1) {
-    dispatch(decreaseQuantity(item.cartId, false, true));
-    localStorage.removeItem('orderId')
+    dispatch(decreaseQuantity(item.cartId, false, true, false));
+    localStorage.removeItem("orderId");
+    window.location.reload();
+  }
+};
+export const handleDecreaseQuantityForFreesize = (
+  item: CartProps,
+  dispatch: any
+) => {
+  if (item.productSize["Freesize"] > 1) {
+    dispatch(decreaseQuantity(item.cartId, false, false, true));
+    localStorage.removeItem("orderId");
+    window.location.reload();
+  }
+};
+export const handleIncreaseQuantityForFreesize = (
+  products: ProductProps[],
+  item: CartProps,
+  dispatch: any
+) => {
+  const product = products.find((p) => p.id === item.cartId);
+  if (product && item.productSize["Freesize"] < product.productSize["Freesize"]) {
+    dispatch(increaseQuantity(item.cartId, false, false, true));
+    localStorage.removeItem("orderId");
     window.location.reload();
   }
 };
