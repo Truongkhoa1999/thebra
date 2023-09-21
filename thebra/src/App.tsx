@@ -15,7 +15,6 @@ import { Cart } from "./sites/cart/Cart";
 import { Elements } from "@stripe/react-stripe-js";
 import { loadStripe } from "@stripe/stripe-js";
 import Products from "./sites/products/Products";
-import Preloader from "./components/loader/Preloader";
 import { Payments } from "./sites/payment/Payments";
 import { MyOrders } from "./sites/myorders/MyOrders";
 import { Contact } from "./sites/contact/Contact";
@@ -47,7 +46,6 @@ function App() {
         <Route path="/myOrders" element={<MyOrders />} />
         <Route path="/products/:category" element={<Products />} />
         <Route path="/contact" element={<Contact />} />
-        <Route path="/preloader" element={<Preloader />} />
         <Route
           path="/payments"
           element={

@@ -1,7 +1,11 @@
+// React Redux
 import { Link } from "react-router-dom";
-import { ProductProps } from "../../type/ProductProps";
-import "./style/ProductByNumberOfClicks.scss";
 import { useEffect, useState } from "react";
+// Component Type
+import { Loader } from "../loader/Loader";
+import { ProductProps } from "../../type/ProductProps";
+// Style
+import "./style/ProductByNumberOfClicks.scss";
 interface ProductByNumberOfClicksProps {
   products: ProductProps[];
 }
@@ -25,7 +29,7 @@ export const ProductByNumberOfClicks: React.FC<
     <div className="productbynumberofclicks_container">
       <h1>BEST SELLER</h1>
       {isLoading ? (
-        <div className="loader"></div>
+        <Loader />
       ) : (
         <div className="bestseller_cards">
           {filteredData.map((p) => (

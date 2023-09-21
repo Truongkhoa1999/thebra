@@ -197,6 +197,10 @@ export const CartTable = ({
                   )}
                   <div className="cart_itemInformation_text">
                     <h5>{item.title}</h5>
+                    <h6>
+                      Freesize
+                      
+                    </h6>
                   </div>
                 </div>
               </td>

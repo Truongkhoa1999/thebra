@@ -4,7 +4,6 @@
   width: 100vw;
   margin-left: auto;
   margin-right: auto;
-  // padding-bottom: 1rem;
 
   @media (min-width: 768px) {
     width: 100%;
@@ -22,12 +21,11 @@
 
   .upper {
     width: 100%;
-    // margin-left: auto;
-    // margin-right: auto;
     display: flex;
     flex-direction: row;
     align-items: center;
     justify-content: space-around;
+    background-color: rgba(241, 240, 240, 0.887);
 
     @media (min-width: 500px) {
       width: 95%;
@@ -70,7 +68,7 @@
         .link {
           list-style: none;
           text-decoration: none;
-
+          font-size: 1.75rem;
           li {
             color: black;
             padding: 6px;

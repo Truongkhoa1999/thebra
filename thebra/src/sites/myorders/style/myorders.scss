@@ -1,13 +1,23 @@
 .myoders_container {
-  border: 1px solid solid red;
   width: 100vw;
   height: 100vh;
   .pageTitle,
   .notification {
     text-align: center;
   }
-  .notification {
-    margin-top: 1rem;
-    font-size: 1.2rem;
+  .noti-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 50%;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 2rem;
+height: 30rem;
+    .notification {
+      margin-top: 1rem;
+      font-size: 1.2rem;
+      margin-bottom: 2rem;
+    }
   }
 }

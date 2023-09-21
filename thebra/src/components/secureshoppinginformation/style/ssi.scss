@@ -1,0 +1,17 @@
+.secureInfo_container {
+  display: flex;
+  flex-direction: column;
+  margin-top: 1rem;
+  border-bottom: 1px solid rgba(228, 228, 228, 0.845);
+  width: 90%;
+  .infos {
+    display: grid;
+    grid-template-columns: 1fr;
+    padding-top: 1rem;
+    padding-bottom: 1rem;
+    @media (min-width: 768px) {
+      grid-template-columns: 1fr 1fr;
+    }
+    margin-top: 0.5rem;
+  }
+}

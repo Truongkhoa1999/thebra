@@ -1,14 +1,16 @@
-import { Link, useNavigate } from "react-router-dom";
+// Style
 import "./style/ProductByCategories.scss";
-
-// hooks
+// React Redux
 import { useEffect, useState } from "react";
-import { handleButtonClick } from "../../util/categorybuttons/buttonfunction";
 import { filterProductByCategory } from "../../util/productByCategory/filterProductByCategory";
-import { ProductProps } from "../../type/ProductProps";
 import { useDispatch, useSelector } from "react-redux";
 import { AppDispatch, RootState } from "../../redux/store";
 import { fetchProducts } from "../../redux/actions/getProducts";
+import { Link, useNavigate } from "react-router-dom";
+// Types Component Util
+import { Loader } from "../loader/Loader";
+import { ProductProps } from "../../type/ProductProps";
+import { handleButtonClick } from "../../util/categorybuttons/buttonfunction";
 
 const ProductByCategories = () => {
   const [activeButton, setActiveButton] = useState("");
@@ -88,8 +90,7 @@ const ProductByCategories = () => {
         </button>
       </div>
       {isLoading ? (
-        // <p className="loading-text">Loading...</p>
-        <div className="loader"></div>
+        <Loader />
       ) : (
         <div className="item_container">
           {filteredProducts.map((p) => (

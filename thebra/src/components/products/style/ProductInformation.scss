@@ -13,9 +13,10 @@
     font-family: "Quicksand-Regular";
     background-color: white;
     margin-left: auto;
-    padding-bottom: 0.5rem;
     margin-right: auto;
     border-radius: 4%;
+    padding-left: 0.5rem;
+    padding-bottom: 2rem;
 
     .title {
       width: 300px;
@@ -26,8 +27,12 @@
 
     .textSet {
       font-size: 1rem;
-      // color: rgb(180, 167, 167);
       margin-top: 0.5em;
+      border-top: 1px solid black;
+      border-bottom: 1px solid rgba(228, 228, 228, 0.845);
+      width: 90%;
+      padding-top: 1rem;
+      padding-bottom: 1rem;
     }
 
     .price {
@@ -102,7 +107,6 @@
   }
 
   .productInformation_image {
-
     display: flex;
     width: 85%;
     justify-content: space-evenly;

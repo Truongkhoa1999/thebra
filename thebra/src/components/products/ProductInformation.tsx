@@ -18,6 +18,9 @@ import {
 import GeneralNotification from "../notification/GeneralNotification";
 import { formatNumberWithTwoDecimalPlaces } from "../../util/id/formatID";
 import { detectIfPanty } from "../../util/productByCategory/filterProductByCategory";
+import { RelevantProductsByCategory } from "./RelevantProductsByCategory";
+import { SecureShoppingInformation } from "../secureshoppinginformation/SecureShoppingInformation";
+import { ShippingInfo } from "../shippinginfo/ShippingInfo";
 
 export const ProductInformation = () => {
   const { id } = useParams<{ id: ReturnType<typeof uuidv4> }>();
@@ -34,7 +37,6 @@ export const ProductInformation = () => {
       dispatch(getProductById(id));
       if (productById) {
         const isSingleItemAPanty = detectIfPanty(productById);
-        console.log(isSingleItemAPanty);
         setIsPanty(isSingleItemAPanty);
       }
     }
@@ -119,6 +121,8 @@ export const ProductInformation = () => {
             </div>
           </div>
           <div className="textSet">{productById?.description}</div>
+          <SecureShoppingInformation />
+          <ShippingInfo />
         </div>
       </div>
 
@@ -128,6 +132,11 @@ export const ProductInformation = () => {
           alt=" "
         />
       </div>
+      {productById ? (
+        <RelevantProductsByCategory category={productById.category} />
+      ) : (
+        ""
+      )}
       {isNotificationVisible ? (
         <GeneralNotification
           notification="Your Item has been added"

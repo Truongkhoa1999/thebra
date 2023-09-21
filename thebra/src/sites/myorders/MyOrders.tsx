@@ -5,6 +5,7 @@ import { MyOrderList } from "../../components/orderlist/MyOrderList";
 import { isUserSignedIn } from "../../util/checkingSigninStatus/isUserSignedIn";
 // Style
 import "./style/myorders.scss";
+import { Loader } from "../../components/loader/Loader";
 
 export const MyOrders = () => {
   const [isSignedInYet, setIsSignedInYet] = useState(true);
@@ -19,7 +20,10 @@ export const MyOrders = () => {
       <AppBar />
       <h1 className="pageTitle">My Orders</h1>
       {isSignedInYet ? (
-        <p className="notification">Please Sign in to view your orders</p>
+        <div className="noti-container">
+          <p className="notification">Please Sign in to view your orders</p>
+          <Loader />
+        </div>
       ) : (
         ""
       )}

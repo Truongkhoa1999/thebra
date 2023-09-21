@@ -6,35 +6,37 @@
   padding-top: 2rem;
   margin-bottom: 1rem;
   margin-top: 1rem;
+  @media (min-width: 768px) {
+    width: 70%;
+  }
+
   h1 {
     text-align: center;
     font-family: "Quicksand-Bold";
     margin-bottom: 2rem;
-
+    justify-self: center;
+    margin-bottom: 2rem;
   }
-  div {
+  .images {
     display: flex;
+    justify-content: center;
+    img {
+      width: 45%;
+      max-height: 35rem;
+      @media (min-width: 768px) {
+        filter: grayscale(80%);
+        width: auto;
 
-    .img_container {
-      padding: 1rem 0.5rem 1rem 0.5rem;
-   
-      img {
-        width: 100%;
-        max-height: 35rem;
-        @media (min-width: 768px) {
-          filter: grayscale(80%);
-          // border-radius: 5%;
-          &:hover {
-            filter: none;
-            cursor: pointer;
-            //   scale: 1.05;
-            transition: 1s;
-          }
+        &:hover {
+          filter: none;
+          cursor: pointer;
+          //   scale: 1.05;
+          transition: 1s;
         }
       }
-      img + img {
-        margin-left: 0.5rem;
-      }
+    }
+    img + img {
+      margin-left: 0.5rem;
     }
   }
 }

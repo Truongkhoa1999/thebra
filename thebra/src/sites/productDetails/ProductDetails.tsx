@@ -4,11 +4,10 @@ import { Footer } from "../../components/footer/Footer";
 import { ProductInformation } from "../../components/products/ProductInformation";
 import { ProductProps } from "../../type/ProductProps";
 
-interface ProductDetailProps  {
+interface ProductDetailProps {
   products: ProductProps[];
 }
-export const ProductDetails:React.FC<ProductDetailProps> = () => {
-
+export const ProductDetails: React.FC<ProductDetailProps> = () => {
   return (
     <div className="productDetails_container">
       <AppBar />

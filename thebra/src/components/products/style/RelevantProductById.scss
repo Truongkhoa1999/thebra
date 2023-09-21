@@ -1,5 +1,5 @@
 .relevant_container {
-  width: 85%;
+  width: 100%;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -18,33 +18,33 @@
 
   // Moblie
   .relevant-items {
-    display: flex;
-    flex-direction: row;
-    flex-wrap: wrap;
+    display: grid;
+    grid-template-columns: 1fr 1fr ;
+    gap: 10px;
     padding: 0;
-
+    width: 100%;
+    justify-items: center;
     @media (min-width: 768px) {
+    grid-template-columns: 1fr 1fr 1fr;
+
       width: 90%;
       margin-left: auto;
       margin-right: auto;
+      // justify-content: center;
     }
 
     .item {
       display: flex;
       flex-direction: column;
-      width: calc(50% - 10px);
+      width: calc(80% - 10px);
       margin-bottom: 4rem;
-      margin-right: 10px;
-      @media (min-width: 768px) {
-        width: calc(33.33% - 10px);
-      }
 
       .item-img {
         width: 100%;
-        height: 14rem;
-
+        height: 15rem;
         @media (min-width: 768px) {
-          width: 60%;
+          width: 75%;
+          height: 30rem;
           align-self: center;
         }
       }
@@ -75,6 +75,11 @@
         }
       }
     }
+    // .item:nth-last-child(-n + 2) {
+    //   border: 1px solid red;
+    //   align-self: flex-start;
+    //   margin: 0;
+    // }
   }
 }
 
