@@ -33,7 +33,9 @@ export const CartTable = ({
 
   const [listOfSize34, setListOfSize34] = useState(findListOfSize34(cart));
   const [listOfSize36, setListOfSize36] = useState(findListOfSize36(cart));
-  const [listOfFreesize, setListOfFressize] = useState(findListOfFreesize(cart));
+  const [listOfFreesize, setListOfFressize] = useState(
+    findListOfFreesize(cart)
+  );
 
   const handleRemoveItem = (
     productId: string,
@@ -122,10 +124,7 @@ export const CartTable = ({
                   Remove
                 </button>
               </td>
-              {/* </div> */}
-              {/* <div className='price_container'> */}
               <td>{item.price * item.productSize["34"]} €</td>
-              {/* </div> */}
             </tr>
           ))}
           {listOfSize36.map((item: CartProps, index: number) => (
@@ -185,9 +184,7 @@ export const CartTable = ({
                   Remove
                 </button>
               </td>
-              {/* <div className='price_container'> */}
               <td>{item.price * item.productSize["36"]}€</td>
-              {/* </div> */}
             </tr>
           ))}
           {/* Panty */}
@@ -200,10 +197,6 @@ export const CartTable = ({
                   )}
                   <div className="cart_itemInformation_text">
                     <h5>{item.title}</h5>
-                    {/* <h6>    
-                                            Size
-                                            {item.productSize["Freesize"] > 0 && <span>Free size</span>}
-                                        </h6> */}
                   </div>
                 </div>
               </td>
@@ -250,9 +243,7 @@ export const CartTable = ({
                   Remove
                 </button>
               </td>
-              {/* <div className='price_container'> */}
               <td>{item.price * item.productSize["Freesize"]}€</td>
-              {/* </div> */}
             </tr>
           ))}
         </tbody>

@@ -12,39 +12,28 @@
 
   @media (min-width: 768px) {
     width: 100%;
-    // margin: auto;
   }
-
-  // .products_container {
-  //   width: 100%;
-  //   display: flex;
-  //   flex-direction: row;
-
-  //   img {
-  //     width: 100%;
-  //     height: 56.25%;
-  //     @media (min-width: 768px) {
-  //       width: 100%;
-  //       height: 56.25%;
-  //     }
-  //   }
-  // }
-
   .products_container {
     width: 100%;
     position: relative;
     padding-bottom: 49%;
-    overflow-y: hidden; /* Hide any overflow if necessary */
+    overflow-y: hidden; 
     display: flex;
     flex-direction: row;
 
     img {
-      position: absolute; /* Position the image absolutely within the container */
+      position: absolute;
       top: 0;
       left: 0;
       width: 100%;
       height: 100%;
+      opacity: 0;
+      transition: opacity 0.5s ease-in-out; 
     }
+    img.active {
+      opacity: 1; 
+    }
+
   }
 
   .arrow_button {
@@ -89,4 +78,5 @@
   .count_active {
     color: red;
   }
+
 }

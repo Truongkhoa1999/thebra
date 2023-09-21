@@ -12,29 +12,26 @@ export const cartTotal = (
   const listOfSize34 = cart.filter(
     (item: CartProps) => item.productSize[34] > 0
   );
-
-  console.log("this is list34", listOfSize34);
-
   const listOfSize36 = cart.filter(
     (item: CartProps) => item.productSize[36] > 0
   );
-
-  console.log("this is list36", listOfSize36);
-
+  const listOfFreesize = cart.filter((p) => p.productSize["Freesize"] > 0);
   const total34 = listOfSize34.reduce(
     (total: number, item: CartProps) =>
       total + item.price * item.productSize["34"],
     0
   );
-  console.log("this is total 34", total34);
   const total36 = listOfSize36.reduce(
     (total: number, item: CartProps) =>
       total + item.price * item.productSize["36"],
     0
   );
-  console.log("this is total 36", total36);
-
-  const totalWithoutShipFee = total34 + total36;
+  const totalFreesize = listOfFreesize.reduce(
+    (total: number, item: CartProps) =>
+      total + item.productSize["Freesize"] * item.price,
+    0
+  );
+  const totalWithoutShipFee = total34 + total36 + totalFreesize;
   let total = totalWithoutShipFee;
 
   switch (true) {
@@ -126,7 +123,10 @@ export const handleIncreaseQuantityForFreesize = (
   dispatch: any
 ) => {
   const product = products.find((p) => p.id === item.cartId);
-  if (product && item.productSize["Freesize"] < product.productSize["Freesize"]) {
+  if (
+    product &&
+    item.productSize["Freesize"] < product.productSize["Freesize"]
+  ) {
     dispatch(increaseQuantity(item.cartId, false, false, true));
     localStorage.removeItem("orderId");
     window.location.reload();

@@ -28,7 +28,19 @@ const Carousel = () => {
         >
           {"<"}
         </button>
-        <img src={CarouselData[arrayIndex]} alt="1" key={arrayIndex} />
+        {/* <img
+          src={CarouselData[arrayIndex]}
+          alt="1"
+          key={arrayIndex}
+        /> */}
+        {CarouselData.map((image, index) => (
+          <img
+            src={image}
+            alt={String(index + 1)}
+            key={index}
+            className={index === arrayIndex ? "active" : ""}
+          />
+        ))}
         <button
           className="arrow_button R"
           onClick={() =>
