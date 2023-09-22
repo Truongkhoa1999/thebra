@@ -21,6 +21,7 @@ import { detectIfPanty } from "../../util/productByCategory/filterProductByCateg
 import { RelevantProductsByCategory } from "./RelevantProductsByCategory";
 import { SecureShoppingInformation } from "../secureshoppinginformation/SecureShoppingInformation";
 import { ShippingInfo } from "../shippinginfo/ShippingInfo";
+import { smoothScroll } from "../../util/window/smoothScroll";
 
 export const ProductInformation = () => {
   const { id } = useParams<{ id: ReturnType<typeof uuidv4> }>();
@@ -31,6 +32,8 @@ export const ProductInformation = () => {
   const [is36, setIs36] = useState(false);
   const [isNotificationVisible, setIsNotificationVisible] = useState(false);
   const [isPanty, setIsPanty] = useState(false);
+  const [currentNumber, setCurrentNumber] = useState(0);
+  const [imageOpacity, setImageOpacity] = useState(1);
 
   useEffect(() => {
     if (id) {
@@ -40,22 +43,60 @@ export const ProductInformation = () => {
         setIsPanty(isSingleItemAPanty);
       }
     }
-  }, [dispatch]);
+  }, [dispatch, currentNumber]);
+
+  const handleSwitchNumber = (designatedNumber: number) => {
+    setImageOpacity(0); // Set opacity to 0 to trigger the fade-out effect
+    setTimeout(() => {
+      smoothScroll("main", true);
+      setCurrentNumber(designatedNumber);
+      setImageOpacity(1);
+    }, 300);
+  };
 
   return (
     <div id="pro_con" className="productInformation_container">
       <div className="upper">
         <div className="productInformation_image">
           <div className="main">
-            <img src={productById?.images[0]} alt=" " />
+            <img
+              id="main"
+              src={productById?.images[currentNumber]}
+              alt=" "
+              style={{ opacity: imageOpacity }}
+            />
           </div>
           {productById?.category === "BRA" ||
           productById?.category === "PANTY" ? (
             ""
           ) : (
             <div className="minor">
-              <img src={productById?.images[1]} alt=" " />
-              <img src={productById?.images[2]} alt=" " />
+              {currentNumber == 0 ? (
+                <img
+                  onClick={() => handleSwitchNumber(1)}
+                  src={productById?.images[1]}
+                  alt=" "
+                />
+              ) : (
+                <img
+                  onClick={() => handleSwitchNumber(0)}
+                  src={productById?.images[0]}
+                  alt=" "
+                />
+              )}
+              {currentNumber == 2 ? (
+                <img
+                  onClick={() => handleSwitchNumber(1)}
+                  src={productById?.images[1]}
+                  alt=" "
+                />
+              ) : (
+                <img
+                  onClick={() => handleSwitchNumber(2)}
+                  src={productById?.images[2]}
+                  alt=" "
+                />
+              )}
             </div>
           )}
         </div>

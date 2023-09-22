@@ -1,3 +1,16 @@
+// General
+.minor {
+  img {
+    &:hover {
+      border: 1px solid black;
+      cursor: pointer;
+    }
+  }
+}
+.productInformation_image .main img {
+  transition: opacity 0.3s ease; 
+}
+
 // for mobile
 .productInformation_container {
   width: 100%;
@@ -5,6 +18,7 @@
   flex-direction: column;
   align-items: center;
   margin: 0 auto 0 auto;
+  margin-top: 2rem;
   .productInformation_text {
     width: 80%;
     display: flex;
@@ -115,9 +129,7 @@
     .main {
       flex-basis: 60%;
       display: flex;
-
       justify-content: center;
-
       img {
         width: 100%;
       }
@@ -154,7 +166,7 @@
 }
 
 // For desktop
-@media (min-width: 768px) {
+@media (min-width: 1200px) {
   .productInformation_container {
     max-width: 80%;
     min-width: 60%;
@@ -259,10 +271,11 @@
         flex-direction: column;
         width: 45%;
         justify-content: space-evenly;
-
         .main {
+          width: 100%;
+          height: 80rem;
           img {
-            max-width: 55%;
+            width: 100%;
           }
         }
 

@@ -19,7 +19,7 @@ export const ProductByNumberOfClicks: React.FC<
       setIsLoading(true);
     }
     if (products && products.length > 0) {
-      const firstthreeproducts = products.slice(0, 3);
+      const firstthreeproducts = products.slice(0, 4);
       setFilteredData(firstthreeproducts);
       setIsLoading(false);
     }

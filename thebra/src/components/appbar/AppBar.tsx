@@ -92,7 +92,7 @@ const AppBar = () => {
                 style={{ overflow: "visible" }}
               >
                 <ShoppingCartIcon
-                  style={{ fontSize: "1.75rem", color: "black" }}
+                  style={{ fontSize: "1.2rem", color: "black" }}
                 />
               </Badge>
             </Link>
@@ -104,7 +104,7 @@ const AppBar = () => {
               className={`accountButton ${
                 isSignedIn ? "accountButton--active" : ""
               }`}
-              style={{ fontSize: "1.75rem" }}
+              style={{ fontSize: "1.2rem" }}
             />
             {isUserMenuOpened ? <UserPopUpMenu isSignedIn={isSignedIn} /> : ""}
           </button>
@@ -112,7 +112,7 @@ const AppBar = () => {
           <button className="icon-ban" disabled={true}>
             <FavoriteIcon
               style={{
-                fontSize: "1.75rem",
+                fontSize: "1.2rem",
                 cursor: "default",
                 color: "gray",
               }}

@@ -19,13 +19,13 @@
   // Moblie
   .relevant-items {
     display: grid;
-    grid-template-columns: 1fr 1fr ;
+    grid-template-columns: 1fr 1fr;
     gap: 10px;
     padding: 0;
     width: 100%;
     justify-items: center;
     @media (min-width: 768px) {
-    grid-template-columns: 1fr 1fr 1fr;
+      grid-template-columns: 1fr 1fr 1fr;
 
       width: 90%;
       margin-left: auto;
@@ -42,9 +42,10 @@
       .item-img {
         width: 100%;
         height: 15rem;
+        border-radius: 5%;
         @media (min-width: 768px) {
           width: 75%;
-          height: 30rem;
+          height: 15rem;
           align-self: center;
         }
       }
@@ -53,7 +54,6 @@
         width: 100%;
         margin-top: 12px;
         padding-bottom: 10px;
-
         h2 {
           font-size: 14px;
           font-family: "Quicksand-regular";
@@ -62,7 +62,7 @@
         }
 
         @media (min-width: 768px) {
-          width: 60%;
+          width: 75%;
           align-self: center;
         }
       }
@@ -75,11 +75,6 @@
         }
       }
     }
-    // .item:nth-last-child(-n + 2) {
-    //   border: 1px solid red;
-    //   align-self: flex-start;
-    //   margin: 0;
-    // }
   }
 }
 

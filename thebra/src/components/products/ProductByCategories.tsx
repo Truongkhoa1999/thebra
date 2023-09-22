@@ -56,7 +56,7 @@ const ProductByCategories = () => {
               : "button-red"
           }
         >
-          Bralette
+          BRALETTE
         </button>
         <button
           onClick={() => {
@@ -72,7 +72,7 @@ const ProductByCategories = () => {
               : "button-green"
           }
         >
-          Cotton-linen
+          COTTON
         </button>
         <button
           onClick={() => {
@@ -86,7 +86,7 @@ const ProductByCategories = () => {
               : "button-blue"
           }
         >
-          Push-up
+          PUSH-UP
         </button>
       </div>
       {isLoading ? (
