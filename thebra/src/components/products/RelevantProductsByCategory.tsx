@@ -58,7 +58,7 @@ export const RelevantProductsByCategory = ({
               <img className="item-img" src={p.images[0]} />
               <div className="item-text">
                 <h2>{p.title}</h2>
-                <h2>{p.price}</h2>
+                <h2>€{p.price}</h2>
               </div>
             </Link>
           ))}
